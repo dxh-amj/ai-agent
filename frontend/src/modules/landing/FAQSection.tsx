@@ -40,7 +40,7 @@ const faqData: FAQItem[] = [
   },
 ];
 
-function ChevronDownIcon({ className }: { className?: string }) {
+const ChevronDownIcon = ({ className }: { className?: string }) => {
   return (
     <svg
       className={className}

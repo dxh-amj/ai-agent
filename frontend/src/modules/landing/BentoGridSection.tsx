@@ -1,7 +1,7 @@
 "use client";
 
 // Agent Orchestration Visual - Shows agents working together
-function AgentOrchestrationVisual() {
+const AgentOrchestrationVisual = () => {
   return (
     <div className="relative w-full h-full flex items-center justify-center scale-90">
       {/* Tilted cards like the reference */}
@@ -71,7 +71,7 @@ function AgentOrchestrationVisual() {
 }
 
 // Work in Sync Visual - Chat style collaboration
-function WorkInSyncVisual() {
+const WorkInSyncVisual = () => {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       <div className="w-[280px] space-y-3 scale-95">
@@ -126,7 +126,7 @@ function WorkInSyncVisual() {
 }
 
 // Integration Constellation Visual
-function IntegrationVisual() {
+const IntegrationVisual = () => {
   return (
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
       {/* Concentric rings */}
@@ -174,7 +174,7 @@ function IntegrationVisual() {
 }
 
 // Metrics Visual - Layered dashboard cards
-function MetricsVisual() {
+const MetricsVisual = () => {
   return (
     <div className="relative w-full h-full flex items-center justify-center">
       <div className="relative w-[260px] h-[180px]">
