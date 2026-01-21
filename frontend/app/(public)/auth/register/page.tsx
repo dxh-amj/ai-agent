@@ -1,9 +1,8 @@
-"use client";
-
-import { RegisterForm } from "@/modules/auth";
 import Link from "next/link";
 
-export default function RegisterPage() {
+import { RegisterForm } from "@/modules/auth";
+
+const RegisterPage = () => {
   return (
     <div className="min-h-screen w-full bg-slate-100 flex flex-col items-center justify-center p-4">
       {/* Register Card */}
@@ -23,4 +22,6 @@ export default function RegisterPage() {
       </div>
     </div>
   );
-}
+};
+
+export default RegisterPage;
