@@ -4,7 +4,7 @@ export { BentoGridSection } from "./BentoGridSection";
 export { FAQSection } from "./FAQSection";
 export { Header } from "./Header";
 export { HeroSection } from "./HeroSection";
+export { ImpactSection } from "./ImpactSection";
 export { InteractiveFeatures } from "./InteractiveFeatures";
 export { SocialProof } from "./SocialProof";
-export { TargetUsers } from "./TargetUsers";
 export { TestimonialsSection } from "./TestimonialsSection";

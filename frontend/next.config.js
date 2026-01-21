@@ -6,7 +6,7 @@ const path = require("path");
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  images: {
+  images: { remotePatterns: [{ protocol: "https", hostname: "api.dicebear.com" }, { protocol: "https", hostname: "upload.wikimedia.org" }, { protocol: "https", hostname: "images.squarespace-cdn.com" }],
     unoptimized: true,
   },
   transpilePackages: ["@devxhub/form-elements"],

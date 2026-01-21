@@ -59,89 +59,94 @@ const ChevronDownIcon = ({ className }: { className?: string }) => {
       />
     </svg>
   );
-}
+};
+
+import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 
 export const FAQSection = () => {
   const [openItems, setOpenItems] = useState<number[]>([]);
 
   const toggleItem = (index: number) => {
     setOpenItems((prev) =>
-      prev.includes(index)
-        ? prev.filter((i) => i !== index)
-        : [...prev, index]
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
     );
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-slate-50">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
-          {/* Left Column - Header */}
-          <div className="lg:w-2/5 flex flex-col justify-start">
-            <div className="inline-flex items-center gap-2 w-fit px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
-              <span className="material-symbols-outlined text-sm text-emerald-600">
-                help
-              </span>
-              <span className="text-sm font-medium text-emerald-600">
-                FAQ
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-              Frequently Asked{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">
-                Questions
-              </span>
-            </h2>
-            <p className="text-slate-600 leading-relaxed">
-              Everything you need to know about AI Workforce Hub.
-              Can&apos;t find what you&apos;re looking for? Contact our support team.
-            </p>
-          </div>
+    <section className="w-full border-y border-slate-200 bg-slate-50">
+      <div className="flex">
+        <DecorativeStripes />
 
-          {/* Right Column - FAQ Items */}
-          <div className="lg:w-3/5 flex flex-col">
-            <div className="w-full flex flex-col">
-              {faqData.map((item, index) => {
-                const isOpen = openItems.includes(index);
+        {/* Main Content */}
+        <div className="flex-1 border-x border-slate-200 py-20 lg:py-28 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+              {/* Left Column - Header */}
+              <div className="lg:w-2/5 flex flex-col justify-start">
+                <div className="inline-flex items-center gap-2 w-fit px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
+                  <span className="material-symbols-outlined text-sm text-emerald-600">help</span>
+                  <span className="text-sm font-medium text-emerald-600">FAQ</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+                  Frequently Asked{" "}
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-500 to-teal-500">
+                    Questions
+                  </span>
+                </h2>
+                <p className="text-slate-600 leading-relaxed">
+                  Everything you need to know about AI Workforce Hub. Can&apos;t find what
+                  you&apos;re looking for? Contact our support team.
+                </p>
+              </div>
 
-                return (
-                  <div
-                    key={index}
-                    className="w-full border-b border-slate-200 overflow-hidden"
-                  >
-                    <button
-                      onClick={() => toggleItem(index)}
-                      className="w-full px-5 py-5 flex justify-between items-center gap-5 text-left hover:bg-slate-100/50 transition-colors duration-200"
-                      aria-expanded={isOpen}
-                    >
-                      <div className="flex-1 text-slate-800 text-base font-medium leading-6">
-                        {item.question}
-                      </div>
-                      <div className="flex justify-center items-center">
-                        <ChevronDownIcon
-                          className={`w-6 h-6 text-slate-400 transition-transform duration-300 ease-in-out ${
-                            isOpen ? "rotate-180" : "rotate-0"
+              {/* Right Column - FAQ Items */}
+              <div className="lg:w-3/5 flex flex-col">
+                <div className="w-full flex flex-col">
+                  {faqData.map((item, index) => {
+                    const isOpen = openItems.includes(index);
+
+                    return (
+                      <div
+                        key={item.question}
+                        className="w-full border-b border-slate-200 overflow-hidden"
+                      >
+                        <button
+                          onClick={() => toggleItem(index)}
+                          className="w-full px-5 py-5 flex justify-between items-center gap-5 text-left hover:bg-slate-100/50 transition-colors duration-200"
+                          aria-expanded={isOpen}
+                        >
+                          <div className="flex-1 text-slate-800 text-base font-medium leading-6">
+                            {item.question}
+                          </div>
+                          <div className="flex justify-center items-center">
+                            <ChevronDownIcon
+                              className={`w-6 h-6 text-slate-400 transition-transform duration-300 ease-in-out ${
+                                isOpen ? "rotate-180" : "rotate-0"
+                              }`}
+                            />
+                          </div>
+                        </button>
+
+                        <div
+                          className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                            isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                           }`}
-                        />
+                        >
+                          <div className="px-5 pb-5 text-slate-600 text-sm font-normal leading-6">
+                            {item.answer}
+                          </div>
+                        </div>
                       </div>
-                    </button>
-
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <div className="px-5 pb-5 text-slate-600 text-sm font-normal leading-6">
-                        {item.answer}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <DecorativeStripesRight />
       </div>
     </section>
   );
-}
+};
