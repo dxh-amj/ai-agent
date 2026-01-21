@@ -7,13 +7,8 @@ export const agents = [
     color: "from-emerald-400 to-teal-500",
     bgColor: "bg-emerald-500/10",
     borderColor: "border-emerald-500/30",
-    capabilities: [
-      "Lead qualification",
-      "Follow-up automation",
-      "Sales insights",
-    ],
-    description:
-      "Qualify leads, automate follow-ups, and get AI-driven sales recommendations.",
+    capabilities: ["Lead qualification", "Follow-up automation", "Sales insights"],
+    description: "Qualify leads, automate follow-ups, and get AI-driven sales recommendations.",
   },
   {
     id: "support",
@@ -23,8 +18,7 @@ export const agents = [
     bgColor: "bg-cyan-500/10",
     borderColor: "border-cyan-500/30",
     capabilities: ["Voice AI calls", "Call transcription", "Intent detection"],
-    description:
-      "Handle inbound & outbound calls with AI voice, transcription, and smart routing.",
+    description: "Handle inbound & outbound calls with AI voice, transcription, and smart routing.",
   },
   {
     id: "crm",
@@ -34,8 +28,7 @@ export const agents = [
     bgColor: "bg-violet-500/10",
     borderColor: "border-violet-500/30",
     capabilities: ["Contact management", "Deal tracking", "Data sync"],
-    description:
-      "Central customer data hub that syncs across all your agents automatically.",
+    description: "Central customer data hub that syncs across all your agents automatically.",
   },
   {
     id: "marketing",
@@ -45,8 +38,7 @@ export const agents = [
     bgColor: "bg-orange-500/10",
     borderColor: "border-orange-500/30",
     capabilities: ["Email campaigns", "Social planning", "Content AI"],
-    description:
-      "Plan and execute multi-channel marketing campaigns with AI assistance.",
+    description: "Plan and execute multi-channel marketing campaigns with AI assistance.",
   },
   {
     id: "analytics",
@@ -56,18 +48,19 @@ export const agents = [
     bgColor: "bg-pink-500/10",
     borderColor: "border-pink-500/30",
     capabilities: ["KPI dashboards", "Predictions", "Performance tracking"],
-    description:
-      "Get AI-driven insights, predictions, and real-time performance metrics.",
+    description: "Get AI-driven insights, predictions, and real-time performance metrics.",
   },
 ];
 
 export const integrations = [
   { name: "Slack", logo: "/logos/slack.png" },
-  { name: "Zendesk", logo: "/logos/zendesk.png" },
-  { name: "Salesforce", logo: "/logos/salesforce.png" },
-  { name: "HubSpot", logo: "/logos/hubspot.png" },
-  { name: "Intercom", logo: "/logos/intercom.svg" },
-  { name: "Twilio", logo: "/logos/twilio.png" },
+  { name: "Notion", logo: "/logos/notion.svg" },
+  { name: "Facebook", logo: "/logos/facebook.svg" },
+  { name: "Instagram", logo: "/logos/instagram.svg" },
+  { name: "Messenger", logo: "/logos/messenger.svg" },
+  { name: "Twitter", logo: "/logos/twitter.svg" },
+  { name: "LinkedIn", logo: "/logos/linkedin.svg" },
+  { name: "WhatsApp", logo: "/logos/whatsapp.svg" },
 ];
 
 export const workflowExamples = [
@@ -107,22 +100,19 @@ export const stats = [
 export const targetUsers = [
   {
     title: "Startups & SMEs",
-    description:
-      "Scale operations without scaling headcount. Deploy AI agents that grow with you.",
+    description: "Scale operations without scaling headcount. Deploy AI agents that grow with you.",
     icon: "rocket_launch",
     agents: ["Sales", "Support"],
   },
   {
     title: "Enterprise Teams",
-    description:
-      "Orchestrate multiple departments with AI agents that collaborate seamlessly.",
+    description: "Orchestrate multiple departments with AI agents that collaborate seamlessly.",
     icon: "corporate_fare",
     agents: ["All 5 Agents"],
   },
   {
     title: "SaaS Platforms",
-    description:
-      "Embed intelligent agents directly into your product for enhanced UX.",
+    description: "Embed intelligent agents directly into your product for enhanced UX.",
     icon: "cloud",
     agents: ["Support", "Analytics"],
   },

@@ -1,18 +1,16 @@
-import { Footer } from "@/shared/components/layout/Footer";
 import {
   AgentCollaboration,
   AgentShowcase,
   BentoGridSection,
-  CTASection,
   FAQSection,
   Header,
   HeroSection,
-  IntegrationBar,
   InteractiveFeatures,
   SocialProof,
   TargetUsers,
   TestimonialsSection,
 } from "@/modules/landing";
+import { Footer } from "@/shared/components/layout/Footer";
 
 export default function LandingPage() {
   return (
@@ -20,7 +18,7 @@ export default function LandingPage() {
       <Header />
       <main>
         <HeroSection />
-        <IntegrationBar />
+
         <SocialProof />
         <BentoGridSection />
         <InteractiveFeatures />
@@ -29,7 +27,6 @@ export default function LandingPage() {
         <TestimonialsSection />
         <TargetUsers />
         <FAQSection />
-        <CTASection />
       </main>
       <Footer />
     </div>

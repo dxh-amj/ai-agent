@@ -1,21 +1,14 @@
 "use client";
 
-import Link from "next/link";
-
 import { Button } from "@/shared/ui/button";
+import { Logo } from "@/shared/ui/logo";
+import Link from "next/link";
 
 export const Header = () => {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200/80 bg-white/80 backdrop-blur-xl">
+    <header className="fixed top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="relative h-9 w-9 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/25">
-            <span className="material-symbols-outlined text-xl">hub</span>
-          </div>
-          <span className="text-lg font-semibold tracking-tight text-slate-900">
-            AI Workforce Hub
-          </span>
-        </Link>
+        <Logo variant="dark" />
 
         <nav className="hidden md:flex items-center gap-1">
           {["Platform", "Agents", "Pricing", "Docs"].map((item) => (
@@ -36,17 +29,15 @@ export const Header = () => {
           >
             Sign in
           </Link>
-          <Link href="/auth/register">
-            <Button
-              variant="default"
-              size="sm"
-              className="bg-primary hover:bg-primary-dark text-white shadow-lg shadow-primary/20 glow-primary"
-            >
-              Get Started
-            </Button>
-          </Link>
+          <Button
+            asChild
+            size="sm"
+            className="bg-primary hover:bg-primary/90 text-white font-medium rounded-lg px-5"
+          >
+            <Link href="/auth/register">Get Started</Link>
+          </Button>
         </div>
       </div>
     </header>
   );
-}
+};

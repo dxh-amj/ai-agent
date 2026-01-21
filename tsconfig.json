@@ -29,6 +29,8 @@
     "next-env.d.ts",
     "frontend/src/**/*.ts",
     "frontend/src/**/*.tsx",
+    "frontend/app/**/*.ts",
+    "frontend/app/**/*.tsx",
     ".next/types/**/*.ts"
   ],
   "exclude": [

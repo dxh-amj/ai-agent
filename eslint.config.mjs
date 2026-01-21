@@ -93,7 +93,7 @@ export default [
         ecmaFeatures: {
           jsx: true,
         },
-        project: ["./tsconfig.json", "./frontend/*/tsconfig.json"],
+        project: ["./tsconfig.json", "./frontend/tsconfig.json", "./frontend/*/tsconfig.json"],
         tsconfigRootDir: import.meta.dirname,
         noWarnOnMultipleProjects: true,
       },
