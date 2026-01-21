@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+# Colors
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo "${CYAN}┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓${NC}"
+echo "${CYAN}┃     ${YELLOW}Checking commit message...     ${CYAN}┃${NC}"
+echo "${CYAN}┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛${NC}"
+
+# Simple regex validation
+commit_msg=$(cat "$1")
+if echo "$commit_msg" | grep -E "^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+" > /dev/null; then
+  echo "${GREEN}✓ Valid commit message format!${NC}"
+else
+  echo "${RED}✗ Invalid commit message format. Use 'yarn commit'${NC}"
+  exit 1
+fi

@@ -1,0 +1,28 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "editorconfig.editorconfig",
+    "nrwl.angular-console",
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "ms-playwright.playwright",
+    "vitest.explorer",
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "ms-vscode.vscode-json",
+    "redhat.vscode-yaml",
+    "ms-vscode.vscode-css-peek",
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
+    "vscode-material-ui-snippets.material-ui-snippets"
+  ],
+  "unwantedRecommendations": [
+    "hookyqr.beautify",
+    "ms-vscode.vscode-typescript",
+    "vscode.typescript-language-features",
+    "firsttris.vscode-jest-runner"
+  ]
+}

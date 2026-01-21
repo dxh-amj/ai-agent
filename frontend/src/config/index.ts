@@ -1,0 +1,17 @@
+export const ROOT_API_URL = process.env.NEXT_PUBLIC_ROOT_API_URL as string;
+export const WEBSOCKET_BASE_URL = process.env.NEXT_PUBLIC_WEBSOCKET_BASE_URL as string;
+export const ENCRYPTION_KEY = process.env.NEXT_PUBLIC_ENCRYPTION_KEY as string;
+export const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string;
+export const GOOGLE_REDIRECT_URI = process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI as string;
+export const GOOGLE_AUTHORIZE_URL = process.env.NEXT_PUBLIC_GOOGLE_AUTHORIZE_URL as string;
+export const FACEBOOK_CLIENT_ID = process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID as string;
+export const FACEBOOK_CONFIG_ID = process.env.NEXT_PUBLIC_FACEBOOK_CONFIG_ID as string;
+export const FACEBOOK_AUTHORIZE_URL = process.env.NEXT_PUBLIC_FACEBOOK_AUTHORIZE_URL as string;
+export const FACEBOOK_REDIRECT_URI = process.env.NEXT_PUBLIC_FACEBOOK_REDIRECT_URI as string;
+export const RECAPTCHA_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_KEY as string;
+export const RECAPTCHA_ENABLED = process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true";
+export const LINKEDIN_CLIENT_ID = process.env.NEXT_PUBLIC_LINKEDIN_CLIENT_ID as string;
+export const LINKEDIN_AUTHORIZE_URL = process.env.NEXT_PUBLIC_LINKEDIN_AUTHORIZE_URL as string;
+export const LINKEDIN_REDIRECT_URI = process.env.NEXT_PUBLIC_LINKEDIN_REDIRECT_URI as string;
+export const ENABLE_RQ_DEVTOOLS = process.env.NEXT_PUBLIC_ENABLE_RQ_DEVTOOLS === "true";
+export const WEBPACK_USE_POLLING = process.env.WEBPACK_USE_POLLING === "true";

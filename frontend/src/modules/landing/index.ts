@@ -1,0 +1,12 @@
+export { Header } from "./Header";
+export { HeroSection } from "./HeroSection";
+export { IntegrationBar } from "./IntegrationBar";
+export { AgentShowcase } from "./AgentShowcase";
+export { AgentCollaboration } from "./AgentCollaboration";
+export { TargetUsers } from "./TargetUsers";
+export { CTASection } from "./CTASection";
+export { FAQSection } from "./FAQSection";
+export { TestimonialsSection } from "./TestimonialsSection";
+export { InteractiveFeatures } from "./InteractiveFeatures";
+export { SocialProof } from "./SocialProof";
+export { BentoGridSection } from "./BentoGridSection";
