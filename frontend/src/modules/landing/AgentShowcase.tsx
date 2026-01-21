@@ -4,7 +4,7 @@ import { agents } from "./data";
 
 export const AgentShowcase = () => {
   return (
-    <section className="w-full border-y border-slate-200 bg-slate-50/50">
+    <section className="w-full bg-transparent">
       <div className="flex">
         <DecorativeStripes />
 
@@ -13,12 +13,6 @@ export const AgentShowcase = () => {
           <div className="max-w-7xl mx-auto">
             {/* Section header */}
             <div className="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 shadow-lg shadow-emerald-500/10 mb-6">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="text-xs font-semibold text-white tracking-wide uppercase">
-                  Specialized Workforce
-                </span>
-              </div>
               <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
                 Meet your new{" "}
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-500 to-teal-500">

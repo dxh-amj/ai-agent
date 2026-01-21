@@ -36,12 +36,12 @@ export const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="w-full border-y border-slate-100 bg-white relative overflow-hidden">
+    <section className="w-full bg-transparent relative overflow-hidden">
       {/* Subtle Grid Background */}
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.3]"
         style={{
-          backgroundImage: `linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, #cbd5e1 1px, transparent 1px), linear-gradient(to bottom, #cbd5e1 1px, transparent 1px)`,
           backgroundSize: "80px 80px",
         }}
       />
@@ -50,9 +50,22 @@ export const TestimonialsSection = () => {
         <DecorativeStripes />
 
         {/* Main Content */}
-        <div className="flex-1 border-x border-slate-100">
+        <div className="flex-1 border-x border-slate-300 py-24 lg:py-32 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x border-slate-100">
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.1] mb-6">
+                Trusted by{" "}
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-600 to-teal-600">
+                  leading teams
+                </span>
+              </h2>
+              <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                See how companies are transforming their operations with our AI agents.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-300 border border-slate-300 rounded-xl overflow-hidden bg-white">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}

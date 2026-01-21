@@ -39,7 +39,7 @@ const impacts = [
 
 export const ImpactSection = () => {
   return (
-    <section className="w-full border-y border-slate-200 bg-white">
+    <section className="w-full bg-transparent">
       <div className="flex">
         <DecorativeStripes />
 

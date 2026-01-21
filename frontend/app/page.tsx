@@ -1,6 +1,5 @@
 import {
   AgentCollaboration,
-  AgentShowcase,
   BentoGridSection,
   FAQSection,
   Header,
@@ -21,7 +20,6 @@ const LandingPage = () => {
         <ImpactSection />
         <BentoGridSection />
         <InteractiveFeatures />
-        <AgentShowcase />
         <AgentCollaboration />
         <TestimonialsSection />
 
