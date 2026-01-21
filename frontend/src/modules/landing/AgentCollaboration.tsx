@@ -1,4 +1,4 @@
-import { workflowExamples, agents } from "./data";
+import { agents,workflowExamples } from "./data";
 
 export const AgentCollaboration = () => {
   return (

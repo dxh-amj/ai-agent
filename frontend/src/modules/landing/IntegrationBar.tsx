@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import { integrations } from "./data";
 
 export const IntegrationBar = () => {
