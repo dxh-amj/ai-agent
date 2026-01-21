@@ -1,5 +1,9 @@
 "use client";
 
+import Image from "next/image";
+
+import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
+
 // Agent Orchestration Visual - Shows agents working together
 const AgentOrchestrationVisual = () => {
   return (
@@ -77,7 +81,7 @@ const WorkInSyncVisual = () => {
       <div className="w-[280px] space-y-3 scale-95">
         {/* Message 1 - Left */}
         <div className="flex items-start gap-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+          <div className="w-8 h-8 rounded-full bg-linear-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
             S
           </div>
           <div className="bg-slate-100 rounded-2xl px-3 py-2 max-w-[200px]">
@@ -92,14 +96,14 @@ const WorkInSyncVisual = () => {
           <div className="bg-slate-800 rounded-2xl px-3 py-2 max-w-[200px]">
             <span className="text-xs font-medium text-white">Adding to CRM pipeline now</span>
           </div>
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+          <div className="w-8 h-8 rounded-full bg-linear-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
             C
           </div>
         </div>
 
         {/* Message 3 - Left */}
         <div className="flex items-start gap-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-400 to-purple-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+          <div className="w-8 h-8 rounded-full bg-linear-to-br from-violet-400 to-purple-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
             A
           </div>
           <div className="bg-slate-100 rounded-2xl px-3 py-2 max-w-[200px]">
@@ -144,7 +148,7 @@ const IntegrationVisual = () => {
       <div className="absolute w-[120px] h-[120px] rounded-full border border-slate-200/70" />
 
       {/* Center hub */}
-      <div className="absolute w-14 h-14 rounded-full bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg z-10">
+      <div className="absolute w-14 h-14 rounded-full bg-linear-to-br from-emerald-500 to-teal-500 flex items-center justify-center shadow-lg z-10">
         <span className="material-symbols-outlined text-white text-xl">hub</span>
       </div>
 
@@ -156,16 +160,12 @@ const IntegrationVisual = () => {
           style={{ transform: `translate(${integration.x}px, ${integration.y}px)` }}
           title={integration.name}
         >
-          <img
-            src={integration.logo}
-            alt={integration.name}
-            className="w-full h-full object-contain"
-          />
+          <Image src={integration.logo} alt={integration.name} fill className="object-contain" />
         </div>
       ))}
 
       {/* Gradient fade at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-12 bg-linear-to-t from-white to-transparent pointer-events-none" />
     </div>
   );
 };
@@ -210,7 +210,7 @@ const MetricsVisual = () => {
             {[40, 65, 45, 80, 55, 90, 70, 85].map((h, i) => (
               <div
                 key={i}
-                className="flex-1 bg-gradient-to-t from-emerald-500 to-teal-400 rounded-t"
+                className="flex-1 bg-linear-to-t from-emerald-500 to-teal-400 rounded-t"
                 style={{ height: `${h}%` }}
               />
             ))}
@@ -224,126 +224,93 @@ const MetricsVisual = () => {
 export const BentoGridSection = () => {
   return (
     <section className="w-full border-y border-slate-200 bg-white">
-      {/* Header Section */}
-      <div className="border-b border-slate-200 py-12 md:py-16">
-        <div className="max-w-[616px] mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 shadow-sm mb-4">
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect x="1" y="1" width="4" height="4" stroke="#10b981" strokeWidth="1" fill="none" />
-              <rect x="7" y="1" width="4" height="4" stroke="#10b981" strokeWidth="1" fill="none" />
-              <rect x="1" y="7" width="4" height="4" stroke="#10b981" strokeWidth="1" fill="none" />
-              <rect x="7" y="7" width="4" height="4" stroke="#10b981" strokeWidth="1" fill="none" />
-            </svg>
-            <span className="text-sm font-medium text-slate-700">Bento Overview</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-800 tracking-tight mb-4">
-            Built for absolute clarity and focused work
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Stay focused with AI agents that organize, connect
-            <br className="hidden sm:block" />
-            and turn information into confident decisions.
-          </p>
-        </div>
-      </div>
-
-      {/* Bento Grid Content */}
       <div className="flex">
-        {/* Left decorative pattern */}
-        <div className="w-3 sm:w-6 md:w-8 lg:w-12 relative overflow-hidden hidden md:block">
-          <div className="absolute inset-0 flex flex-col" style={{ left: "-58px", top: "-120px" }}>
-            {Array.from({ length: 200 }).map((_, i) => (
-              <div
-                key={i}
-                className="w-[162px] h-4 -rotate-45 origin-top-left border-b border-slate-200/50"
-              />
-            ))}
+        <DecorativeStripes />
+
+        <div className="flex-1 flex flex-col border-x border-slate-200">
+          {/* Header Section */}
+          <div className="border-b border-slate-200 py-12 md:py-16">
+            <div className="max-w-[616px] mx-auto px-4 text-center">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-800 tracking-tight mb-4">
+                Built for absolute clarity and focused work
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+                Stay focused with AI agents that organize, connect
+                <br className="hidden sm:block" />
+                and turn information into confident decisions.
+              </p>
+            </div>
+          </div>
+
+          {/* Bento Grid Content */}
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* Top Left - Smart Agent Orchestration */}
+            <div className="border-b md:border-r border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+              <div>
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
+                  Smart. Simple. Brilliant.
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Your agent tasks are beautifully organized so you see everything clearly without
+                  the clutter.
+                </p>
+              </div>
+              <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
+                <AgentOrchestrationVisual />
+              </div>
+            </div>
+
+            {/* Top Right - Work in sync */}
+            <div className="border-b border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+              <div>
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
+                  Your agents, in sync
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Every update flows instantly across your AI team and keeps collaboration
+                  effortless and fast.
+                </p>
+              </div>
+              <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
+                <WorkInSyncVisual />
+              </div>
+            </div>
+
+            {/* Bottom Left - Effortless integration */}
+            <div className="md:border-r border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+              <div>
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
+                  Effortless integration
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  All your favorite tools connect in one place and work together seamlessly by
+                  design.
+                </p>
+              </div>
+              <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden relative">
+                <IntegrationVisual />
+              </div>
+            </div>
+
+            {/* Bottom Right - Numbers that speak */}
+            <div className="p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+              <div>
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
+                  Metrics that matter
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Track AI performance with precision and turn raw data into confident decisions you
+                  can trust.
+                </p>
+              </div>
+              <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden relative">
+                <MetricsVisual />
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Grid */}
-        <div className="flex-1 grid grid-cols-1 md:grid-cols-2 border-x border-slate-200">
-          {/* Top Left - Smart Agent Orchestration */}
-          <div className="border-b md:border-r border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
-                Smart. Simple. Brilliant.
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Your agent tasks are beautifully organized so you see everything clearly without the
-                clutter.
-              </p>
-            </div>
-            <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
-              <AgentOrchestrationVisual />
-            </div>
-          </div>
-
-          {/* Top Right - Work in sync */}
-          <div className="border-b border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
-                Your agents, in sync
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Every update flows instantly across your AI team and keeps collaboration effortless
-                and fast.
-              </p>
-            </div>
-            <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
-              <WorkInSyncVisual />
-            </div>
-          </div>
-
-          {/* Bottom Left - Effortless integration */}
-          <div className="md:border-r border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
-                Effortless integration
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                All your favorite tools connect in one place and work together seamlessly by design.
-              </p>
-            </div>
-            <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden relative">
-              <IntegrationVisual />
-            </div>
-          </div>
-
-          {/* Bottom Right - Numbers that speak */}
-          <div className="p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
-                Metrics that matter
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Track AI performance with precision and turn raw data into confident decisions you
-                can trust.
-              </p>
-            </div>
-            <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden relative">
-              <MetricsVisual />
-            </div>
-          </div>
-        </div>
-
-        {/* Right decorative pattern */}
-        <div className="w-3 sm:w-6 md:w-8 lg:w-12 relative overflow-hidden hidden md:block">
-          <div className="absolute inset-0 flex flex-col" style={{ left: "-58px", top: "-120px" }}>
-            {Array.from({ length: 200 }).map((_, i) => (
-              <div
-                key={i}
-                className="w-[162px] h-4 -rotate-45 origin-top-left border-b border-slate-200/50"
-              />
-            ))}
-          </div>
-        </div>
+        <DecorativeStripesRight />
       </div>
     </section>
   );

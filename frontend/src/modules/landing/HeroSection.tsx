@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/shared/ui/button";
@@ -76,9 +77,11 @@ export const HeroSection = () => {
                     key={`${integration.name}-${index}`}
                     className="shrink-0 mx-8 lg:mx-12 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                   >
-                    <img
+                    <Image
                       src={integration.logo}
                       alt={integration.name}
+                      width={100}
+                      height={32}
                       className="h-8 w-auto object-contain"
                       title={integration.name}
                     />
