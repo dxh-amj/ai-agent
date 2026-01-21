@@ -6,6 +6,8 @@ export const metadata = {
     "Transparent pricing for every stage. Scale your AI workforce without breaking the bank.",
 };
 
-export default function Page() {
+const Pricing = () => {
   return <PricingPage />;
-}
+};
+
+export default Pricing;
