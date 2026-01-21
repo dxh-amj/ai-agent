@@ -1,11 +1,9 @@
 export { AgentCollaboration } from "./AgentCollaboration";
 export { AgentShowcase } from "./AgentShowcase";
 export { BentoGridSection } from "./BentoGridSection";
-export { CTASection } from "./CTASection";
 export { FAQSection } from "./FAQSection";
 export { Header } from "./Header";
 export { HeroSection } from "./HeroSection";
-export { IntegrationBar } from "./IntegrationBar";
 export { InteractiveFeatures } from "./InteractiveFeatures";
 export { SocialProof } from "./SocialProof";
 export { TargetUsers } from "./TargetUsers";

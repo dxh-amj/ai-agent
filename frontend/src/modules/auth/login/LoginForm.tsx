@@ -5,7 +5,7 @@ import Link from "next/link";
 import { getCookie } from "cookies-next";
 import { useFormik } from "formik";
 
-import { Button, FormCheckbox, FormInput, PasswordInput } from "@/shared/ui";
+import { Button, FormInput, PasswordInput } from "@/shared/ui";
 import { decrypt } from "@/utils/encryption";
 
 import { SocialButtons } from "../social-buttons/SocialButtons";
@@ -36,33 +36,28 @@ export const LoginForm = ({ title, subtitle, subtext }: LoginFormProps) => {
 
   return (
     <>
-      {title && (
-        <h1 className="text-3xl md:text-4xl font-black leading-tight tracking-tight text-slate-900">
-          {title}
-        </h1>
-      )}
+      {title && <h1 className="text-2xl font-semibold text-slate-900 mb-6">{title}</h1>}
 
       {subtext}
 
-      <SocialButtons title="Sign in with" />
+      <SocialButtons title="Continue with" />
 
       <div className="relative py-4">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-slate-200" />
         </div>
         <div className="relative flex justify-center">
-          <span className="bg-white px-4 text-sm text-slate-500">or sign in with</span>
+          <span className="bg-white px-4 text-sm text-slate-400">Or</span>
         </div>
       </div>
 
-      <form onSubmit={formik.handleSubmit} className="flex flex-col gap-5">
+      <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
         <FormInput
-          label="Email Address"
+          label="Email"
           type="email"
           id="email"
           name="email"
-          placeholder="name@company.com"
-          icon="mail"
+          placeholder="you@example.com"
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -70,41 +65,38 @@ export const LoginForm = ({ title, subtitle, subtext }: LoginFormProps) => {
           helperText={formik.touched.email ? formik.errors.email : undefined}
         />
 
-        <PasswordInput
-          label="Password"
-          id="password"
-          name="password"
-          placeholder="Enter your password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password ? formik.errors.password : undefined}
-        />
-
-        <div className="flex items-center justify-between">
-          <FormCheckbox
-            label="Remember Me"
-            id="rememberMe"
-            name="rememberMe"
-            checked={formik.values.rememberMe}
+        <div>
+          <div className="flex items-center justify-between mb-1">
+            <label htmlFor="password" className="block text-sm font-medium text-slate-700">
+              Password
+            </label>
+            <Link
+              href="/auth/forgot-password"
+              className="text-primary hover:text-primary-dark text-sm font-medium transition-colors"
+            >
+              Forgot?
+            </Link>
+          </div>
+          <PasswordInput
+            label="Password"
+            id="password"
+            name="password"
+            placeholder="Enter password"
+            value={formik.values.password}
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password ? formik.errors.password : undefined}
           />
-          <Link
-            href="/auth/forgot-password"
-            className="text-primary hover:text-primary-dark text-sm font-medium transition-colors"
-          >
-            Forgot Password?
-          </Link>
         </div>
 
         <Button
           type="submit"
           size="lg"
           disabled={isLoading}
-          className="w-full bg-primary hover:bg-primary-dark text-white font-bold shadow-lg shadow-primary/20 active:scale-[0.98]"
+          className="w-full bg-primary hover:bg-primary-dark text-white font-medium rounded-lg mt-2"
         >
-          {isLoading ? "Signing In..." : "Sign In"}
+          {isLoading ? "Signing In..." : "Log in"}
         </Button>
       </form>
 

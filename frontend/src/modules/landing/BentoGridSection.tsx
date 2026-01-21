@@ -68,7 +68,7 @@ const AgentOrchestrationVisual = () => {
       </div>
     </div>
   );
-}
+};
 
 // Work in Sync Visual - Chat style collaboration
 const WorkInSyncVisual = () => {
@@ -90,9 +90,7 @@ const WorkInSyncVisual = () => {
         {/* Message 2 - Right */}
         <div className="flex items-start gap-2 justify-end">
           <div className="bg-slate-800 rounded-2xl px-3 py-2 max-w-[200px]">
-            <span className="text-xs font-medium text-white">
-              Adding to CRM pipeline now
-            </span>
+            <span className="text-xs font-medium text-white">Adding to CRM pipeline now</span>
           </div>
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
             C
@@ -105,9 +103,7 @@ const WorkInSyncVisual = () => {
             A
           </div>
           <div className="bg-slate-100 rounded-2xl px-3 py-2 max-w-[200px]">
-            <span className="text-xs font-medium text-slate-700">
-              Predicted close rate: 78%
-            </span>
+            <span className="text-xs font-medium text-slate-700">Predicted close rate: 78%</span>
           </div>
         </div>
 
@@ -123,10 +119,23 @@ const WorkInSyncVisual = () => {
       </div>
     </div>
   );
-}
+};
 
 // Integration Constellation Visual
 const IntegrationVisual = () => {
+  const integrations = [
+    // Inner ring
+    { name: "Slack", logo: "/logos/slack.png", x: -60, y: 0 },
+    { name: "Notion", logo: "/logos/notion.svg", x: 60, y: 0 },
+    // Middle ring
+    { name: "Facebook", logo: "/logos/facebook.svg", x: 0, y: -100 },
+    { name: "Instagram", logo: "/logos/instagram.svg", x: 70, y: 70 },
+    { name: "Messenger", logo: "/logos/messenger.svg", x: -70, y: 70 },
+    // Outer ring
+    { name: "Twitter", logo: "/logos/twitter.svg", x: -100, y: -70 },
+    { name: "LinkedIn", logo: "/logos/linkedin.svg", x: 100, y: -70 },
+  ];
+
   return (
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
       {/* Concentric rings */}
@@ -140,38 +149,26 @@ const IntegrationVisual = () => {
       </div>
 
       {/* Integration logos on rings */}
-      {/* Inner ring */}
-      <div className="absolute w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center border border-slate-100" style={{ transform: "translate(-60px, 0)" }}>
-        <span className="text-xs font-bold text-slate-600">SF</span>
-      </div>
-      <div className="absolute w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center border border-slate-100" style={{ transform: "translate(60px, 0)" }}>
-        <span className="text-xs font-bold text-[#4A154B]">S</span>
-      </div>
-
-      {/* Middle ring */}
-      <div className="absolute w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center border border-slate-100" style={{ transform: "translate(0, -100px)" }}>
-        <span className="text-xs font-bold text-[#FF6C37]">HS</span>
-      </div>
-      <div className="absolute w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center border border-slate-100" style={{ transform: "translate(70px, 70px)" }}>
-        <span className="text-xs font-bold text-[#03C75A]">ZD</span>
-      </div>
-      <div className="absolute w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center border border-slate-100" style={{ transform: "translate(-70px, 70px)" }}>
-        <span className="text-xs font-bold text-slate-800">GH</span>
-      </div>
-
-      {/* Outer ring */}
-      <div className="absolute w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center border border-slate-100" style={{ transform: "translate(-100px, -70px)" }}>
-        <span className="text-xs font-bold text-[#0052CC]">JR</span>
-      </div>
-      <div className="absolute w-8 h-8 rounded-full bg-white shadow-md flex items-center justify-center border border-slate-100" style={{ transform: "translate(100px, -70px)" }}>
-        <span className="text-xs font-bold text-[#7B68EE]">NT</span>
-      </div>
+      {integrations.map((integration) => (
+        <div
+          key={integration.name}
+          className="absolute w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center border border-slate-100 p-1.5 hover:scale-110 transition-transform"
+          style={{ transform: `translate(${integration.x}px, ${integration.y}px)` }}
+          title={integration.name}
+        >
+          <img
+            src={integration.logo}
+            alt={integration.name}
+            className="w-full h-full object-contain"
+          />
+        </div>
+      ))}
 
       {/* Gradient fade at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </div>
   );
-}
+};
 
 // Metrics Visual - Layered dashboard cards
 const MetricsVisual = () => {
@@ -180,18 +177,20 @@ const MetricsVisual = () => {
       <div className="relative w-[260px] h-[180px]">
         {/* Back card */}
         <div className="absolute left-1/2 -translate-x-1/2 top-0 w-[200px] h-[140px] bg-white rounded-lg border border-slate-200 shadow-sm" />
-        
+
         {/* Middle card */}
         <div className="absolute left-1/2 -translate-x-1/2 top-3 w-[220px] h-[150px] bg-white rounded-lg border border-slate-200 shadow-md" />
-        
+
         {/* Front card with content */}
         <div className="absolute left-1/2 -translate-x-1/2 top-6 w-[240px] h-[160px] bg-white rounded-lg border border-slate-200 shadow-lg p-3">
           {/* Header */}
           <div className="flex items-center justify-between mb-3">
             <span className="text-[10px] font-semibold text-slate-800">Agent Performance</span>
-            <span className="text-[9px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">Live</span>
+            <span className="text-[9px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+              Live
+            </span>
           </div>
-          
+
           {/* Stats grid */}
           <div className="grid grid-cols-2 gap-2 mb-3">
             <div className="bg-slate-50 rounded-md p-2">
@@ -205,7 +204,7 @@ const MetricsVisual = () => {
               <div className="text-[8px] text-emerald-600">+2.3%</div>
             </div>
           </div>
-          
+
           {/* Mini chart */}
           <div className="flex items-end gap-1 h-[30px]">
             {[40, 65, 45, 80, 55, 90, 70, 85].map((h, i) => (
@@ -220,7 +219,7 @@ const MetricsVisual = () => {
       </div>
     </div>
   );
-}
+};
 
 export const BentoGridSection = () => {
   return (
@@ -229,7 +228,13 @@ export const BentoGridSection = () => {
       <div className="border-b border-slate-200 py-12 md:py-16">
         <div className="max-w-[616px] mx-auto px-4 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 shadow-sm mb-4">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <rect x="1" y="1" width="4" height="4" stroke="#10b981" strokeWidth="1" fill="none" />
               <rect x="7" y="1" width="4" height="4" stroke="#10b981" strokeWidth="1" fill="none" />
               <rect x="1" y="7" width="4" height="4" stroke="#10b981" strokeWidth="1" fill="none" />
@@ -241,7 +246,8 @@ export const BentoGridSection = () => {
             Built for absolute clarity and focused work
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            Stay focused with AI agents that organize, connect<br className="hidden sm:block" />
+            Stay focused with AI agents that organize, connect
+            <br className="hidden sm:block" />
             and turn information into confident decisions.
           </p>
         </div>
@@ -270,7 +276,8 @@ export const BentoGridSection = () => {
                 Smart. Simple. Brilliant.
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Your agent tasks are beautifully organized so you see everything clearly without the clutter.
+                Your agent tasks are beautifully organized so you see everything clearly without the
+                clutter.
               </p>
             </div>
             <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
@@ -285,7 +292,8 @@ export const BentoGridSection = () => {
                 Your agents, in sync
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Every update flows instantly across your AI team and keeps collaboration effortless and fast.
+                Every update flows instantly across your AI team and keeps collaboration effortless
+                and fast.
               </p>
             </div>
             <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
@@ -315,7 +323,8 @@ export const BentoGridSection = () => {
                 Metrics that matter
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Track AI performance with precision and turn raw data into confident decisions you can trust.
+                Track AI performance with precision and turn raw data into confident decisions you
+                can trust.
               </p>
             </div>
             <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden relative">
@@ -338,4 +347,4 @@ export const BentoGridSection = () => {
       </div>
     </section>
   );
-}
+};

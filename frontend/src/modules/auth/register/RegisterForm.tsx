@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import { useFormik } from "formik";
 
 import { Button, FormInput, PasswordInput } from "@/shared/ui";
@@ -33,26 +31,26 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
   return (
     <>
       {title && (
-        <h1 className="text-3xl lg:text-4xl font-black text-slate-900 tracking-tight mb-3">
+        <h1 className="text-2xl font-semibold text-slate-900 mb-6">
           {title}
         </h1>
       )}
 
       {subtext}
 
-      <SocialButtons title="Sign up with" />
+      <SocialButtons title="Continue with" />
 
       <div className="relative py-4">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-slate-200" />
         </div>
         <div className="relative flex justify-center">
-          <span className="bg-white px-4 text-sm text-slate-500">or sign up with email</span>
+          <span className="bg-white px-4 text-sm text-slate-400">Or</span>
         </div>
       </div>
 
-      <form onSubmit={formik.handleSubmit} className="space-y-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <form onSubmit={formik.handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-2 gap-3">
           <FormInput
             label="First Name"
             type="text"
@@ -80,11 +78,11 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
         </div>
 
         <FormInput
-          label="Email Address"
+          label="Email"
           type="email"
           id="email"
           name="email"
-          placeholder="name@company.com"
+          placeholder="you@example.com"
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
@@ -92,46 +90,26 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
           helperText={formik.touched.email ? formik.errors.email : undefined}
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <PasswordInput
-            label="Password"
-            id="password"
-            name="password"
-            placeholder="Create a password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            helperText={formik.touched.password ? formik.errors.password : undefined}
-          />
-          <PasswordInput
-            label="Confirm Password"
-            id="confirmPassword"
-            name="confirmPassword"
-            placeholder="Confirm your password"
-            value={formik.values.confirmPassword}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.confirmPassword && Boolean(formik.errors.confirmPassword)}
-            helperText={formik.touched.confirmPassword ? formik.errors.confirmPassword : undefined}
-          />
-        </div>
+        <PasswordInput
+          label="Password"
+          id="password"
+          name="password"
+          placeholder="Create a password"
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password ? formik.errors.password : undefined}
+        />
 
         <Button
           type="submit"
           size="lg"
           disabled={isLoading}
-          className="w-full mt-6 bg-primary hover:bg-primary-dark text-white font-bold shadow-sm"
+          className="w-full bg-primary hover:bg-primary-dark text-white font-medium rounded-lg mt-2"
         >
           {isLoading ? "Creating Account..." : "Create Account"}
         </Button>
-
-        <p className="text-center text-sm text-slate-500">
-          Already have an account?
-          <Link href="/auth/login" className="font-medium text-primary hover:underline ml-1">
-            Log in
-          </Link>
-        </p>
       </form>
 
       {subtitle}
