@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -16,15 +16,10 @@
   --color-input-bg: #19332b;
   --color-input-border: #326755;
 
-  --font-display: "Inter", sans-serif;
-  --font-sans: "Inter", sans-serif;
+  --font-display: 'Inter', sans-serif;
+  --font-sans: 'Inter', sans-serif;
 
-  --background-image-hero-gradient: linear-gradient(
-    135deg,
-    #0f172a 0%,
-    #11221c 50%,
-    #1e293b 100%
-  );
+  --background-image-hero-gradient: linear-gradient(135deg, #0f172a 0%, #11221c 50%, #1e293b 100%);
 
   /* Animations */
   --animate-float: float 20s infinite linear;
@@ -152,8 +147,8 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #e6ebe8;
+  --foreground: #1a1a1a;
   --card: #ffffff;
   --card-foreground: #0f172a;
   --popover: #ffffff;
@@ -223,15 +218,15 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #0f172a;
+  background-color: #e6ebe8;
+  color: #1a1a1a;
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 /* Custom scrollbar */
@@ -265,11 +260,7 @@ body {
 }
 
 .glass-card {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(248, 250, 252, 0.95) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(16, 183, 127, 0.2);
@@ -282,8 +273,7 @@ body {
 }
 
 .glow-primary-lg {
-  box-shadow: 0 0 50px rgba(16, 183, 127, 0.25),
-    0 0 100px rgba(16, 183, 127, 0.1);
+  box-shadow: 0 0 50px rgba(16, 183, 127, 0.25), 0 0 100px rgba(16, 183, 127, 0.1);
 }
 
 .text-glow {
@@ -292,38 +282,24 @@ body {
 
 /* Grid pattern background */
 .bg-grid-pattern {
-  background-image: linear-gradient(
-      rgba(16, 183, 127, 0.03) 1px,
-      transparent 1px
-    ),
+  background-image: linear-gradient(rgba(16, 183, 127, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(16, 183, 127, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
 .bg-grid-pattern-dense {
-  background-image: linear-gradient(
-      rgba(16, 183, 127, 0.04) 1px,
-      transparent 1px
-    ),
+  background-image: linear-gradient(rgba(16, 183, 127, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(16, 183, 127, 0.04) 1px, transparent 1px);
   background-size: 30px 30px;
 }
 
 /* Radial gradient backgrounds */
 .bg-radial-glow {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(16, 183, 127, 0.08) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse at center, rgba(16, 183, 127, 0.08) 0%, transparent 70%);
 }
 
 .bg-radial-top {
-  background: radial-gradient(
-    ellipse at top,
-    rgba(16, 183, 127, 0.06) 0%,
-    transparent 50%
-  );
+  background: radial-gradient(ellipse at top, rgba(16, 183, 127, 0.06) 0%, transparent 50%);
 }
 
 /* Agent status indicator */
@@ -332,7 +308,7 @@ body {
 }
 
 .status-pulse::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
@@ -401,7 +377,7 @@ body {
 
 .marquee-container::before,
 .marquee-container::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;

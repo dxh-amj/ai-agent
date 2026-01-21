@@ -223,88 +223,87 @@ const MetricsVisual = () => {
 
 export const BentoGridSection = () => {
   return (
-    <section className="w-full border-y border-slate-200 bg-white">
+    <section className="w-full bg-transparent">
       <div className="flex">
         <DecorativeStripes />
 
-        <div className="flex-1 flex flex-col border-x border-slate-200">
-          {/* Header Section */}
-          <div className="border-b border-slate-200 py-12 md:py-16">
-            <div className="max-w-[616px] mx-auto px-4 text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-slate-800 tracking-tight mb-4">
+        <div className="flex-1 border-x border-slate-300 py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            {/* Header Section */}
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
                 Built for absolute clarity and focused work
               </h2>
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-                Stay focused with AI agents that organize, connect
-                <br className="hidden sm:block" />
-                and turn information into confident decisions.
+              <p className="text-slate-600 text-lg leading-relaxed">
+                Stay focused with AI agents that organize, connect and turn information into
+                confident decisions.
               </p>
             </div>
-          </div>
 
-          {/* Bento Grid Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            {/* Top Left - Smart Agent Orchestration */}
-            <div className="border-b md:border-r border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
-                  Smart. Simple. Brilliant.
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Your agent tasks are beautifully organized so you see everything clearly without
-                  the clutter.
-                </p>
+            {/* Bento Grid Content */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border border-slate-200 rounded-2xl overflow-hidden bg-white">
+              {/* Top Left - Smart Agent Orchestration */}
+              <div className="border-b md:border-r border-slate-300 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
+                    Smart. Simple. Brilliant.
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Your agent tasks are beautifully organized so you see everything clearly without
+                    the clutter.
+                  </p>
+                </div>
+                <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
+                  <AgentOrchestrationVisual />
+                </div>
               </div>
-              <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
-                <AgentOrchestrationVisual />
-              </div>
-            </div>
 
-            {/* Top Right - Work in sync */}
-            <div className="border-b border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
-                  Your agents, in sync
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Every update flows instantly across your AI team and keeps collaboration
-                  effortless and fast.
-                </p>
+              {/* Top Right - Work in sync */}
+              <div className="border-b border-slate-300 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
+                    Your agents, in sync
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Every update flows instantly across your AI team and keeps collaboration
+                    effortless and fast.
+                  </p>
+                </div>
+                <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
+                  <WorkInSyncVisual />
+                </div>
               </div>
-              <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden">
-                <WorkInSyncVisual />
-              </div>
-            </div>
 
-            {/* Bottom Left - Effortless integration */}
-            <div className="md:border-r border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
-                  Effortless integration
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  All your favorite tools connect in one place and work together seamlessly by
-                  design.
-                </p>
+              {/* Bottom Left - Effortless integration */}
+              <div className="md:border-r border-slate-300 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
+                    Effortless integration
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    All your favorite tools connect in one place and work together seamlessly by
+                    design.
+                  </p>
+                </div>
+                <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden relative">
+                  <IntegrationVisual />
+                </div>
               </div>
-              <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden relative">
-                <IntegrationVisual />
-              </div>
-            </div>
 
-            {/* Bottom Right - Numbers that speak */}
-            <div className="p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
-                  Metrics that matter
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  Track AI performance with precision and turn raw data into confident decisions you
-                  can trust.
-                </p>
-              </div>
-              <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden relative">
-                <MetricsVisual />
+              {/* Bottom Right - Numbers that speak */}
+              <div className="p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
+                    Metrics that matter
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Track AI performance with precision and turn raw data into confident decisions
+                    you can trust.
+                  </p>
+                </div>
+                <div className="w-full h-[220px] sm:h-[280px] rounded-lg flex items-center justify-center overflow-hidden relative">
+                  <MetricsVisual />
+                </div>
               </div>
             </div>
           </div>
