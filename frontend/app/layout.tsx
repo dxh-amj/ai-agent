@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import { QueryProvider } from "@/providers/QueryProvider";
+
+import type { Metadata } from "next";
 
 import "./globals.css";
 
@@ -15,11 +16,11 @@ export const metadata: Metadata = {
   description: "Deploy intelligent AI agents to automate business processes.",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en" className="dark">
       <head>
@@ -33,4 +34,5 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+export default RootLayout;
