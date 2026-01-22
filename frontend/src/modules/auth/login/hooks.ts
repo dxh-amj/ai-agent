@@ -29,7 +29,7 @@ const useAuthLogin = () => {
     }
 
     mutate(values, {
-      onSuccess: (response) => {
+      onSuccess: (response: LoginResponse) => {
         const data = response as LoginResponse;
 
         if (data.mfaRequired) {
