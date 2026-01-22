@@ -1,31 +1,13 @@
-import { initReactI18next } from "react-i18next";
+// Temporarily disabled i18n due to React 19 compatibility issues
+// import { initReactI18next } from "react-i18next";
+// import i18n from "i18next";
 
-import i18n from "i18next";
-
-import arabic from "@/languages/ar.json";
-import english from "@/languages/en.json";
-import french from "@/languages/fr.json";
-
-const resources = {
-  en: {
-    translation: english,
-  },
-  fr: {
-    translation: french,
-  },
-  ar: {
-    translation: arabic,
-  },
+// Simple i18n mock for now
+const i18n = {
+  t: (key: string) => key, // Just return the key as translation
+  changeLanguage: (lng: string) => Promise.resolve(),
+  language: "en",
+  languages: ["en", "fr", "ar"],
 };
-
-i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
-  .init({
-    resources,
-    lng: "en",
-    interpolation: {
-      escapeValue: false, // react already safes from xss
-    },
-  });
 
 export { i18n };
