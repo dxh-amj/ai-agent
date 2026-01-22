@@ -1,7 +1,12 @@
 "use client";
 
-import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 import { useEffect, useRef, useState } from "react";
+
+import { IconSend } from "@tabler/icons-react";
+
+import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
+
+import { AgentAvatar } from "./AgentAvatar";
 
 import type { Agent } from "../data";
 
@@ -44,7 +49,7 @@ export const AgentChatPreview = ({ agent }: AgentChatPreviewProps) => {
         <div className="flex-1 border-x border-slate-200 py-24 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-sm font-medium text-slate-700 mb-6 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-6">
                 <span className="material-symbols-outlined text-base">chat</span>
                 Live Preview
               </div>
@@ -59,13 +64,9 @@ export const AgentChatPreview = ({ agent }: AgentChatPreviewProps) => {
             <div className="w-full max-w-3xl mx-auto">
               <div className="rounded-2xl border border-slate-200 bg-white shadow-2xl overflow-hidden flex flex-col h-[500px]">
                 {/* Window Header */}
-                <div className="flex items-center justify-between border-b border-slate-100 bg-gradient-to-r from-slate-50 to-white px-4 py-3">
+                <div className="flex items-center justify-between border-b border-slate-100 bg-linear-to-r from-slate-50 to-white px-4 py-3">
                   <div className="flex items-center gap-2">
-                    <div
-                      className={`flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${agent.color} text-white shadow-md`}
-                    >
-                      <span className="material-symbols-outlined text-lg">{agent.icon}</span>
-                    </div>
+                    <AgentAvatar agent={agent} size="sm" />
                     <div>
                       <div className="text-sm font-semibold text-slate-900">{agent.name}</div>
                       <div className="flex items-center gap-1.5">
@@ -87,7 +88,7 @@ export const AgentChatPreview = ({ agent }: AgentChatPreviewProps) => {
                 {/* Chat Area */}
                 <div
                   ref={scrollRef}
-                  className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth bg-gradient-to-b from-slate-50/50 to-white"
+                  className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth bg-linear-to-b from-slate-50/50 to-white [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]"
                 >
                   {agent.mockChat.map((msg, index) => {
                     if (index >= visibleMessages) return null;
@@ -103,7 +104,7 @@ export const AgentChatPreview = ({ agent }: AgentChatPreviewProps) => {
                         <div
                           className={`max-w-[80%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm ${
                             isUser
-                              ? "bg-slate-900 text-white rounded-tr-sm"
+                              ? "bg-primary text-primary-foreground rounded-tr-sm"
                               : "bg-white border border-slate-200 text-slate-800 rounded-tl-sm"
                           }`}
                         >
@@ -130,10 +131,12 @@ export const AgentChatPreview = ({ agent }: AgentChatPreviewProps) => {
                       type="text"
                       disabled
                       placeholder="Type a message..."
-                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 pr-12 text-sm text-slate-500 focus:outline-none cursor-not-allowed"
+                      className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 pr-14 text-sm text-slate-500 focus:outline-none cursor-not-allowed shadow-inner"
                     />
-                    <div className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-lg bg-primary text-white">
-                      <span className="material-symbols-outlined text-lg">send</span>
+                    <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                      <div className="p-2 rounded-lg bg-primary text-primary-foreground shadow-md opacity-50 cursor-not-allowed">
+                        <IconSend size={18} stroke={2} />
+                      </div>
                     </div>
                   </div>
                 </div>
