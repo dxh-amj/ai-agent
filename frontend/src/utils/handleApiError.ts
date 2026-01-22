@@ -32,7 +32,15 @@ const handleApiError = (error: any, customMessage?: string) => {
         })();
 
       toast.error(message);
-      console.error("Server Error:", axiosError.response.data);
+
+      const errorData = axiosError.response.data;
+      if (typeof errorData === "string" && errorData.includes("<!DOCTYPE html>")) {
+        console.error(
+          "Server Error: Received HTML response (likely 404 from frontend). Check your API URL configuration."
+        );
+      } else {
+        console.error("Server Error:", errorData);
+      }
     } else if (axiosError.request) {
       toast.error("No response received from the server.");
       console.error("Request Error:", axiosError.request);
