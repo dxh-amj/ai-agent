@@ -26,7 +26,7 @@ export const AgentsPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-page-background">
       <Header />
 
       {/* Hero Section */}
@@ -44,7 +44,7 @@ export const AgentsPage = () => {
               <h1 className="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl mb-6">
                 Discover Your Perfect
                 <br />
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
+                <span className="bg-clip-text text-transparent bg-linear-to-r from-primary to-blue-600">
                   AI Agent
                 </span>
               </h1>
@@ -73,10 +73,10 @@ export const AgentsPage = () => {
                     variant={category === cat ? "default" : "outline"}
                     size="sm"
                     onClick={() => setCategory(cat)}
-                    className={`rounded-full px-6 py-2 transition-all ${
+                    className={`rounded-full px-6 py-2 transition-all duration-300 ${
                       category === cat
-                        ? "shadow-md shadow-primary/20"
-                        : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50"
+                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:bg-primary/90"
+                        : "bg-white/50 backdrop-blur-sm border-slate-200 text-slate-600 hover:bg-white hover:text-primary hover:border-primary/20"
                     }`}
                   >
                     {cat}

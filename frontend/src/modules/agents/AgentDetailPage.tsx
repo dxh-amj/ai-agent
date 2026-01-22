@@ -1,17 +1,18 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import { Header } from "@/modules/landing";
+// Mock integration logos reuse
+import { integrations } from "@/modules/landing/data";
 import { Footer } from "@/shared/components/layout/Footer";
 import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+
 import { AgentChatPreview, AgentHero } from "./components";
 import { AgentCapabilities } from "./components/AgentCapabilities";
 import { agents } from "./data";
-
-// Mock integration logos reuse
-import { integrations } from "@/modules/landing/data";
 
 interface AgentDetailPageProps {
   slug: string;
@@ -40,7 +41,7 @@ export const AgentDetailPage = ({ slug }: AgentDetailPageProps) => {
   }
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-page-background min-h-screen">
       <Header />
 
       {/* Hero Section */}
@@ -91,7 +92,7 @@ export const AgentDetailPage = ({ slug }: AgentDetailPageProps) => {
       {/* CTA */}
       <section className="w-full bg-slate-900 text-white relative overflow-hidden border-t border-slate-800">
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-br from-primary/20 to-transparent" />
 
         <div className="flex relative z-10">
           <DecorativeStripes />
@@ -114,7 +115,7 @@ export const AgentDetailPage = ({ slug }: AgentDetailPageProps) => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  className="px-8 bg-white text-slate-900 hover:bg-slate-100 shadow-xl"
+                  className="px-8 bg-primary text-primary-foreground hover:bg-primary/90 shadow-xl shadow-primary/20"
                 >
                   <span className="material-symbols-outlined text-base mr-2">play_arrow</span>
                   Start Free Trial
@@ -122,7 +123,7 @@ export const AgentDetailPage = ({ slug }: AgentDetailPageProps) => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="px-8 border-white/20 text-white hover:bg-white/10"
+                  className="px-8 border-white/20 text-white hover:bg-white/10 bg-transparent"
                   asChild
                 >
                   <Link href="/agents">

@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
-import Link from "next/link";
-import { type Agent } from "../data";
+
+import type { Agent } from "../data";
 
 interface AgentHeroProps {
   agent: Agent;
@@ -19,10 +21,10 @@ export const AgentHero = ({ agent }: AgentHeroProps) => {
               {/* Icon with animated gradient background */}
               <div className="relative mb-8 group">
                 <div
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${agent.color} opacity-20 blur-2xl group-hover:opacity-30 transition-opacity duration-500`}
+                  className={`absolute inset-0 rounded-2xl bg-linear-to-br ${agent.color} opacity-20 blur-2xl group-hover:opacity-30 transition-opacity duration-500`}
                 />
                 <div
-                  className={`relative inline-flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br ${agent.color} shadow-2xl shadow-primary/30 text-white animate-fade-in-up group-hover:scale-110 transition-transform duration-300`}
+                  className={`relative inline-flex h-24 w-24 items-center justify-center rounded-2xl bg-linear-to-br ${agent.color} shadow-2xl shadow-primary/30 text-white animate-fade-in-up group-hover:scale-110 transition-transform duration-300`}
                 >
                   <span className="material-symbols-outlined text-5xl">{agent.icon}</span>
                 </div>
@@ -92,7 +94,7 @@ export const AgentHero = ({ agent }: AgentHeroProps) => {
 
           {/* Background Gradients */}
           <div
-            className={`absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b ${agent.bgColor} to-transparent opacity-40 blur-3xl pointer-events-none -z-10`}
+            className={`absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-linear-to-b ${agent.bgColor} to-transparent opacity-40 blur-3xl pointer-events-none -z-10`}
           />
         </div>
 

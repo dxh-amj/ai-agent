@@ -2,6 +2,8 @@ import Link from "next/link";
 
 import { Button } from "@/shared/ui/button";
 
+import { AgentAvatar } from "./AgentAvatar";
+
 import type { Agent } from "../data";
 
 interface AgentCardProps {
@@ -18,11 +20,8 @@ export const AgentCard = ({ agent }: AgentCardProps) => {
 
       <div className="relative flex flex-col h-full rounded-2xl bg-white p-6 z-10">
         <div className="flex items-start justify-between mb-6">
-          <div
-            className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-linear-to-br ${agent.color} shadow-lg shadow-primary/5 text-white transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}
-          >
-            <span className="material-symbols-outlined text-3xl">{agent.icon}</span>
-          </div>
+          <AgentAvatar agent={agent} size="md" />
+
           {/* Status indicator */}
           <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 border border-slate-100">
             <span className="relative flex h-2 w-2">
