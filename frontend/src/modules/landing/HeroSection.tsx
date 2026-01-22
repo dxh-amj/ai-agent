@@ -15,7 +15,7 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-linear-to-b from-transparent to-[rgba(255,255,255,0.3)] pointer-events-none" />
 
       {/* Radial Gradient Glow - subtle */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16,183,127,0.06),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,var(--color-primary,#10b77f)_0%,transparent_60%)] opacity-[0.06]" />
 
       <div className="flex relative z-10">
         <DecorativeStripes />
@@ -25,10 +25,7 @@ export const HeroSection = () => {
           <div className="mx-auto max-w-7xl flex flex-col items-center text-center">
             {/* Heading */}
             <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-semibold tracking-tight text-slate-900 leading-[1.1] max-w-4xl mb-6">
-              The Complete{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-600 to-teal-600">
-                AI Agent Platform
-              </span>
+              The Complete <span className="text-primary">AI Agent Platform</span>
             </h1>
 
             {/* Subtext */}
@@ -42,7 +39,7 @@ export const HeroSection = () => {
               <Button
                 size="lg"
                 asChild
-                className="bg-slate-900 hover:bg-slate-800 text-white font-medium h-12 px-8 text-base rounded-full shadow-xl shadow-slate-900/10 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="bg-primary hover:bg-primary-dark text-white font-medium px-8 text-base rounded-full shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <Link href="/register" className="flex items-center gap-2">
                   Start for free
@@ -54,7 +51,7 @@ export const HeroSection = () => {
                 size="lg"
                 variant="outline"
                 asChild
-                className="border-slate-300 bg-transparent text-slate-700 hover:bg-white/50 hover:border-slate-400 font-medium h-12 px-8 text-base rounded-full transition-all hover:scale-[1.02] active:scale-[0.98]"
+                className="border-slate-300 bg-transparent text-slate-700 hover:bg-white/50 hover:border-slate-400 font-medium px-8 text-base rounded-full transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <Link href="/demo" className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-xl text-slate-600">
@@ -72,9 +69,9 @@ export const HeroSection = () => {
               </p>
 
               <div className="relative">
-                {/* Gradient Fades for seamless edges with #e6ebe8 */}
-                <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-[#e6ebe8] to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-[#e6ebe8] to-transparent z-10 pointer-events-none" />
+                {/* Gradient Fades for seamless edges with page-background */}
+                <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-page-background to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-page-background to-transparent z-10 pointer-events-none" />
 
                 {/* Marquee track */}
                 <div className="flex animate-marquee hover:[animation-play-state:paused]">

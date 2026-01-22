@@ -41,7 +41,7 @@ export const FeaturesGrid = () => {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgb(16 185 129) 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 1px 1px, var(--color-primary, #10b77f) 1px, transparent 0)`,
             backgroundSize: "40px 40px",
           }}
         />
@@ -51,18 +51,11 @@ export const FeaturesGrid = () => {
         {/* Section header */}
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-4">
-            <span className="material-symbols-outlined text-sm text-emerald-600">
-              grid_view
-            </span>
-            <span className="text-sm font-medium text-emerald-600">
-              Powerful Features
-            </span>
+            <span className="material-symbols-outlined text-sm text-emerald-600">grid_view</span>
+            <span className="text-sm font-medium text-emerald-600">Powerful Features</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-            Built for{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-500">
-              Maximum Efficiency
-            </span>
+            Built for <span className="text-primary">Maximum Efficiency</span>
           </h2>
           <p className="text-slate-600">
             Every feature designed to help your AI workforce operate at peak performance
@@ -79,16 +72,12 @@ export const FeaturesGrid = () => {
 
             <div className="relative z-10">
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/25">
-                <span className="material-symbols-outlined text-2xl text-white">
-                  hub
-                </span>
+                <span className="material-symbols-outlined text-2xl text-white">hub</span>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3">
-                Your Complete AI Workforce
-              </h3>
+              <h3 className="text-2xl font-bold text-white mb-3">Your Complete AI Workforce</h3>
               <p className="text-slate-400 leading-relaxed mb-6 max-w-lg">
-                Deploy all 5 specialized agents simultaneously. They communicate, 
-                share data, and collaborate—transforming how your business operates.
+                Deploy all 5 specialized agents simultaneously. They communicate, share data, and
+                collaborate—transforming how your business operates.
               </p>
 
               {/* Mini agent grid */}
@@ -107,9 +96,7 @@ export const FeaturesGrid = () => {
                         {agent.icon}
                       </span>
                     </div>
-                    <span className="text-sm text-white font-medium">
-                      {agent.name}
-                    </span>
+                    <span className="text-sm text-white font-medium">{agent.name}</span>
                   </div>
                 ))}
               </div>
@@ -122,16 +109,10 @@ export const FeaturesGrid = () => {
             <div className="relative z-10 h-full flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center mb-4">
-                  <span className="material-symbols-outlined text-xl text-white">
-                    trending_up
-                  </span>
+                  <span className="material-symbols-outlined text-xl text-white">trending_up</span>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">
-                  85% Time Saved
-                </h3>
-                <p className="text-white/80 text-sm">
-                  Average time saved on repetitive tasks
-                </p>
+                <h3 className="text-xl font-bold text-white mb-2">85% Time Saved</h3>
+                <p className="text-white/80 text-sm">Average time saved on repetitive tasks</p>
               </div>
               <div className="mt-6 pt-6 border-t border-white/20">
                 <div className="flex items-center gap-3">
@@ -145,9 +126,7 @@ export const FeaturesGrid = () => {
                       </div>
                     ))}
                   </div>
-                  <span className="text-sm text-white/80">
-                    2,000+ companies
-                  </span>
+                  <span className="text-sm text-white/80">2,000+ companies</span>
                 </div>
               </div>
             </div>
@@ -173,20 +152,14 @@ export const FeaturesGrid = () => {
                   }`,
                 }}
               >
-                <span className="material-symbols-outlined text-xl text-white">
-                  {feature.icon}
-                </span>
+                <span className="material-symbols-outlined text-xl text-white">{feature.icon}</span>
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                {feature.description}
-              </p>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">{feature.title}</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};

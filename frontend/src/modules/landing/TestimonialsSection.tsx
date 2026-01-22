@@ -41,7 +41,7 @@ export const TestimonialsSection = () => {
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.3]"
         style={{
-          backgroundImage: `linear-gradient(to right, #cbd5e1 1px, transparent 1px), linear-gradient(to bottom, #cbd5e1 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(to right, var(--color-slate-300, #cbd5e1) 1px, transparent 1px), linear-gradient(to bottom, var(--color-slate-300, #cbd5e1) 1px, transparent 1px)`,
           backgroundSize: "80px 80px",
         }}
       />
@@ -55,10 +55,7 @@ export const TestimonialsSection = () => {
             {/* Section Header */}
             <div className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.1] mb-6">
-                Trusted by{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-600 to-teal-600">
-                  leading teams
-                </span>
+                Trusted by <span className="text-primary">leading teams</span>
               </h2>
               <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
                 See how companies are transforming their operations with our AI agents.
@@ -93,7 +90,7 @@ export const TestimonialsSection = () => {
                   </div>
 
                   {/* Quote */}
-                  <p className="text-[#334155] text-lg lg:text-xl leading-relaxed mb-12 max-w-xs mx-auto">
+                  <p className="text-slate-700 text-lg lg:text-xl leading-relaxed mb-12 max-w-xs mx-auto">
                     &quot;{testimonial.quote}&quot;
                   </p>
 

@@ -5,7 +5,7 @@ export const SocialLoginButtons = () => {
     <div className="grid grid-cols-2 gap-4">
       <Button
         variant="outline"
-        className="h-12 bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
+        className="bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
       >
         <svg className="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -29,7 +29,7 @@ export const SocialLoginButtons = () => {
       </Button>
       <Button
         variant="outline"
-        className="h-12 bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
+        className="bg-white border-slate-200 hover:bg-slate-50 text-slate-700"
       >
         <svg
           className="w-5 h-5 text-[#0077b5]"

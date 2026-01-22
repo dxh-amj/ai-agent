@@ -57,14 +57,14 @@ export const PricingPlans = ({ billingCycle }: PricingPlansProps) => {
           <p className="mt-4 text-base text-slate-600">{pricingPlans.starter.description}</p>
           <Button
             variant="outline"
-            className="w-full mt-8 mb-8 h-12 rounded-xl border-slate-200 text-slate-700 font-semibold hover:bg-slate-50 hover:text-primary transition-colors hover:border-primary/20"
+            className="w-full mt-8 mb-8 rounded-xl border-slate-200 text-slate-700 font-semibold hover:bg-slate-50 hover:text-primary transition-colors hover:border-primary/20"
           >
             {pricingPlans.starter.ctaLabel}
           </Button>
           <div className="space-y-5">
             {pricingPlans.starter.features.map((feat) => (
               <div key={feat} className="flex items-start gap-3.5">
-                <span className="material-symbols-outlined text-emerald-500 text-[22px] shrink-0">
+                <span className="material-symbols-outlined text-primary text-[22px] shrink-0">
                   check_circle
                 </span>
                 <span className="text-sm text-slate-600 leading-snug">{feat}</span>
@@ -82,7 +82,7 @@ export const PricingPlans = ({ billingCycle }: PricingPlansProps) => {
           className="flex flex-col rounded-3xl border-2 border-primary bg-white p-8 shadow-2xl shadow-primary/15 transform md:-mt-8 md:mb-4 z-10 relative"
         >
           <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-            <Badge className="bg-gradient-to-r from-primary to-emerald-600 text-white border-0 px-4 py-1.5 text-xs font-bold uppercase tracking-widest shadow-lg shadow-primary/20">
+            <Badge className="bg-primary text-white border-0 px-4 py-1.5 text-xs font-bold uppercase tracking-widest shadow-lg shadow-primary/20">
               Most Popular
             </Badge>
           </div>
@@ -97,7 +97,7 @@ export const PricingPlans = ({ billingCycle }: PricingPlansProps) => {
             <span className="text-base text-slate-500 font-medium">/mo per user</span>
           </div>
           <p className="mt-4 text-base text-slate-600">{pricingPlans.professional.description}</p>
-          <Button className="w-full mt-8 mb-8 h-12 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all">
+          <Button className="w-full mt-8 mb-8 rounded-xl bg-primary hover:bg-primary-dark text-white font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all">
             {pricingPlans.professional.ctaLabel}
           </Button>
           <div className="space-y-5">
@@ -135,13 +135,13 @@ export const PricingPlans = ({ billingCycle }: PricingPlansProps) => {
           <p className="mt-4 text-base text-slate-600">{pricingPlans.enterprise.description}</p>
           <Button
             variant="outline"
-            className="w-full mt-8 mb-8 h-12 rounded-xl border-slate-200 text-slate-700 font-semibold hover:bg-slate-50 hover:text-primary transition-colors hover:border-primary/20"
+            className="w-full mt-8 mb-8 rounded-xl border-slate-200 text-slate-700 font-semibold hover:bg-slate-50 hover:text-primary transition-colors hover:border-primary/20"
           >
             {pricingPlans.enterprise.ctaLabel}
           </Button>
           <div className="space-y-5">
             <div className="flex items-start gap-3.5">
-              <span className="material-symbols-outlined text-emerald-500 text-[22px] shrink-0">
+              <span className="material-symbols-outlined text-primary text-[22px] shrink-0">
                 check_circle
               </span>
               <span className="text-sm text-slate-900 font-bold leading-snug">
@@ -150,7 +150,7 @@ export const PricingPlans = ({ billingCycle }: PricingPlansProps) => {
             </div>
             {pricingPlans.enterprise.features.map((feat) => (
               <div key={feat} className="flex items-start gap-3.5">
-                <span className="material-symbols-outlined text-emerald-500 text-[22px] shrink-0">
+                <span className="material-symbols-outlined text-primary text-[22px] shrink-0">
                   check_circle
                 </span>
                 <span className="text-sm text-slate-600 leading-snug">{feat}</span>

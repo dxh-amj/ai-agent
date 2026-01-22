@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 // Workaround for framer-motion v10 type compatibility with React 19
 const MotionDiv = motion.div as any;
 
+import { Button } from "@/shared/ui";
+
 import type { Dispatch, SetStateAction } from "react";
 
 interface PricingHeroProps {
@@ -23,9 +25,10 @@ export const PricingHero = ({ billingCycle, setBillingCycle }: PricingHeroProps)
       {/* Toggle */}
       <div className="flex justify-center items-center mb-12">
         <div className="bg-slate-100 p-1.5 rounded-full inline-flex relative">
-          <button
+          <Button
+            variant="ghost"
             onClick={() => setBillingCycle("monthly")}
-            className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors duration-200 ${
+            className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors duration-200 hover:bg-transparent ${
               billingCycle === "monthly" ? "text-slate-900" : "text-slate-500 hover:text-slate-700"
             }`}
           >
@@ -39,10 +42,11 @@ export const PricingHero = ({ billingCycle, setBillingCycle }: PricingHeroProps)
                 style={{ zIndex: -1 }}
               />
             )}
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="ghost"
             onClick={() => setBillingCycle("annual")}
-            className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors duration-200 flex items-center gap-2 ${
+            className={`relative z-10 px-6 py-2.5 rounded-full text-sm font-semibold transition-colors duration-200 flex items-center gap-2 hover:bg-transparent ${
               billingCycle === "annual" ? "text-slate-900" : "text-slate-500 hover:text-slate-700"
             }`}
           >
@@ -59,7 +63,7 @@ export const PricingHero = ({ billingCycle, setBillingCycle }: PricingHeroProps)
                 style={{ zIndex: -1 }}
               />
             )}
-          </button>
+          </Button>
         </div>
       </div>
     </section>

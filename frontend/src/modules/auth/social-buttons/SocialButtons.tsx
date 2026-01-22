@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "@/shared/ui";
+
 import type { SocialButtonsProps } from "../types";
 
 export const SocialButtons = ({ title = "Continue with" }: SocialButtonsProps) => {
@@ -9,10 +11,11 @@ export const SocialButtons = ({ title = "Continue with" }: SocialButtonsProps) =
   };
 
   return (
-    <button
+    <Button
       type="button"
+      variant="outline"
       onClick={handleGoogleLogin}
-      className="w-full flex items-center justify-center gap-3 h-11 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm rounded-lg transition-colors border border-slate-200"
+      className="w-full gap-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-sm border-slate-200"
     >
       <svg className="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -33,6 +36,6 @@ export const SocialButtons = ({ title = "Continue with" }: SocialButtonsProps) =
         />
       </svg>
       {title} Google
-    </button>
+    </Button>
   );
 };

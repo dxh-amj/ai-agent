@@ -6,7 +6,7 @@ import { Logo } from "@/shared/ui/logo";
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 z-50 w-full bg-[#e6ebe8]/80 backdrop-blur-md">
+    <header className="fixed top-0 z-50 w-full bg-page-background/80 backdrop-blur-md">
       <div className="flex h-16 w-full">
         <DecorativeStripes />
 
@@ -35,7 +35,6 @@ export const Header = () => {
               </Link>
               <Button
                 asChild
-                size="sm"
                 className="bg-primary hover:bg-primary/90 text-white font-medium rounded-lg px-5"
               >
                 <Link href="/auth/register">Get Started</Link>

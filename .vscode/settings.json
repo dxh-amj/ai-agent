@@ -103,7 +103,12 @@
 
   // ESLint settings
   "eslint.enable": true,
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "eslint.format.enable": false,
   "eslint.codeAction.showDocumentation": {
     "enable": true

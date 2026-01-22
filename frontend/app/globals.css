@@ -3,12 +3,18 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  /* Brand colors */
   --color-primary: #10b77f;
   --color-primary-dark: #0e9f6e;
   --color-primary-hover: #0ea572;
   --color-primary-foreground: #11221c;
+
+  /* Page backgrounds */
+  --color-page-background: #e6ebe8;
   --color-background-light: #f6f8f7;
   --color-background-dark: #11221c;
+
+  /* Surface colors */
   --color-surface-dark: #162e26;
   --color-surface-darker: #0d1b16;
   --color-border-dark: #23483c;
@@ -214,15 +220,15 @@
 }
 
 html {
-  background-color: #ffffff;
+  background-color: var(--color-card, #ffffff);
 }
 
 body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e6ebe8;
-  color: #1a1a1a;
+  background-color: var(--color-page-background);
+  color: var(--color-foreground, #1a1a1a);
 }
 
 .material-symbols-outlined {

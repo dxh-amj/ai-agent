@@ -14,10 +14,7 @@ export const AgentShowcase = () => {
             {/* Section header */}
             <div className="text-center max-w-3xl mx-auto mb-20 animate-in fade-in slide-in-from-bottom-5 duration-700">
               <h2 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
-                Meet your new{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-500 to-teal-500">
-                  digital team
-                </span>
+                Meet your new <span className="text-primary">digital team</span>
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
                 Each agent is an expert in their field, ready to deploy instantly. They collaborate,
