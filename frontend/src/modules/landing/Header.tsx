@@ -18,7 +18,7 @@ export const Header = () => {
               {["Platform", "Agents", "Pricing", "Docs"].map((item) => (
                 <Link
                   key={item}
-                  href={item === "Pricing" ? "/pricing" : "/"}
+                  href={item === "Pricing" ? "/pricing" : item === "Agents" ? "/agents" : "/"}
                   className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors rounded-lg hover:bg-slate-100"
                 >
                   {item}
