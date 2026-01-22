@@ -1,3 +1,4 @@
+export { AgentKitLogo } from "./agentkit-logo";
 export { Badge } from "./badge";
 export { Button } from "./button";
 export { FormCheckbox } from "./form-checkbox";
