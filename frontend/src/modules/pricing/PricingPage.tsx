@@ -5,7 +5,6 @@ import { useState } from "react";
 import { FAQSection } from "./components/FAQSection";
 import { PricingHero } from "./components/PricingHero";
 import { PricingPlans } from "./components/PricingPlans";
-import { ROICalculator } from "./components/ROICalculator";
 
 export const PricingPage = () => {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">("annual");
@@ -16,7 +15,7 @@ export const PricingPage = () => {
       <main className="flex flex-col items-center">
         <PricingHero billingCycle={billingCycle} setBillingCycle={setBillingCycle} />
         <PricingPlans billingCycle={billingCycle} />
-        <ROICalculator />
+
         <FAQSection />
       </main>
     </div>
