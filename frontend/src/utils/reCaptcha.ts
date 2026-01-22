@@ -27,14 +27,10 @@ export const recaptchaService = {
             resolve(null);
             return;
           }
-          try {
-            const token = await window.grecaptcha.enterprise.execute(siteKey, {
-              action: "contact",
-            });
-            resolve(token);
-          } catch (error) {
-            resolve(null);
-          }
+          const token = await window.grecaptcha.enterprise.execute(siteKey, {
+            action: "contact",
+          });
+          resolve(token);
         });
       });
     }
