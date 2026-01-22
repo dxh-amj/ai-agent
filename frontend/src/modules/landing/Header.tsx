@@ -6,7 +6,7 @@ import { Logo } from "@/shared/ui/logo";
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-xl">
+    <header className="fixed top-0 z-50 w-full bg-[#e6ebe8]/80 backdrop-blur-md">
       <div className="flex h-16 w-full">
         <DecorativeStripes />
 
