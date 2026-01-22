@@ -1,4 +1,5 @@
 export { axios } from "./axios";
+export { clearStorage } from "./clearStorage";
 export {
   ASSESS_TOKEN,
   CURRENCY,
@@ -14,7 +15,7 @@ export {
 } from "./constants";
 export { decrypt, encrypt } from "./encryption";
 export { handleApiError } from "./handleApiError";
-export { i18n } from "./i18n";
+// export { i18n } from "./i18n"; // Temporarily disabled for React 19 compatibility
 export { objectToFormData } from "./objectToFormData";
 export type { ExtractFnReturnType, MutationConfig, QueryConfig } from "./reactQuery";
 export { queryClient } from "./reactQuery";
@@ -22,3 +23,4 @@ export { recaptchaService } from "./reCaptcha";
 export { toCamelCase } from "./toCamelCase";
 export type { toCamelCaseType } from "./toCamelCaseType";
 export { toSnakeCase } from "./toSnakeCase";
+export type { RetryConfig, TokenResponse } from "./types";

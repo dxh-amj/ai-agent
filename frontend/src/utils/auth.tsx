@@ -21,7 +21,7 @@ export const useUser = () => {
 
 export const useLogin = () => {
   const queryClient = useQueryClient();
-
+  
   return useMutation({
     mutationFn: (data: LoginDTO) => login(data),
     onSuccess: (data) => {
@@ -48,7 +48,7 @@ export const useRegister = () => {
 
 export const useLogout = () => {
   const queryClient = useQueryClient();
-
+  
   return useMutation({
     mutationFn: (data: string) => logOut(data),
     onSuccess: () => {
