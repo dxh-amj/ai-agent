@@ -36,12 +36,12 @@ export const AgentsPage = () => {
 
           <div className="flex-1 border-x border-slate-200 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-6">
                 <span className="material-symbols-outlined text-base">store</span>
                 AI Workforce Marketplace
               </div>
 
-              <h1 className="text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl mb-6">
+              <h1 className="text-5xl font-semibold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl mb-6">
                 Discover Your Perfect
                 <br />
                 <span className="bg-clip-text text-transparent bg-linear-to-r from-primary to-blue-600">
@@ -61,8 +61,8 @@ export const AgentsPage = () => {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
-                  <span className="material-symbols-outlined">search</span>
+                <div className="absolute left-4 top-0 bottom-0 flex items-center text-slate-400">
+                  <span className="material-symbols-outlined text-xl">search</span>
                 </div>
               </div>
 
@@ -75,7 +75,7 @@ export const AgentsPage = () => {
                     onClick={() => setCategory(cat)}
                     className={`rounded-full px-6 py-2 transition-all duration-300 ${
                       category === cat
-                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:bg-primary/90"
+                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:bg-primary/90 hover:scale-[1.02] active:scale-[0.98] transition-all"
                         : "bg-white/50 backdrop-blur-sm border-slate-200 text-slate-600 hover:bg-white hover:text-primary hover:border-primary/20"
                     }`}
                   >

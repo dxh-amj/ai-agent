@@ -31,7 +31,7 @@ export const AgentHero = ({ agent }: AgentHeroProps) => {
               </div>
 
               {/* Category Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 text-sm font-medium text-slate-700 mb-6 border border-slate-200">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-6">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -40,7 +40,7 @@ export const AgentHero = ({ agent }: AgentHeroProps) => {
               </div>
 
               {/* Title */}
-              <h1 className="mb-4 text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl animate-fade-in-up [animation-delay:100ms]">
+              <h1 className="mb-4 text-5xl font-semibold tracking-tight text-slate-900 sm:text-6xl lg:text-7xl animate-fade-in-up [animation-delay:100ms]">
                 {agent.name}
               </h1>
 
@@ -72,7 +72,7 @@ export const AgentHero = ({ agent }: AgentHeroProps) => {
               <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up [animation-delay:400ms]">
                 <Button
                   size="lg"
-                  className="px-8 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
+                  className="px-8 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all"
                   asChild
                 >
                   <Link href="/auth/register">
@@ -83,7 +83,7 @@ export const AgentHero = ({ agent }: AgentHeroProps) => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="px-8 border-slate-300 hover:bg-slate-50"
+                  className="px-8 border-slate-300 hover:bg-slate-50 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all"
                 >
                   <span className="material-symbols-outlined text-base mr-2">description</span>
                   View Documentation

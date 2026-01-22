@@ -49,7 +49,7 @@ export const AgentChatPreview = ({ agent }: AgentChatPreviewProps) => {
         <div className="flex-1 border-x border-slate-200 py-24 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 text-sm font-medium text-slate-700 mb-6 shadow-sm">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-6">
                 <span className="material-symbols-outlined text-base">chat</span>
                 Live Preview
               </div>
@@ -104,7 +104,7 @@ export const AgentChatPreview = ({ agent }: AgentChatPreviewProps) => {
                         <div
                           className={`max-w-[80%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm ${
                             isUser
-                              ? "bg-slate-900 text-white rounded-tr-sm"
+                              ? "bg-primary text-primary-foreground rounded-tr-sm"
                               : "bg-white border border-slate-200 text-slate-800 rounded-tl-sm"
                           }`}
                         >

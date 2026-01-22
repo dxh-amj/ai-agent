@@ -14,7 +14,7 @@ export const AgentCapabilities = ({ agent }: AgentCapabilitiesProps) => {
         <div className="flex-1 border-x border-slate-200 py-24 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-sm font-medium text-slate-700 mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-6">
                 <span className="material-symbols-outlined text-base">auto_awesome</span>
                 Key Features
               </div>
