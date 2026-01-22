@@ -1,7 +1,8 @@
+import Link from "next/link";
+
 import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 import { Logo } from "@/shared/ui/logo";
-import Link from "next/link";
 
 export const Header = () => {
   return (
