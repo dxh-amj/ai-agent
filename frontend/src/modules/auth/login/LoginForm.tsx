@@ -78,7 +78,7 @@ export const LoginForm = ({ title, subtitle, subtext }: LoginFormProps) => {
             </Link>
           </div>
           <PasswordInput
-            label="Password"
+            label=""
             id="password"
             name="password"
             placeholder="Enter password"
