@@ -1,18 +1,18 @@
 import Link from "next/link";
 
+import { AgentKitLogo } from "@/shared/ui/agentkit-logo";
 import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
-import { Logo } from "@/shared/ui/logo";
 
 export const Header = () => {
   return (
-    <header className="fixed top-0 z-50 w-full bg-page-background/80 backdrop-blur-md">
+    <header className="fixed top-0 z-50 w-full bg-white border-b border-slate-200">
       <div className="flex h-16 w-full">
         <DecorativeStripes />
 
         <div className="flex-1 border-x border-slate-200 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto flex h-full max-w-7xl items-center justify-between">
-            <Logo variant="dark" />
+            <AgentKitLogo size="md" variant="dark" />
 
             <nav className="hidden md:flex items-center gap-1">
               {["Platform", "Agents", "Pricing", "Docs"].map((item) => (
