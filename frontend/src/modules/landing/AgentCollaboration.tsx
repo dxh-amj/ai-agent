@@ -14,10 +14,7 @@ export const AgentCollaboration = () => {
             {/* Section Header - Clean & Elegant */}
             <div className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-900 leading-[1.1] mb-6">
-                Agents that work as one.{" "}
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-600 to-teal-600">
-                  No more silos.
-                </span>
+                Agents that work as one. <span className="text-primary">No more silos.</span>
               </h2>
 
               <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">

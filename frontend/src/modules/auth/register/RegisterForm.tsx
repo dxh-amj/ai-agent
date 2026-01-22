@@ -30,11 +30,7 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
 
   return (
     <>
-      {title && (
-        <h1 className="text-2xl font-semibold text-slate-900 mb-6">
-          {title}
-        </h1>
-      )}
+      {title && <h1 className="text-2xl font-semibold text-slate-900 mb-6">{title}</h1>}
 
       {subtext}
 
@@ -59,9 +55,8 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
             placeholder="John"
             value={formik.values.firstName}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-            helperText={formik.touched.firstName ? formik.errors.firstName : undefined}
+            error={formik.submitCount > 0 && Boolean(formik.errors.firstName)}
+            helperText={formik.submitCount > 0 ? formik.errors.firstName : undefined}
           />
           <FormInput
             label="Last Name"
@@ -71,9 +66,8 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
             placeholder="Doe"
             value={formik.values.lastName}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-            helperText={formik.touched.lastName ? formik.errors.lastName : undefined}
+            error={formik.submitCount > 0 && Boolean(formik.errors.lastName)}
+            helperText={formik.submitCount > 0 ? formik.errors.lastName : undefined}
           />
         </div>
 
@@ -85,9 +79,8 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
           placeholder="you@example.com"
           value={formik.values.email}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email ? formik.errors.email : undefined}
+          error={formik.submitCount > 0 && Boolean(formik.errors.email)}
+          helperText={formik.submitCount > 0 ? formik.errors.email : undefined}
         />
 
         <PasswordInput
@@ -97,9 +90,8 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
           placeholder="Create a password"
           value={formik.values.password}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={formik.touched.password ? formik.errors.password : undefined}
+          error={formik.submitCount > 0 && Boolean(formik.errors.password)}
+          helperText={formik.submitCount > 0 ? formik.errors.password : undefined}
         />
 
         <Button

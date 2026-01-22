@@ -1,18 +1,18 @@
 "use client";
 
-import OTPInput from "react-otp-input";
-
 import { useSearchParams } from "next/navigation";
 
 import { CustomFormLabel } from "@devxhub/form-elements";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
+import OTPInput from "react-otp-input";
+
+import { Button } from "@/shared/ui/button";
+
+import { useTwoSteps } from "./hooks";
+import { useResendVerifyEmail } from "./services/ResendVerifyEmail";
 
 import { useResendMail } from "@/shared/hooks";
-
-import { useResendVerifyEmail } from "./services/ResendVerifyEmail";
-import { useTwoSteps } from "./hooks";
-
 import type { ResendVerifyEmailDTO } from "./types";
 
 const TwoSteps = () => {
@@ -64,16 +64,8 @@ const TwoSteps = () => {
           />
         </Stack>
       </Stack>
-      <Button
-        color="primary"
-        variant="contained"
-        size="large"
-        fullWidth
-        onClick={onSubmit}
-        loading={isLoading}
-        disabled={isLoading}
-      >
-        Verify My Account
+      <Button size="lg" className="w-full" onClick={onSubmit} disabled={isLoading}>
+        {isLoading ? "Verifying..." : "Verify My Account"}
       </Button>
 
       <Stack direction="row" display="flex" alignItems="center" mt={3}>
@@ -81,28 +73,17 @@ const TwoSteps = () => {
           Didn&apos;t get the code?
         </Typography>
         <Button
-          color="primary"
-          variant="text"
-          size="medium"
+          variant="ghost"
+          size="default"
           onClick={onResend}
-          loadingIndicator={!isLoading && `Resend in ${formatTime(coolDown)}`}
-          loading={isResendMailLoading || isCoolDownActive}
           disabled={isResendMailLoading || isCoolDownActive}
-          sx={{
-            textDecoration: "none",
-            color: "primary.main",
-            fontWeight: "500",
-            padding: 0,
-            whiteSpace: "nowrap",
-            backgroundColor: "transparent",
-            minWidth: isResendMailLoading || isCoolDownActive ? "110px" : "60px",
-            "&:hover": {
-              color: "primary.main",
-              backgroundColor: "transparent",
-            },
-          }}
+          className="bg-transparent hover:bg-transparent text-primary hover:text-primary font-medium p-0 min-w-[60px]"
         >
-          Resend
+          {isResendMailLoading || isCoolDownActive
+            ? !isLoading
+              ? `Resend in ${formatTime(coolDown)}`
+              : "Sending..."
+            : "Resend"}
         </Button>
       </Stack>
     </Box>

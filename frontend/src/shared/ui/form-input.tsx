@@ -5,6 +5,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 import { Input } from "./input";
+import { Label } from "./label";
 
 interface FormInputProps extends React.ComponentProps<typeof Input> {
   label: string;
@@ -26,14 +27,12 @@ export const FormInput = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={inputId} className="text-sm font-medium text-slate-700">
-        {label}
-      </label>
+      <Label htmlFor={inputId}>{label}</Label>
       <div className="relative">
         <Input
           id={inputId}
           className={cn(
-            "h-12 md:h-14 px-4 bg-white border-slate-200 text-slate-900 placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary",
+            "px-4 bg-white border-slate-200 text-slate-900 placeholder:text-slate-400",
             icon && "pr-12",
             error && "border-red-500 focus:border-red-500 focus:ring-red-500",
             className

@@ -1,13 +1,5 @@
-"use client";
-
-import { useState } from "react";
-
+import { FAQSection as CommonFAQSection, type FAQItem } from "@/shared/components";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
-
-interface FAQItem {
-  question: string;
-  answer: string;
-}
 
 const faqData: FAQItem[] = [
   {
@@ -43,74 +35,18 @@ const faqData: FAQItem[] = [
 ];
 
 export const FAQSection = () => {
-  const [openItems, setOpenItems] = useState<number[]>([0]);
-
-  const toggleItem = (index: number) => {
-    setOpenItems((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    );
-  };
-
   return (
     <section className="w-full bg-white">
       <div className="flex">
         <DecorativeStripes />
 
-        {/* Main Content */}
-        <div className="flex-1 border-x border-slate-200 py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900 mb-6 tracking-tight">
-                Frequently asked questions
-              </h2>
-              <p className="text-slate-600 text-lg leading-relaxed">
-                Everything you need to know about AI Workforce Hub. Can&apos;t find what you&apos;re
-                looking for? Contact our support team.
-              </p>
-            </div>
-
-            {/* FAQ Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {faqData.map((item, index) => {
-                const isOpen = openItems.includes(index);
-
-                return (
-                  <div
-                    key={item.question}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden hover:border-emerald-200 transition-colors duration-200"
-                  >
-                    <button
-                      onClick={() => toggleItem(index)}
-                      className="w-full p-6 flex justify-between items-start gap-4 text-left"
-                      aria-expanded={isOpen}
-                    >
-                      <span className="text-slate-900 font-medium leading-relaxed">
-                        {item.question}
-                      </span>
-                      <span
-                        className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                          isOpen
-                            ? "bg-emerald-500 text-white rotate-180"
-                            : "bg-white border border-slate-200 text-slate-500"
-                        }`}
-                      >
-                        <span className="material-symbols-outlined text-xl">expand_more</span>
-                      </span>
-                    </button>
-
-                    <div
-                      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                        isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <div className="px-6 pb-6 text-slate-600 leading-relaxed">{item.answer}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+        <div className="flex-1 border-x border-slate-200">
+          <CommonFAQSection
+            title="Frequently asked questions"
+            subtitle="Everything you need to know about AI Workforce Hub. Can't find what you're looking for? Contact our support team."
+            faqs={faqData}
+            variant="default"
+          />
         </div>
 
         <DecorativeStripesRight />

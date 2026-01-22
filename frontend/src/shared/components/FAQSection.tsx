@@ -1,0 +1,129 @@
+"use client";
+
+import { useState } from "react";
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface FAQSectionProps {
+  title?: string;
+  subtitle?: string;
+  faqs: FAQItem[];
+  variant?: "default" | "compact";
+}
+
+export const FAQSection = ({
+  title = "Frequently Asked Questions",
+  subtitle,
+  faqs,
+  variant = "default",
+}: FAQSectionProps) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggleItem = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className={`w-full ${variant === "default" ? "py-20 lg:py-24" : "py-12 lg:py-16"}`}>
+      <div
+        className={`${
+          variant === "default" ? "max-w-4xl" : "max-w-3xl"
+        } mx-auto px-4 sm:px-6 lg:px-8`}
+      >
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900 mb-4 tracking-tight">
+            {title}
+          </h2>
+          {subtitle && (
+            <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">{subtitle}</p>
+          )}
+        </div>
+
+        {/* FAQ List */}
+        <div className="space-y-3">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+
+            return (
+              <div
+                key={index}
+                className={`group rounded-xl border transition-all duration-300 overflow-hidden ${
+                  isOpen
+                    ? "bg-white border-primary shadow-lg shadow-primary/5"
+                    : "bg-slate-50/50 border-slate-200 hover:border-primary/30 hover:bg-white"
+                }`}
+              >
+                <button
+                  onClick={() => toggleItem(index)}
+                  className="w-full px-6 py-5 flex justify-between items-center gap-4 text-left"
+                  aria-expanded={isOpen}
+                >
+                  <span
+                    className={`font-medium leading-relaxed transition-colors ${
+                      isOpen ? "text-slate-900" : "text-slate-700 group-hover:text-slate-900"
+                    }`}
+                  >
+                    {faq.question}
+                  </span>
+                  <div
+                    className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                      isOpen
+                        ? "bg-primary text-white rotate-180 shadow-md shadow-primary/20"
+                        : "bg-slate-100 text-slate-500 group-hover:bg-primary/10 group-hover:text-primary"
+                    }`}
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </button>
+
+                <div
+                  className={`transition-all duration-300 ease-in-out ${
+                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="px-6 pb-5 text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                    {faq.answer}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Contact CTA */}
+        {variant === "default" && (
+          <div className="mt-12 text-center">
+            <p className="text-slate-600 mb-4">Still have questions?</p>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 text-primary font-medium hover:text-primary-dark transition-colors"
+            >
+              Contact our support team
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};

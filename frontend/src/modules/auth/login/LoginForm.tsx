@@ -5,7 +5,7 @@ import Link from "next/link";
 import { getCookie } from "cookies-next";
 import { useFormik } from "formik";
 
-import { Button, FormInput, PasswordInput } from "@/shared/ui";
+import { Button, FormInput, Label, PasswordInput } from "@/shared/ui";
 import { decrypt } from "@/utils/encryption";
 
 import { SocialButtons } from "../social-buttons/SocialButtons";
@@ -60,16 +60,13 @@ export const LoginForm = ({ title, subtitle, subtext }: LoginFormProps) => {
           placeholder="you@example.com"
           value={formik.values.email}
           onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email ? formik.errors.email : undefined}
+          error={formik.submitCount > 0 && Boolean(formik.errors.email)}
+          helperText={formik.submitCount > 0 ? formik.errors.email : undefined}
         />
 
         <div>
           <div className="flex items-center justify-between mb-1">
-            <label htmlFor="password" className="block text-sm font-medium text-slate-700">
-              Password
-            </label>
+            <Label htmlFor="password">Password</Label>
             <Link
               href="/auth/forgot-password"
               className="text-primary hover:text-primary-dark text-sm font-medium transition-colors"
@@ -84,9 +81,8 @@ export const LoginForm = ({ title, subtitle, subtext }: LoginFormProps) => {
             placeholder="Enter password"
             value={formik.values.password}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            helperText={formik.touched.password ? formik.errors.password : undefined}
+            error={formik.submitCount > 0 && Boolean(formik.errors.password)}
+            helperText={formik.submitCount > 0 ? formik.errors.password : undefined}
           />
         </div>
 
