@@ -16,7 +16,7 @@ const handleLogout = () => {
 
 const authRequestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
   const token = getCookie(ASSESS_TOKEN);
-  const language = "en"; // Default language
+  const language = "en";
 
   if (token) {
     if (!config.headers) {

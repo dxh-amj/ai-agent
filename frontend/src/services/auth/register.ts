@@ -1,8 +1,8 @@
 import { handleApiError, recaptchaService, toSnakeCase } from "@/utils";
 import { axios } from "@/utils/axios";
 
+import type { RegisterDTO } from "@/modules/auth/types";
 import type { UserProfileResponse } from "@/shared/types";
-import type { RegisterDTO } from "./types";
 
 const REGISTER_URL = "/api/auth/v1/register/";
 
