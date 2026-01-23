@@ -1,5 +1,7 @@
 import { AgentsPage } from "@/modules/agents/AgentsPage";
 
-export default function Page() {
+const Page = () => {
   return <AgentsPage />;
-}
+};
+
+export default Page;

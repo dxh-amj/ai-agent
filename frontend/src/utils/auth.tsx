@@ -1,11 +1,10 @@
 import { configureAuth } from "react-query-auth";
 
-import { login } from "@/modules/auth/login/service";
-import { register } from "@/modules/auth/register/service";
+import { login, register } from "@/services/auth";
 import { logOut } from "@/shared/api/logout";
 import { getUser } from "@/shared/api/userProfile";
 
-import type { RegisterDTO } from "@/modules/auth/register/types";
+import type { RegisterDTO } from "@/modules/auth/types";
 import type { LoginDTO } from "@/shared/types";
 
 async function registerFn(data: RegisterDTO) {

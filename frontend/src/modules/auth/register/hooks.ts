@@ -27,7 +27,7 @@ const useAuthRegister = () => {
         toast.success("Check your email. We've sent a code to your email.");
         setIsDisabled(true);
       },
-      onError: () => {
+      onError: (error) => {
         setIsDisabled(false);
       },
     });

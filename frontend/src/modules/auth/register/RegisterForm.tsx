@@ -34,14 +34,14 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
 
       {subtext}
 
-      <SocialButtons title="Continue with" />
+      <SocialButtons title="Sign up with" />
 
       <div className="relative py-4">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-slate-200" />
         </div>
         <div className="relative flex justify-center">
-          <span className="bg-white px-4 text-sm text-slate-400">Or</span>
+          <span className="bg-white px-4 text-sm text-slate-400">or sign up with</span>
         </div>
       </div>
 
@@ -94,13 +94,24 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
           helperText={formik.submitCount > 0 ? formik.errors.password : undefined}
         />
 
+        <PasswordInput
+          label="Confirm Password"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm your password"
+          value={formik.values.confirmPassword}
+          onChange={formik.handleChange}
+          error={formik.submitCount > 0 && Boolean(formik.errors.confirmPassword)}
+          helperText={formik.submitCount > 0 ? formik.errors.confirmPassword : undefined}
+        />
+
         <Button
           type="submit"
           size="lg"
           disabled={isLoading}
           className="w-full bg-primary hover:bg-primary-dark text-white font-medium rounded-lg mt-2"
         >
-          {isLoading ? "Creating Account..." : "Create Account"}
+          {isLoading ? "Creating Account..." : "Sign Up"}
         </Button>
       </form>
 
