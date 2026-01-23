@@ -1,5 +1,31 @@
 {
-    "i18n-ally.localesPaths": [
-        "frontend/src/languages"
-    ]
+  "i18n-ally.localesPaths": ["frontend/src/languages"],
+
+  // Auto-fix ESLint errors on save
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // Enable ESLint for TypeScript and JavaScript
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  // Format on save (optional, but recommended)
+  "editor.formatOnSave": true,
+
+  // Set default formatter to Prettier (if you have it installed)
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Let ESLint handle formatting for JS/TS files
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

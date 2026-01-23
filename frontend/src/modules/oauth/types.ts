@@ -24,14 +24,11 @@ interface GoogleLoginProps extends GoogleCredentials {
 interface SocialLoginDTO {
   platform: string;
   code: string;
+  redirect_uri?: string;
 }
 
 // ============================================
 // Exports
 // ============================================
 
-export type {
-  GoogleCredentials,
-  GoogleLoginProps,
-  SocialLoginDTO,
-};
+export type { GoogleCredentials, GoogleLoginProps, SocialLoginDTO };
