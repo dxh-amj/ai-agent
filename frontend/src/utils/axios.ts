@@ -1,6 +1,5 @@
 import Axios, { AxiosHeaders } from "axios";
 import { getCookie, setCookie } from "cookies-next";
-import i18n from "i18next";
 
 import { ROOT_API_URL } from "@/config";
 
@@ -17,7 +16,7 @@ const handleLogout = () => {
 
 const authRequestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
   const token = getCookie(ASSESS_TOKEN);
-  const language = i18n.language;
+  const language = "en"; // Default language
 
   if (token) {
     if (!config.headers) {

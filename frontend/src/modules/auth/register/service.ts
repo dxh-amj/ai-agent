@@ -1,8 +1,8 @@
 import { handleApiError, recaptchaService, toSnakeCase } from "@/utils";
 import { axios } from "@/utils/axios";
 
-import type { RegisterDTO } from "./types";
 import type { UserProfileResponse } from "@/shared/types";
+import type { RegisterDTO } from "./types";
 
 const REGISTER_URL = "/api/auth/v1/register/";
 
@@ -11,6 +11,7 @@ const register = async (data: RegisterDTO): Promise<UserProfileResponse> => {
     let config = {};
     const payload = {
       ...toSnakeCase(data),
+      company_name: "Default Company", // Hardcoded company name
     };
 
     if (recaptchaService.isEnabled) {

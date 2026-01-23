@@ -40,20 +40,20 @@ export const LoginForm = ({ title, subtitle, subtext }: LoginFormProps) => {
 
       {subtext}
 
-      <SocialButtons title="Continue with" />
+      <SocialButtons title="Sign in with" />
 
       <div className="relative py-4">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-slate-200" />
         </div>
         <div className="relative flex justify-center">
-          <span className="bg-white px-4 text-sm text-slate-400">Or</span>
+          <span className="bg-white px-4 text-sm text-slate-400">or sign in with</span>
         </div>
       </div>
 
       <form onSubmit={formik.handleSubmit} className="flex flex-col gap-4">
         <FormInput
-          label="Email"
+          label="Email Address"
           type="email"
           id="email"
           name="email"
@@ -71,7 +71,7 @@ export const LoginForm = ({ title, subtitle, subtext }: LoginFormProps) => {
               href="/auth/forgot-password"
               className="text-primary hover:text-primary-dark text-sm font-medium transition-colors"
             >
-              Forgot?
+              Forgot Password?
             </Link>
           </div>
           <PasswordInput
@@ -86,13 +86,27 @@ export const LoginForm = ({ title, subtitle, subtext }: LoginFormProps) => {
           />
         </div>
 
+        <div className="flex items-center">
+          <input
+            id="rememberMe"
+            name="rememberMe"
+            type="checkbox"
+            checked={formik.values.rememberMe}
+            onChange={formik.handleChange}
+            className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+          />
+          <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-900">
+            Remember this Device
+          </label>
+        </div>
+
         <Button
           type="submit"
           size="lg"
           disabled={isLoading}
           className="w-full bg-primary hover:bg-primary-dark text-white font-medium rounded-lg mt-2"
         >
-          {isLoading ? "Signing In..." : "Log in"}
+          {isLoading ? "Signing In..." : "Sign In"}
         </Button>
       </form>
 
