@@ -61,7 +61,7 @@ interface UserProfileResponse extends ResponseMetadata {
   data: UserProfile;
 }
 
-interface LoginDTO {
+export interface LoginDTO {
   email: string;
   password: string;
   rememberMe?: boolean;
@@ -90,6 +90,14 @@ interface LoginResponse extends ResponseMetadata, Partial<MFAData> {
 
 interface LogoutResponse extends ResponseMetadata {
   data: null;
+}
+
+export interface ForgotPasswordDTO {
+  email: string;
+}
+
+export interface ForgotPasswordResponse extends ResponseMetadata {
+  data: string;
 }
 
 interface DropdownEntity {
@@ -124,7 +132,6 @@ export type {
   ExportFormat,
   Group,
   LoggedInUsedData,
-  LoginDTO,
   LoginResponse,
   LogoutResponse,
   MenuItem,

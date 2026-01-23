@@ -15,7 +15,7 @@ const queryConfig: DefaultOptions = {
     networkMode: "online", // Only run queries when online
   },
   mutations: {
-    retry: 1, // Only retry mutations once
+    retry: false, // Don't retry mutations on error
     networkMode: "online",
   },
 };

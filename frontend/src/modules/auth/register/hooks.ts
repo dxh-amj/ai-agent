@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import toast from "react-hot-toast";
 
 import { useRouter } from "next/navigation";
+
+import { toast } from "sonner";
 
 import { useRegister } from "@/utils/auth";
 
@@ -27,7 +28,7 @@ const useAuthRegister = () => {
         toast.success("Check your email. We've sent a code to your email.");
         setIsDisabled(true);
       },
-      onError: (error) => {
+      onError: () => {
         setIsDisabled(false);
       },
     });

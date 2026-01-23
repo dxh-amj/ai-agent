@@ -6,7 +6,7 @@ import { handleApiError } from "@/utils/handleApiError";
 import type { UserProfile } from "@/shared/types";
 import type { ExtractFnReturnType, QueryConfig } from "@/utils/reactQuery";
 
-const GET_PROFILE_URL = `/api/users/v1/workspace/users/me`;
+const GET_PROFILE_URL = `/api/users/v1/users/me`;
 
 export const getUser = async (): Promise<UserProfile | null> => {
   try {
@@ -24,12 +24,15 @@ type UseUserProfileOptions = {
 };
 
 const useUserProfile = ({ config }: UseUserProfileOptions = {}) => {
-  return useQuery<ExtractFnReturnType<typeof getUser>>({
+  return useQuery<ExtractFnReturnType<any>>({
     ...config,
     queryKey: ["user-profile"],
     queryFn: getUser,
-    staleTime: Infinity,
-    gcTime: 30 * 60 * 1000,
+    staleTime: 5 * 60 * 1000, // 5 minutes - data stays fresh for 5 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes - data stays in cache for 10 minutes (renamed from cacheTime)
+    refetchOnWindowFocus: false, // Don't refetch on window focus
+    refetchOnMount: false, // Don't refetch on component mount if data exists
+    retry: 1, // Only retry once on failure
   });
 };
 

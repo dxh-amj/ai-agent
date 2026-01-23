@@ -1,30 +1,36 @@
 "use client";
 
 import { useState } from "react";
-import toast from "react-hot-toast";
 
 import { useRouter } from "next/navigation";
 
-import { sendForgotPasswordEmail } from "./service";
+import { toast } from "sonner";
+
+import { useSendMail } from "@/shared/api/sendMail";
+
+import type { ForgotPasswordDTO } from "@/shared/types";
 
 const useForgotPassword = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
-  const handleForgotPassword = async (email: string) => {
-    setIsSubmitting(true);
-    try {
-      await sendForgotPasswordEmail(email);
-      toast.success("Password reset link sent to your email.");
-      router.push("/auth/login");
-    } catch {
-      toast.error("Failed to send reset link. Please try again.");
-    } finally {
-      setIsSubmitting(false);
-    }
+  const { mutate, isPending } = useSendMail();
+
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const handleForgotPassword = (values: ForgotPasswordDTO) => {
+    mutate(values, {
+      onSuccess: () => {
+        toast.success("Password reset instructions has been sent to your email");
+        router.push(`/auth/resend-mail?email=${values.email}`);
+        setIsDisabled(true);
+      },
+      onError: () => {
+        setIsDisabled(false);
+      },
+    });
   };
 
-  return { handleForgotPassword, isSubmitting };
+  return { handleForgotPassword, isLoading: isDisabled || isPending };
 };
 
 export { useForgotPassword };

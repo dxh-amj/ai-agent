@@ -11,7 +11,8 @@ const register = async (data: RegisterDTO): Promise<UserProfileResponse> => {
     let config = {};
     const payload = {
       ...toSnakeCase(data),
-      company_name: "Default Company", // Hardcoded company name
+      //dynamic company name with date add date and minute and second
+      company_name: `Default Company ${new Date().getFullYear()} ${new Date().getMonth()} ${new Date().getDate()} ${new Date().getHours()} ${new Date().getMinutes()} ${new Date().getSeconds()}`,
     };
 
     if (recaptchaService.isEnabled) {

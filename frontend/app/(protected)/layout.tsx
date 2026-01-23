@@ -1,76 +1,43 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import { styled, useTheme } from "@mui/material/styles";
+import { Header } from "@/shared/base-layout/Header";
+import { Sidebar } from "@/shared/base-layout/Sidebar";
 
-import { Header, Sidebar } from "@/shared/base-layout/vertical";
-import { AbilityClientProvider, Customizer, RouteGuard } from "@/shared/components";
-import { useSelector } from "@/store/useRedux";
-
-import type { AppState } from "@/store/store";
-
-const MainWrapper = styled("div")(() => ({
-  display: "flex",
-  minHeight: "100%",
-  width: "100%",
-}));
-
-const PageWrapper = styled("div")(() => ({
-  display: "flex",
-  flexGrow: 1,
-  paddingBottom: "60px",
-  flexDirection: "column",
-  zIndex: 1,
-  width: "calc(100% - 270px)",
-  backgroundColor: "transparent",
-}));
+// Mock user data - replace with actual user data from your auth system
+const mockUser = {
+  firstName: "John",
+  lastName: "Doe",
+  email: "john.doe@example.com",
+  profile: {
+    designation: "Software Developer",
+  },
+};
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const customizer = useSelector((state: AppState) => state.customizer);
-  const theme = useTheme();
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   return (
-    <AbilityClientProvider>
-      <MainWrapper
-        className={customizer.activeMode === "dark" ? "darkbg mainwrapper" : "mainwrapper"}
-      >
-        <title>Modernize NextJs</title>
-        {/* Sidebar */}
-        <Sidebar />
-        {/* Main Wrapper */}
-        <PageWrapper
-          className="page-wrapper"
-          sx={{
-            ...(customizer.isCollapse && {
-              [theme.breakpoints.up("lg")]: {
-                ml: `${customizer.MiniSidebarWidth}px`,
-              },
-            }),
-          }}
-        >
-          {/* Header */}
-          <Header />
-          <Container
-            sx={{
-              pt: "30px",
-              maxWidth: customizer.isLayout === "boxed" ? "lg" : "100%!important",
-              mx: customizer.isLayout === "boxed" ? "auto" : 0,
-            }}
-          >
-            {/* PageContent */}
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <Sidebar
+        user={mockUser}
+        mobileOpen={isMobileSidebarOpen}
+        setMobileOpen={setIsMobileSidebarOpen}
+      />
 
-            <Box sx={{ minHeight: "calc(100vh - 170px)" }}>
-              <RouteGuard>{children}</RouteGuard>
-            </Box>
-            {/* End Page */}
-          </Container>
-          <Customizer />
-        </PageWrapper>
-      </MainWrapper>
-    </AbilityClientProvider>
+      {/* Main Content Area */}
+      <div className="flex flex-1 flex-col lg:pl-64">
+        {/* Header */}
+        <Header onMenuClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)} user={mockUser} />
+
+        {/* Page Content */}
+        <main className="flex-1 p-6">
+          <div className="mx-auto max-w-7xl">{children}</div>
+        </main>
+      </div>
+    </div>
   );
 };
 

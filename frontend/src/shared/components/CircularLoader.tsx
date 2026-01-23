@@ -1,13 +1,20 @@
-const CircularLoader = () => {
+import { Spinner } from "@/shared/ui/spinner";
+
+interface CircularLoaderProps {
+  height?: string;
+  size?: "sm" | "md" | "lg" | "xl";
+  className?: string;
+}
+
+const CircularLoader = ({ height = "100vh", size = "lg", className }: CircularLoaderProps) => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-        <h2 className="text-xl font-semibold text-gray-900 mb-2">
-          Completing Sign In...
-        </h2>
-        <p className="text-gray-600">Please wait while we process your authentication.</p>
-      </div>
+    <div
+      className={`fixed inset-0 z-[9999] flex w-full items-center justify-center bg-white/80 ${
+        className || ""
+      }`}
+      style={{ height }}
+    >
+      <Spinner size={size} />
     </div>
   );
 };

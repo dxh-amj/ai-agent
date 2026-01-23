@@ -5,7 +5,7 @@ export { FormCheckbox } from "./form-checkbox";
 export { FormInput } from "./form-input";
 export { Input } from "./input";
 export { Label } from "./label";
-export { Logo } from "./logo";
 export { PasswordInput } from "./password-input";
 export { SocialButton } from "./social-button";
 export { SocialLoginButtons } from "./social-login-buttons";
+export { Spinner } from "./spinner";
