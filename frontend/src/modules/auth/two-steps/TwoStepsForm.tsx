@@ -1,45 +1,68 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-import { Button } from "@/shared/ui/button";
+import { useSearchParams } from "next/navigation";
+
+import { useResendVerifyEmail } from "@/services/auth";
+import { useResendMail } from "@/shared/hooks/useResendMail";
+import { Button, Label } from "@/shared/ui";
 
 import { useTwoSteps } from "./hooks";
-import { useResendVerifyEmail } from "./services/ResendVerifyEmail";
+
+import type { ResendVerifyEmailDTO } from "../types";
+
+const MAX_OTP_INDEX = 5;
+const OTP_LENGTH = 6;
 
 const TwoStepsForm = () => {
   const searchParams = useSearchParams();
   const email = searchParams.get("email") as string;
-  const { mutate: resendMutate, isPending: isResendLoading } = useResendVerifyEmail();
+  const { mutate: resendMutate } = useResendVerifyEmail();
+  const valuesFormatter = (email: string): ResendVerifyEmailDTO => ({ email, type: "email_otp" });
 
   const { handleVerifyEmail, isLoading, otp, setOtp } = useTwoSteps(email);
 
+  const {
+    coolDown,
+    handleResendEmail,
+    isLoading: isResendLoading,
+    isCoolDownActive,
+    formatTime,
+  } = useResendMail(email, resendMutate, valuesFormatter);
+
   const [otpValues, setOtpValues] = useState(["", "", "", "", "", ""]);
-  const [coolDown, setCoolDown] = useState(0);
+  const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
 
   const handleOtpChange = (index: number, value: string) => {
-    if (value.length > 1) return; // Only allow single digit
+    // Only allow numbers
+    if (value && !/^\d+$/.test(value)) return;
+
+    if (value.length > 1) return;
 
     const newOtpValues = [...otpValues];
     newOtpValues[index] = value;
     setOtpValues(newOtpValues);
 
-    // Update the main otp state
     const otpString = newOtpValues.join("");
     setOtp(otpString);
 
-    // Auto focus next input
-    if (value && index < 5) {
-      const nextInput = document.getElementById(`otp-${index + 1}`);
-      nextInput?.focus();
+    if (value && index < MAX_OTP_INDEX) {
+      inputRefs.current[index + 1]?.focus();
     }
   };
 
   const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
     if (e.key === "Backspace" && !otpValues[index] && index > 0) {
-      const prevInput = document.getElementById(`otp-${index - 1}`);
-      prevInput?.focus();
+      inputRefs.current[index - 1]?.focus();
+    }
+
+    if (e.key === "ArrowLeft" && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+    }
+
+    if (e.key === "ArrowRight" && index < MAX_OTP_INDEX) {
+      inputRefs.current[index + 1]?.focus();
     }
 
     if (e.key === "Enter") {
@@ -47,54 +70,52 @@ const TwoStepsForm = () => {
     }
   };
 
+  const handlePaste = (e: React.ClipboardEvent) => {
+    e.preventDefault();
+    const pasteData = e.clipboardData.getData("text").replace(/\D/g, "").slice(0, OTP_LENGTH);
+    if (!pasteData) return;
+
+    const newOtpValues = [...otpValues];
+    pasteData.split("").forEach((char, i) => {
+      if (i < OTP_LENGTH) newOtpValues[i] = char;
+    });
+
+    setOtpValues(newOtpValues);
+    const otpString = newOtpValues.join("");
+    setOtp(otpString);
+
+    // Focus the next empty slot or the last one
+    const nextSlot = Math.min(pasteData.length, MAX_OTP_INDEX);
+    inputRefs.current[nextSlot]?.focus();
+  };
+
   const onSubmit = () => {
-    if (otp.length === 6) {
+    if (otp.length === OTP_LENGTH) {
       handleVerifyEmail();
     }
-  };
-
-  const onResend = () => {
-    if (email) {
-      resendMutate({ email, type: "email_otp" });
-      setCoolDown(60); // 60 seconds cooldown
-
-      // Start countdown
-      const timer = setInterval(() => {
-        setCoolDown((prev) => {
-          if (prev <= 1) {
-            clearInterval(timer);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-  };
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
   };
 
   return (
     <div className="space-y-6">
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-3">
+        <Label htmlFor="otp-0" className="mb-3 block text-center">
           Enter your 6-digit security code
-        </label>
-        <div className="flex space-x-2 justify-center">
+        </Label>
+        <div className="flex space-x-2 justify-center" onPaste={handlePaste}>
           {otpValues.map((value, index) => (
             <input
-              key={index}
+              key={`otp-slot-${index}`}
               id={`otp-${index}`}
+              ref={(el) => {
+                inputRefs.current[index] = el;
+              }}
               type="text"
               inputMode="numeric"
               maxLength={1}
               value={value}
               onChange={(e) => handleOtpChange(index, e.target.value)}
               onKeyDown={(e) => handleKeyDown(index, e)}
-              className="w-12 h-12 text-center text-lg font-semibold border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+              className="w-12 h-12 text-center text-lg font-semibold border border-slate-200 rounded-xl outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary"
             />
           ))}
         </div>
@@ -104,23 +125,23 @@ const TwoStepsForm = () => {
         size="lg"
         className="w-full"
         onClick={onSubmit}
-        disabled={isLoading || otp.length !== 6}
+        disabled={isLoading || otp.length !== OTP_LENGTH}
       >
         {isLoading ? "Verifying..." : "Verify My Account"}
       </Button>
 
       <div className="flex items-center justify-center space-x-2 text-sm">
-        <span className="text-gray-600">Didn't get the code?</span>
+        <span className="text-gray-600">Didn&apos;t get the code?</span>
         <Button
           variant="ghost"
           size="sm"
-          onClick={onResend}
-          disabled={isResendLoading || coolDown > 0}
-          className="text-primary hover:text-primary-dark p-0 h-auto font-medium"
+          onClick={handleResendEmail}
+          disabled={isResendLoading || isCoolDownActive}
+          className="h-auto p-0 font-medium text-primary hover:text-primary-dark"
         >
           {isResendLoading
             ? "Sending..."
-            : coolDown > 0
+            : isCoolDownActive
             ? `Resend in ${formatTime(coolDown)}`
             : "Resend"}
         </Button>

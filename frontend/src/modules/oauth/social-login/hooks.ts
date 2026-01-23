@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
-import toast from "react-hot-toast";
 
 import { useParams, useRouter, useSearchParams } from "next/navigation";
+
+import { toast } from "sonner";
 
 import { FACEBOOK_REDIRECT_URI, GOOGLE_REDIRECT_URI, LINKEDIN_REDIRECT_URI } from "@/config";
 import { useSocialLogin } from "@/services/oauth";

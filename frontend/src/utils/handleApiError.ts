@@ -1,6 +1,5 @@
-import toast from "react-hot-toast";
-
 import axios from "axios";
+import { toast } from "sonner";
 
 const handleApiError = (error: any, customMessage?: string) => {
   if (customMessage) {

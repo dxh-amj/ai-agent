@@ -1,5 +1,8 @@
 import { Inter } from "next/font/google";
 
+import { Toaster } from "sonner";
+
+import { I18nProvider } from "@/providers/I18nProvider";
 import { QueryProvider } from "@/providers/QueryProvider";
 
 import type { Metadata } from "next";
@@ -30,9 +33,13 @@ const RootLayout = ({
         />
       </head>
       <body className={`${inter.variable} antialiased font-sans`}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <I18nProvider>{children}</I18nProvider>
+          <Toaster position="top-right" richColors />
+        </QueryProvider>
       </body>
     </html>
   );
 };
+
 export default RootLayout;

@@ -24,10 +24,10 @@ DC_REMOVE_ORPHANS := --remove-orphans
 DC_BUILD_ARGS := --pull --no-cache
 
 # Docker Compose command shortcuts with env file
-DOCKER_COMPOSE_BASE := docker compose -p $(PROJECT_NAME) --env-file $(ENV_FILE)
-DOCKER_COMPOSE_DEV := $(DOCKER_COMPOSE_BASE) -f $(COMPOSE_DEV)
-DOCKER_COMPOSE_PROD := $(DOCKER_COMPOSE_BASE) -f $(COMPOSE_PROD)
-DOCKER_COMPOSE_LOCAL := $(DOCKER_COMPOSE_BASE) -f $(COMPOSE_LOCAL)
+DOCKER_COMPOSE_BASE := docker compose -p $(PROJECT_NAME) --env-file "$(ENV_FILE)"
+DOCKER_COMPOSE_DEV := $(DOCKER_COMPOSE_BASE) -f "$(COMPOSE_DEV)"
+DOCKER_COMPOSE_PROD := $(DOCKER_COMPOSE_BASE) -f "$(COMPOSE_PROD)"
+DOCKER_COMPOSE_LOCAL := $(DOCKER_COMPOSE_BASE) -f "$(COMPOSE_LOCAL)"
 
 # Docker image details
 DOCKER_IMAGE := dxhltd/ai-agent
@@ -53,18 +53,19 @@ all: help
 
 # Validation
 validate-compose:
-	@for file in $(COMPOSE_DEV) $(COMPOSE_PROD) $(COMPOSE_LOCAL); do \
-		if [ ! -f $$file ]; then \
+	@for file in "$(COMPOSE_DEV)" "$(COMPOSE_PROD)" "$(COMPOSE_LOCAL)"; do \
+		if [ ! -f "$$file" ]; then \
 			echo "$(RED)Missing compose file: $$file$(RESET)"; \
 			exit 1; \
 		fi \
 	done
 
 # Ensure .env file exists
+# Ensure .env file exists
 check-env: ## Check if .env file exists and create if missing
-	@if [ ! -f $(ENV_FILE) ]; then \
-		if [ -f $(ENV_EXAMPLE_FILE) ]; then \
-			cp $(ENV_EXAMPLE_FILE) $(ENV_FILE); \
+	@if [ ! -f "$(ENV_FILE)" ]; then \
+		if [ -f "$(ENV_EXAMPLE_FILE)" ]; then \
+			cp "$(ENV_EXAMPLE_FILE)" "$(ENV_FILE)"; \
 			echo "$(YELLOW)Created $(ENV_FILE) from $(ENV_EXAMPLE_FILE)$(RESET)"; \
 			echo "$(YELLOW)Please review and update $(ENV_FILE) with your settings$(RESET)"; \
 		else \
@@ -73,22 +74,22 @@ check-env: ## Check if .env file exists and create if missing
 			exit 1; \
 		fi \
 	else \
-		if ! grep -q "." $(ENV_FILE); then \
+		if ! grep -q "." "$(ENV_FILE)"; then \
 			echo "$(RED)Warning: $(ENV_FILE) appears to be empty$(RESET)"; \
 			exit 1; \
 		fi \
 	fi; \
-	if grep -q "^UID=" $(ENV_FILE); then \
-		sed -i.bak 's/^UID=.*/UID=$(UID)/' $(ENV_FILE); \
+	if grep -q "^UID=" "$(ENV_FILE)"; then \
+		sed -i.bak 's/^UID=.*/UID=$(UID)/' "$(ENV_FILE)"; \
 	else \
-		echo "UID=$(UID)" >> $(ENV_FILE); \
+		echo "UID=$(UID)" >> "$(ENV_FILE)"; \
 	fi; \
-	if grep -q "^GID=" $(ENV_FILE); then \
-		sed -i.bak 's/^GID=.*/GID=$(GID)/' $(ENV_FILE); \
+	if grep -q "^GID=" "$(ENV_FILE)"; then \
+		sed -i.bak 's/^GID=.*/GID=$(GID)/' "$(ENV_FILE)"; \
 	else \
-		echo "GID=$(GID)" >> $(ENV_FILE); \
+		echo "GID=$(GID)" >> "$(ENV_FILE)"; \
 	fi; \
-	rm -f $(ENV_FILE).bak; \
+	rm -f "$(ENV_FILE).bak"; \
 	echo "$(GREEN)Updated $(ENV_FILE) with UID=$(UID) and GID=$(GID)$(RESET)"
 
 # Development environment
@@ -233,7 +234,7 @@ push-local: check-env ## Build production-like image for local use
 		--push \
 		--platform linux/amd64,linux/arm64 \
 		--tag $(DOCKER_IMAGE):$$tag \
-		-f $(DOCKERFILE_LOCAL) $(BASE_DIR) || \
+		-f "$(DOCKERFILE_LOCAL)" "$(BASE_DIR)" || \
 		{ echo "$(RED)Build failed$(RESET)"; exit 1; }
 
 # Pull Docker images

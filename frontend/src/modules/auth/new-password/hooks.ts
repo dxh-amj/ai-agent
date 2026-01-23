@@ -1,11 +1,14 @@
+"use client";
+
 import { useState } from "react";
-import toast from "react-hot-toast";
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-import { useSetNewPassword } from "./service";
+import { toast } from "sonner";
 
-import type { NewPasswordDTO } from "./types";
+import { useSetNewPassword } from "@/services/auth";
+
+import type { NewPasswordDTO } from "@/modules/auth/types";
 
 const useNewPassword = () => {
   const router = useRouter();

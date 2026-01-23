@@ -1,11 +1,11 @@
 "use client";
 
-import { GoogleLogin } from "@/modules/oauth";
 import { 
-  GOOGLE_CLIENT_ID, 
   GOOGLE_AUTHORIZE_URL, 
+  GOOGLE_CLIENT_ID, 
   GOOGLE_REDIRECT_URI,
 } from "@/config";
+import { GoogleLogin } from "@/modules/oauth";
 import { GOOGLE_SCOPE } from "@/utils/constants";
 
 import type { SocialButtonsProps } from "../types";

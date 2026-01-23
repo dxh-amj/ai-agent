@@ -13,7 +13,7 @@ services:
   #     - /app/.next
   #     - /app/.nx
   #   ports:
-  #     - '${FORWARD_NEXTJS_PORT:-3000}:3000'
+  #     - "${FORWARD_NEXTJS_PORT:-3000}:3000"
   #   networks:
   #     - devxhub
   #   restart: on-failure
@@ -21,7 +21,7 @@ services:
   web:
     image: caddy:latest
     ports:
-      - '${FORWARD_API_PORT:-8000}:80'
+      - "${FORWARD_API_PORT:-8000}:80"
     volumes:
       - ../caddy/Caddyfile.dev:/etc/caddy/Caddyfile
       - static_data:/var/www/staticfiles
@@ -59,7 +59,7 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U ${DB_USER} -d ${DB_NAME}']
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 10s
       retries: 5
       start_period: 30s
@@ -80,7 +80,7 @@ services:
       - pgadmin_data:/var/lib/pgadmin
       - ../pgadmin/servers.json:/pgadmin4/servers.json
     ports:
-      - '${FORWARD_PGADMIN_PORT:-5050}:80'
+      - "${FORWARD_PGADMIN_PORT:-5050}:80"
     depends_on:
       - postgres
     networks:
@@ -89,7 +89,7 @@ services:
   valkey:
     image: valkey/valkey:alpine
     healthcheck:
-      test: ['CMD', 'valkey-cli', 'ping']
+      test: ["CMD", "valkey-cli", "ping"]
       interval: 10s
       retries: 5
       start_period: 30s
@@ -101,9 +101,9 @@ services:
     restart: unless-stopped
 
   mailpit:
-    image: 'axllent/mailpit:latest'
+    image: "axllent/mailpit:latest"
     ports:
-      - '${FORWARD_MAILPIT_PORT:-8025}:8025'
+      - "${FORWARD_MAILPIT_PORT:-8025}:8025"
     networks:
       - devxhub
     restart: unless-stopped

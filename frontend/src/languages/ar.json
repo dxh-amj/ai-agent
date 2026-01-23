@@ -1,32 +1,352 @@
 {
+  "entities": {
+    "user": "مستخدم",
+    "role": "دور",
+    "company": "شركة",
+    "provider": "مزود",
+    "navigation": "التنقل",
+    "menu": "قائمة",
+    "plan_duration": "مدة الخطة",
+    "subscription": "الاشتراك",
+    "subscription_plans": "خطط الاشتراك"
+  },
+  "entities_plural": {
+    "users": "مستخدمين",
+    "roles": "أدوار",
+    "companies": "شركات",
+    "providers": "مزودين",
+    "navigations": "قوائم",
+    "menus": "قوائم"
+  },
   "common": {
-    "loading": "جارٍ التحميل...",
-    "error": "خطأ",
-    "success": "نجاح",
-    "cancel": "إلغاء",
+    "yes": "نعم",
+    "no": "لا",
+    "n_a": "غير متوفر",
+    "loading": "تحميل...",
+    "saving": "جاري الحفظ...",
     "save": "حفظ",
+    "cancel": "إلغاء",
+    "update": "تحديث",
+    "close": "إغلاق",
+    "back": "رجوع",
+    "see_more": "عرض المزيد",
+    "see_less": "عرض أقل",
+    "agree": "موافق",
+    "disagree": "غير موافق",
+    "upload_logo": "تحميل الشعار",
+    "no_data_available": "لا توجد بيانات متاحة",
+    "selected": "محدد",
+    "all": "الكل"
+  },
+  "crud_actions": {
+    "create": "إنشاء {{entity}}",
+    "update": "تحديث {{entity}}",
+    "delete": "حذف {{entity}}",
+    "view": "عرض {{entity}}",
+    "list": "قائمة {{entity}}",
+    "details": "تفاصيل {{entity}}",
+    "manage": "إدارة {{entity}}",
+    "edit": "تعديل {{entity}}",
+    "created_successfully": "تم إنشاء {{entity}} بنجاح",
+    "updated_successfully": "تم تحديث {{entity}} بنجاح",
+    "deleted_successfully": "تم حذف {{entity}} بنجاح",
+    "saved_successfully": "تم حفظ {{entity}} بنجاح",
+    "not_found": "{{entity}} غير موجود",
+    "to_create_please_fill_out_the_required_fields": "لإنشاء {{entity}} جديد، يرجى ملء الحقول المطلوبة أدناه.",
+    "to_update_please_fill_out_the_required_fields": "لتحديث تفاصيل {{entity}}، يرجى ملء الحقول المطلوبة أدناه.",
+    "to_manage_edit_and_save_from_here": "لإدارة {{entities}} الخاصة بك، قم بالتحرير والحفظ من هنا."
+  },
+  "breadcrumb": {
+    "home": "الرئيسية",
+    "user": "المستخدم"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "dashboard": "لوحة التحكم",
+    "administration": "الإدارة",
+    "manage_users": "إدارة المستخدمين",
+    "manage_roles": "إدارة الأدوار",
+    "manage_company": "إدارة الشركة",
+    "manage_companies": "إدارة الشركات",
+    "manage_integrations": "إدارة التكامل",
+    "user_activity_log": "سجل نشاط المستخدم",
+    "company": "الشركة",
+    "settings": "الإعدادات",
+    "sidebar": "الشريط الجانبي",
+    "account_settings": "إعدادات الحساب",
+    "manage_plan_durations": "إدارة فترات الخطة",
+    "manage_subscription_plans": "إدارة خطط الاشتراك",
+    "upgrade_subscription": "ترقية الاشتراك",
+    "payment": "الدفع",
+    "services": "الخدمات"
+  },
+  "fields": {
+    "select": "تحديد",
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "email_address": "عنوان البريد الإلكتروني",
+    "first_name": "الاسم الأول",
+    "last_name": "اسم العائلة",
+    "username": "اسم المستخدم",
+    "password": "كلمة المرور",
+    "confirm_password": "تأكيد كلمة المرور",
+    "current_password": "كلمة المرور الحالية",
+    "new_password": "كلمة المرور الجديدة",
+    "group": "المجموعة",
+    "groups": "المجموعات",
+    "user_group": "مجموعة المستخدم",
+    "account_status": "حالة الحساب",
+    "availability": "التوفر",
+    "code": "الرمز",
+    "parent": "الأب",
+    "route": "المسار",
+    "route_path": "مسار التوجيه",
+    "actions": "الإجراءات",
+    "description": "الوصف",
+    "status": "الحالة",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "deleted": "محذوف",
+    "available": "متاح",
+    "unavailable": "غير متاح",
+    "online": "متصل",
+    "offline": "غير متصل",
+    "timestamp": "الطابع الزمني",
+    "source_ip": "عنوان IP المصدر",
+    "author": "المؤلف",
+    "method": "الطريقة",
+    "url": "رابط URL",
+    "query_string": "سلسلة الاستعلام",
+    "company": "الشركة",
+    "city": "المدينة",
+    "country": "الدولة",
+    "logo": "الشعار",
+    "mobile_no": "رقم الجوال",
+    "website": "الموقع الإلكتروني",
+    "short_name": "الاسم المختصر",
+    "slogan": "الشعار",
+    "phone": "الهاتف",
+    "phone_no": "رقم الهاتف",
+    "state": "الولاية",
+    "language_key": "مفتاح اللغة",
+    "language": "اللغة",
+    "date_of_birth": "تاريخ الميلاد",
+    "gender": "الجنس",
+    "designation": "المسمى الوظيفي",
+    "address": "العنوان",
+    "timezone": "المنطقة الزمنية",
+    "provider_name": "اسم المزود",
+    "provider_type": "نوع المزود",
+    "email_verified": "البريد الإلكتروني موثق",
+    "phone_verified": "الهاتف موثق",
+    "date_joined": "تاريخ الانضمام",
+    "last_login": "آخر تسجيل دخول",
+    "duration": "المدة",
+    "price": "السعر",
+    "plan_duration": "مدة الخطة",
+    "plan_durations": "مدد الخطة",
+    "plan_cycle": "دورة الخطة",
+    "free_trial": "تجربة مجانية",
+    "available_features": "الميزات المتاحة",
+    "plan_points": "نقاط الخطة",
+    "plan_point": "نقطة الخطة",
+    "add_plan_point": "إضافة نقطة خطة",
+    "unlimited": "غير محدود",
+    "limited": "محدود",
+    "max_user_limit": "الحد الأقصى للمستخدمين"
+  },
+  "button": {
+    "check_all": "التحقق من الكل",
+    "uncheck_all": "إلغاء تحديد الكل",
+    "settings": "الإعدادات",
+    "create": "إنشاء",
+    "cancel": "إلغاء",
+    "loading": "تحميل...",
+    "update": "تحديث",
+    "agree": "موافق",
+    "disagree": "غير موافق",
+    "choose_icon": "اختر الأيقونة",
+    "reset": "إعادة تعيين",
+    "save": "حفظ",
+    "upload": "تحميل",
+    "logout": "تسجيل الخروج",
+    "copy": "نسخ",
+    "done": "تم",
+    "continue": "متابعة",
+    "send_verification_code": "إرسال رمز التحقق",
+    "verify_code": "تحقق من الرمز",
+    "connect": "اتصل",
+    "disconnect": "قطع الاتصال",
     "delete": "حذف",
     "edit": "تعديل",
-    "create": "إنشاء",
-    "search": "بحث",
-    "submit": "إرسال",
-    "back": "رجوع",
-    "next": "التالي",
-    "yes": "نعم",
-    "no": "لا"
+    "apply": "تطبيق",
+    "download": "تحميل",
+    "create_duration": "إنشاء مدة"
   },
-  "auth": {
-    "login": "تسجيل الدخول",
-    "register": "التسجيل",
-    "logout": "تسجيل الخروج",
-    "email": "البريد الإلكتروني",
-    "password": "كلمة المرور",
-    "confirmPassword": "تأكيد كلمة المرور",
-    "forgotPassword": "نسيت كلمة المرور؟",
-    "rememberMe": "تذكرني",
-    "signIn": "تسجيل الدخول",
-    "signUp": "إنشاء حساب",
-    "firstName": "الاسم الأول",
-    "lastName": "اسم العائلة"
+  "tooltips": {
+    "create_entity": "إنشاء {{entity}}",
+    "update_entity": "تحديث {{entity}}",
+    "delete_entity": "حذف {{entity}}",
+    "view_entity_details": "عرض تفاصيل {{entity}}",
+    "manage_permissions": "إدارة الصلاحيات",
+    "update_permissions": "تحديث الصلاحيات",
+    "copy_all_codes": "نسخ جميع الرموز",
+    "download": "تحميل",
+    "settings": "الإعدادات",
+    "add_plan_duration": "إضافة مدة الخطة",
+    "remove_plan_point": "إزالة نقطة الخطة"
+  },
+  "filters": {
+    "start_date": "تاريخ البداية",
+    "end_date": "تاريخ النهاية",
+    "select_date_range": "حدد نطاق التاريخ",
+    "search_entities": "البحث عن {{entities}}...",
+    "no_entities_found": "لم يتم العثور على {{entities}}",
+    "loading_entities": "جاري تحميل {{entities}}..."
+  },
+  "table": {
+    "column_settings": "إدارة رؤية الأعمدة",
+    "column_settings_description": "حدد الأعمدة المراد عرضها في الجدول."
+  },
+  "form": {
+    "phone_number": "رقم الهاتف",
+    "phone_number_format_help": "يرجى إدخال رقم هاتف صحيح مع رمز الدولة (مثال: +1234567890)",
+    "verification_code": "رمز التحقق",
+    "unsaved_changes_title": "تغييرات غير محفوظة",
+    "unsaved_changes_message": "لديك تغييرات غير محفوظة. هل أنت متأكد من أنك تريد إغلاق هذه النافذة؟ سيتم فقدان جميع التغييرات غير المحفوظة."
+  },
+  "placeholders": {
+    "search": "بحث...",
+    "choose_a_parent": "اختر الأب",
+    "choose_a_timezone": "اختر المنطقة الزمنية",
+    "choose_a_country": "اختر الدولة",
+    "select_entity": "حدد {{entity}}",
+    "enter_limit": "أدخل الحد"
+  },
+  "pagination": {
+    "reload": "إعادة تحميل",
+    "rows": "الصفوف",
+    "page": "الصفحة",
+    "go_to_page": "اذهب إلى الصفحة"
+  },
+  "date_range": {
+    "today": "اليوم",
+    "yesterday": "أمس",
+    "last_7_days": "آخر 7 أيام",
+    "last_30_days": "آخر 30 يوم",
+    "this_month": "هذا الشهر",
+    "last_month": "الشهر الماضي",
+    "custom_range": "نطاق مخصص"
+  },
+  "validation": {
+    "field_is_required": "{{field}} مطلوب",
+    "field_must_be_number": "{{field}} يجب أن يكون رقمًا",
+    "field_must_be_integer": "{{field}} يجب أن يكون عددًا صحيحًا",
+    "field_must_be_positive": "{{field}} يجب أن يكون رقمًا موجبًا",
+    "field_must_be_at_least": "{{field}} يجب أن يكون {{min}} على الأقل",
+    "field_must_be_valid_email": "{{field}} يجب أن يكون بريد إلكتروني صالح",
+    "field_must_be_at_least_min_characters": "{{field}} يجب أن يكون {{min}} أحرف على الأقل",
+    "field_cannot_exceed_max_characters": "{{field}} لا يمكن أن يتجاوز {{max}} حرف",
+    "passwords_must_match": "كلمات المرور يجب أن تتطابق",
+    "at_least_one_item_required": "مطلوب {{item}} واحد على الأقل",
+    "required": "هذا الحقل مطلوب"
+  },
+  "messages": {
+    "success": {
+      "entity_has_been_successfully_created": "تم إنشاء {{entity}} بنجاح.",
+      "entity_has_been_successfully_updated": "تم تحديث {{entity}} بنجاح.",
+      "entity_has_been_successfully_deleted": "تم حذف {{entity}} بنجاح.",
+      "copied_to_clipboard": "تم النسخ إلى الحافظة!"
+    },
+    "error": {
+      "failed_to_action_entity": "فشل في {{action}} {{entity}}.",
+      "something_went_wrong": "حدث خطأ ما!"
+    }
+  },
+  "status": {
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "pending": "قيد الانتظار",
+    "deleted": "محذوف",
+    "online": "متصل",
+    "offline": "غير متصل"
+  },
+  "descriptions": {
+    "are_you_sure_you_want_to_delete_this_entity": "هل أنت متأكد أنك تريد حذف {{entity}}؟",
+    "confirm_deletion_of_entity": "تأكيد حذف {{entity}}",
+    "to_create_a_new_entity_please_complete_the_form_below": "لإنشاء {{entity}} جديد، يرجى إكمال النموذج أدناه.",
+    "to_update_this_entity_please_modify_the_form_below": "لتحديث {{entity}}، يرجى تعديل النموذج أدناه.",
+    "to_manage_your_entities_edit_and_save_from_here": "لإدارة {{entities}}، قم بالتعديل والحفظ من هنا."
+  },
+  "information_sections": {
+    "basic_information": "المعلومات الأساسية",
+    "contact_information": "معلومات الاتصال",
+    "location_information": "معلومات الموقع",
+    "account_status": "حالة الحساب"
+  },
+  "permissions": {
+    "view": "عرض",
+    "create": "إنشاء",
+    "update": "تحديث",
+    "delete": "حذف",
+    "all": "جميع الصلاحيات"
+  },
+  "i18n_toggle": {
+    "show_translation_keys": "عرض مفاتيح الترجمة",
+    "toggle_between_keys_and_translations": "التبديل بين المفاتيح والترجمات"
+  },
+  "theme_settings": {
+    "settings": "الإعدادات",
+    "light": "فاتح",
+    "dark": "داكن",
+    "ltr": "من اليسار إلى اليمين",
+    "rtl": "من اليمين إلى اليسار"
+  },
+  "icon_modal": {
+    "select_an_icon": "حدد أيقونة",
+    "search_icons": "البحث عن أيقونات..."
+  },
+  "pages": {
+    "dashboard": {
+      "total_user": "إجمالي المستخدمين",
+      "active_user": "المستخدمون النشطون",
+      "no_data_available": "لا توجد بيانات متاحة"
+    },
+    "user_management": {
+      "user_list": "قائمة المستخدمين",
+      "user_details": "تفاصيل المستخدم",
+      "user_permissions": "صلاحيات المستخدم"
+    },
+    "role_management": {
+      "role_list": "قائمة الأدوار"
+    },
+    "company_details": {
+      "company_not_found": "الشركة غير موجودة",
+      "title": "تفاصيل الشركة",
+      "subtitle": "عرض معلومات وتفاصيل الشركة",
+      "basic_information": "المعلومات الأساسية",
+      "contact_information": "معلومات الاتصال",
+      "location_information": "معلومات الموقع"
+    },
+    "account_settings": {
+      "account": "الحساب",
+      "change_password": "تغيير كلمة المرور",
+      "preferences": "التفضيلات",
+      "title": "ملفي الشخصي"
+    },
+    "subscription": {
+      "choose_your_plan": "اختر خطتك",
+      "select_the_perfect_plan": "اختر الخطة المثالية لاحتياجاتك",
+      "included_features": "الميزات المضمنة",
+      "no_features_available": "لا توجد ميزات متاحة",
+      "current_plan": "الخطة الحالية",
+      "trial_expired": "انتهت فترة التجربة",
+      "start_trial": "ابدأ النسخة التجريبية المجانية",
+      "get_plan": "احصل على {{planName}}",
+      "no_subscription_plans_available": "لا توجد خطط اشتراك متاحة"
+    },
+    "subscription_management": {
+      "manage_subscription_plans_and_billing": "إدارة خطط الاشتراك والتسعير ودورات الفواتير"
+    }
   }
 }

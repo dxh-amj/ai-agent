@@ -1,48 +1,51 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import toast from "react-hot-toast";
 
-import { verifyEmail } from "./services/VerifyEmail";
+import { useRouter } from "next/navigation";
 
-import type { VerifyEmailDTO } from "./types";
+import { toast } from "sonner";
+
+import { useVerifyEmail } from "@/services/auth";
+
+import type { VerifyEmailDTO } from "../types";
 
 export const useTwoSteps = (email: string) => {
   const router = useRouter();
+  const { mutate, isPending } = useVerifyEmail();
+  const [isDisabled, setIsDisabled] = useState(false);
   const [otp, setOtp] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleVerifyEmail = async () => {
-    if (!email || !otp || otp.length !== 6) {
-      toast.error("Please enter a valid 6-digit code");
+  const handleVerifyEmail = () => {
+    const OTP_LENGTH = 6;
+    if (otp.length < OTP_LENGTH) {
+      toast.error("please enter a valid 6 digit OTP");
       return;
     }
 
-    setIsLoading(true);
+    const values: VerifyEmailDTO = {
+      email,
+      code: otp,
+      type: "email_otp",
+    };
 
-    try {
-      const data: VerifyEmailDTO = {
-        email,
-        otp,
-        type: "email_otp"
-      };
-
-      await verifyEmail(data);
-
-      toast.success("Email verified successfully!");
-      router.push("/auth/login");
-    } catch (error) {
-      toast.error("Invalid verification code. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
+    mutate(values, {
+      onSuccess: () => {
+        setOtp("");
+        toast.success("email verification has been successfully done.");
+        router.push(`/auth/login`);
+        setIsDisabled(true);
+      },
+      onError: () => {
+        setIsDisabled(false);
+      },
+    });
   };
 
   return {
+    handleVerifyEmail,
+    isLoading: isPending || isDisabled,
     otp,
     setOtp,
-    isLoading,
-    handleVerifyEmail
   };
 };
