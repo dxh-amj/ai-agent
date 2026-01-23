@@ -10,6 +10,11 @@ export interface Agent extends LandingAgent {
     content: string;
   }>;
   category: "Sales" | "Support" | "Operations" | "Marketing" | "Analytics";
+  // Visual properties
+  color: string;
+  bgColor: string;
+  borderColor: string;
+  icon: string;
 }
 
 export const agents: Agent[] = [

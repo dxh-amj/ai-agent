@@ -241,9 +241,9 @@ export const BentoGridSection = () => {
             </div>
 
             {/* Bento Grid Content */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border border-slate-200 rounded-2xl overflow-hidden bg-white">
+            <div className="grid grid-cols-1 md:grid-cols-2 border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm">
               {/* Top Left - Smart Agent Orchestration */}
-              <div className="border-b md:border-r border-slate-300 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+              <div className="border-b md:border-r border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
                     Smart. Simple. Brilliant.
@@ -259,7 +259,7 @@ export const BentoGridSection = () => {
               </div>
 
               {/* Top Right - Work in sync */}
-              <div className="border-b border-slate-300 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+              <div className="border-b border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
                     Your agents, in sync
@@ -275,7 +275,7 @@ export const BentoGridSection = () => {
               </div>
 
               {/* Bottom Left - Effortless integration */}
-              <div className="md:border-r border-slate-300 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
+              <div className="md:border-r border-slate-200 p-6 sm:p-8 lg:p-12 flex flex-col gap-6">
                 <div>
                   <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-2">
                     Effortless integration
