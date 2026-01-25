@@ -1,9 +1,12 @@
 "use client";
 
-import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
+import * as React from "react";
+import { useTranslation } from "react-i18next";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslation } from "react-i18next";
+
+import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
 
 import {
   Sidebar,
@@ -52,19 +55,23 @@ export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
 
   return (
     <Sidebar collapsible="icon" className="border-r border-border bg-sidebar">
-      <SidebarHeader className="border-b border-border">
+      <SidebarHeader className="border-b border-border p-0">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
-              <Link href="/dashboard">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-                  <IconRobot className="size-4" />
+            <SidebarMenuButton
+              size="lg"
+              asChild
+              className="h-16 px-4 hover:bg-transparent active:bg-transparent"
+            >
+              <Link href="/dashboard" className="flex items-center gap-3">
+                <div className="flex aspect-square size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
+                  <IconRobot className="size-5" />
                 </div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold text-foreground">
+                <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
+                  <span className="truncate font-bold text-foreground">
                     {t("sidebar.app_name")}
                   </span>
-                  <span className="truncate text-xs text-muted-foreground">
+                  <span className="truncate text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
                     {t("sidebar.app_tagline")}
                   </span>
                 </div>
@@ -76,7 +83,7 @@ export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
 
       <SidebarContent className="bg-sidebar">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-muted-foreground">
+          <SidebarGroupLabel className="text-muted-foreground font-semibold px-2 mb-2">
             {t("entities.navigation")}
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -91,11 +98,11 @@ export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
                       isActive={isActive}
                       className={
                         isActive
-                          ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
-                          : "text-foreground hover:bg-accent hover:text-accent-foreground"
+                          ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground font-medium"
+                          : "text-foreground/70 hover:bg-accent hover:text-accent-foreground"
                       }
                     >
-                      <Link href={item.url}>
+                      <Link href={item.url} className="flex items-center gap-3">
                         <item.icon className="size-4" />
                         <span>{t(item.titleKey)}</span>
                       </Link>
@@ -108,7 +115,7 @@ export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-border">
+      <SidebarFooter className="border-t border-border p-2">
         <SidebarProfile user={user} isLoading={isLoading} />
       </SidebarFooter>
     </Sidebar>

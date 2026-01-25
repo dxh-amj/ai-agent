@@ -98,7 +98,7 @@ const TwoStepsForm = () => {
   return (
     <div className="space-y-6">
       <div>
-        <Label htmlFor="otp-0" className="mb-3 block text-center">
+        <Label htmlFor="otp-0" className="mb-1.5 block text-center">
           Enter your 6-digit security code
         </Label>
         <div className="flex space-x-2 justify-center" onPaste={handlePaste}>

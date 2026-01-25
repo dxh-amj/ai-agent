@@ -92,6 +92,17 @@
     "content_title": "Contenu du tableau de bord",
     "content_description": "Ceci est votre tableau de bord. Plus de contenu sera ajouté bientôt."
   },
+  "auth": {
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "sign_up": "S'inscrire",
+    "forgot_password": "Mot de passe oublié"
+  },
+  "profile": {
+    "account_settings": "Paramètres du compte",
+    "my_profile": "Mon profil",
+    "n/a": "N/A"
+  },
   "fields": {
     "select": "Sélectionner",
     "name": "Nom",
@@ -263,7 +274,15 @@
     "select_a_entity": "Sélectionner un {{entity}}",
     "no_entities_found": "Aucun {{entities}} trouvé",
     "type_to_search": "Tapez pour rechercher",
-    "enter_limit": "Entrez la limite"
+    "enter_limit": "Entrez la limite",
+    "enter_first_name": "Entrez le prénom",
+    "enter_last_name": "Entrez le nom",
+    "enter_phone": "Entrez le numéro de téléphone",
+    "enter_designation": "Entrez la désignation",
+    "enter_address": "Entrez votre adresse",
+    "select_gender": "Sélectionner le genre",
+    "select_timezone": "Sélectionner le fuseau horaire",
+    "select_country": "Sélectionner le pays"
   },
   "pagination": {
     "reload": "Recharger",
@@ -476,6 +495,10 @@
       "personal_details": "Détails personnels",
       "to_change_your_personal_details_edit_and_save_from_here": "Pour modifier vos détails personnels, modifiez et enregistrez à partir d'ici",
       "to_change_your_password_please_confirm_here": "Pour changer votre mot de passe, veuillez confirmer ici",
+      "manage_your_account_settings": "Gérez les paramètres de votre compte et vos préférences",
+      "email_cannot_be_changed": "L'email ne peut pas être modifié",
+      "additional_information": "Informations supplémentaires",
+      "location_information": "Informations de localisation",
       "user_profile": "Profil utilisateur",
       "title": "Mon profil",
       "subtitle": "Paramètres du compte",

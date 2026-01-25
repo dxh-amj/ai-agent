@@ -2,7 +2,8 @@
 
 import { useFormik } from "formik";
 
-import { Button, FormInput, PasswordInput } from "@/shared/ui";
+import { CustomPasswordInput, CustomTextField } from "@/shared/form-elements";
+import { Button, Label } from "@/shared/ui";
 
 import { SocialButtons } from "../social-buttons/SocialButtons";
 
@@ -47,63 +48,85 @@ export const RegisterForm = ({ title, subtitle, subtext }: RegisterFormProps) =>
 
       <form onSubmit={formik.handleSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
-          <FormInput
-            label="First Name"
-            type="text"
-            id="firstName"
-            name="firstName"
-            placeholder="John"
-            value={formik.values.firstName}
+          <div>
+            <Label htmlFor="firstName" className="mb-1.5 block">
+              First Name
+            </Label>
+            <CustomTextField
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="John"
+              value={formik.values.firstName}
+              onChange={formik.handleChange}
+              error={formik.submitCount > 0 && Boolean(formik.errors.firstName)}
+              helperText={formik.submitCount > 0 ? (formik.errors.firstName as string) : undefined}
+            />
+          </div>
+          <div>
+            <Label htmlFor="lastName" className="mb-1.5 block">
+              Last Name
+            </Label>
+            <CustomTextField
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Doe"
+              value={formik.values.lastName}
+              onChange={formik.handleChange}
+              error={formik.submitCount > 0 && Boolean(formik.errors.lastName)}
+              helperText={formik.submitCount > 0 ? (formik.errors.lastName as string) : undefined}
+            />
+          </div>
+        </div>
+
+        <div>
+          <Label htmlFor="email" className="mb-1.5 block">
+            Email
+          </Label>
+          <CustomTextField
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            value={formik.values.email}
             onChange={formik.handleChange}
-            error={formik.submitCount > 0 && Boolean(formik.errors.firstName)}
-            helperText={formik.submitCount > 0 ? formik.errors.firstName : undefined}
-          />
-          <FormInput
-            label="Last Name"
-            type="text"
-            id="lastName"
-            name="lastName"
-            placeholder="Doe"
-            value={formik.values.lastName}
-            onChange={formik.handleChange}
-            error={formik.submitCount > 0 && Boolean(formik.errors.lastName)}
-            helperText={formik.submitCount > 0 ? formik.errors.lastName : undefined}
+            error={formik.submitCount > 0 && Boolean(formik.errors.email)}
+            helperText={formik.submitCount > 0 ? (formik.errors.email as string) : undefined}
           />
         </div>
 
-        <FormInput
-          label="Email"
-          type="email"
-          id="email"
-          name="email"
-          placeholder="you@example.com"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          error={formik.submitCount > 0 && Boolean(formik.errors.email)}
-          helperText={formik.submitCount > 0 ? formik.errors.email : undefined}
-        />
+        <div>
+          <Label htmlFor="password" className="mb-1.5 block">
+            Password
+          </Label>
+          <CustomPasswordInput
+            id="password"
+            name="password"
+            placeholder="Create a password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.submitCount > 0 && Boolean(formik.errors.password)}
+            helperText={formik.submitCount > 0 ? (formik.errors.password as string) : undefined}
+          />
+        </div>
 
-        <PasswordInput
-          label="Password"
-          id="password"
-          name="password"
-          placeholder="Create a password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          error={formik.submitCount > 0 && Boolean(formik.errors.password)}
-          helperText={formik.submitCount > 0 ? formik.errors.password : undefined}
-        />
-
-        <PasswordInput
-          label="Confirm Password"
-          id="confirmPassword"
-          name="confirmPassword"
-          placeholder="Confirm your password"
-          value={formik.values.confirmPassword}
-          onChange={formik.handleChange}
-          error={formik.submitCount > 0 && Boolean(formik.errors.confirmPassword)}
-          helperText={formik.submitCount > 0 ? formik.errors.confirmPassword : undefined}
-        />
+        <div>
+          <Label htmlFor="confirmPassword" className="mb-1.5 block">
+            Confirm Password
+          </Label>
+          <CustomPasswordInput
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm your password"
+            value={formik.values.confirmPassword}
+            onChange={formik.handleChange}
+            error={formik.submitCount > 0 && Boolean(formik.errors.confirmPassword)}
+            helperText={
+              formik.submitCount > 0 ? (formik.errors.confirmPassword as string) : undefined
+            }
+          />
+        </div>
 
         <Button
           type="submit"

@@ -92,6 +92,17 @@
     "content_title": "Dashboard Content",
     "content_description": "This is your dashboard. More content will be added here soon."
   },
+  "auth": {
+    "logout": "Logout",
+    "login": "Login",
+    "sign_up": "Sign Up",
+    "forgot_password": "Forgot Password"
+  },
+  "profile": {
+    "account_settings": "Account Settings",
+    "my_profile": "My Profile",
+    "n/a": "N/A"
+  },
   "fields": {
     "select": "Select",
     "name": "Name",
@@ -263,7 +274,15 @@
     "select_a_entity": "Select a {{entity}}",
     "no_entities_found": "No {{entities}} found",
     "type_to_search": "Type to search",
-    "enter_limit": "Enter limit"
+    "enter_limit": "Enter limit",
+    "enter_first_name": "Enter first name",
+    "enter_last_name": "Enter last name",
+    "enter_phone": "Enter phone number",
+    "enter_designation": "Enter designation",
+    "enter_address": "Enter your address",
+    "select_gender": "Select gender",
+    "select_timezone": "Select timezone",
+    "select_country": "Select country"
   },
   "pagination": {
     "reload": "Reload",
@@ -476,6 +495,10 @@
       "personal_details": "Personal Details",
       "to_change_your_personal_details_edit_and_save_from_here": "To change your personal details, edit and save from here",
       "to_change_your_password_please_confirm_here": "To change your password please confirm here",
+      "manage_your_account_settings": "Manage your account settings and preferences",
+      "email_cannot_be_changed": "Email cannot be changed",
+      "additional_information": "Additional Information",
+      "location_information": "Location Information",
       "user_profile": "User Profile",
       "title": "My Profile",
       "subtitle": "Account Settings",
