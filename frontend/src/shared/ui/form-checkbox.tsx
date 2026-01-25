@@ -27,4 +27,4 @@ export const FormCheckbox = ({ label, className, id, ...props }: FormCheckboxPro
       </span>
     </label>
   );
-}
+};

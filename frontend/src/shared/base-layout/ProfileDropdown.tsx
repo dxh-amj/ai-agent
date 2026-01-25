@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -5,6 +7,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { IconLogout, IconSettings, IconUser } from "@tabler/icons-react";
+import { getCookie } from "cookies-next";
 import { toast } from "sonner";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
@@ -18,32 +21,32 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
+import { Skeleton } from "@/shared/ui/skeleton";
+import { useLogout } from "@/utils/auth";
+import { clearStorage } from "@/utils/clearStorage";
+import { REFRESH_TOKEN } from "@/utils/constants";
 
-interface User {
-  firstName: string;
-  lastName: string;
-  email: string;
-  profile?: {
-    profilePictureUrl?: string;
-    designation?: string;
-  };
-}
+import type { UserProfile } from "@/shared/types";
 
 interface ProfileDropdownProps {
-  user?: User;
+  user?: UserProfile | null;
+  isLoading?: boolean;
 }
 
-export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
+export const ProfileDropdown = ({ user, isLoading }: ProfileDropdownProps) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const router = useRouter();
   const { t } = useTranslation();
+  const token = getCookie(REFRESH_TOKEN);
+  const { mutateAsync, isPending } = useLogout();
 
   const handleLogout = async () => {
-    if (isDisabled) return;
+    if (isDisabled || isPending) return;
 
     setIsDisabled(true);
     try {
-      // TODO: Implement actual logout logic
+      await mutateAsync(token);
+      clearStorage();
       toast.success("See you soon! Sign Out successful.");
       router.push("/auth/login");
     } catch (error) {
@@ -51,6 +54,10 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
       setIsDisabled(false);
     }
   };
+
+  if (isLoading) {
+    return <Skeleton className="h-9 w-9 rounded-full" />;
+  }
 
   if (!user) {
     return (
@@ -70,7 +77,7 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-9 w-9 rounded-full">
           <Avatar className="h-9 w-9">
-            <AvatarImage src={user.profile?.profilePictureUrl} alt={name} />
+            <AvatarImage src={user.profilePictureUrl || undefined} alt={name} />
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
         </Button>
@@ -94,7 +101,7 @@ export const ProfileDropdown = ({ user }: ProfileDropdownProps) => {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={handleLogout}
-          disabled={isDisabled}
+          disabled={isDisabled || isPending}
           className="cursor-pointer text-red-600 focus:text-red-600"
         >
           <IconLogout className="mr-2 h-4 w-4" />

@@ -8,15 +8,15 @@ const DashboardPage = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">{t("dashboard.title")}</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+          {t("dashboard.title")}
+        </h1>
         <p className="text-muted-foreground">{t("dashboard.welcome")}</p>
       </div>
 
-      <div className="rounded-lg border bg-card p-8 text-card-foreground shadow-sm">
-        <h2 className="text-xl font-semibold">Dashboard Content</h2>
-        <p className="mt-2 text-muted-foreground">
-          This is your dashboard. More content will be added here soon.
-        </p>
+      <div className="rounded-lg border border-border bg-card p-8 text-card-foreground shadow-sm">
+        <h2 className="text-xl font-semibold text-foreground">{t("dashboard.content_title")}</h2>
+        <p className="mt-2 text-muted-foreground">{t("dashboard.content_description")}</p>
       </div>
     </div>
   );

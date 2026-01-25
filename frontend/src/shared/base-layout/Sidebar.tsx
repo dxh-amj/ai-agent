@@ -1,65 +1,118 @@
-import { useState } from "react";
+"use client";
 
-import { cn } from "@/lib/utils";
-import { Sheet, SheetContent } from "@/shared/ui/sheet";
+import { useTranslation } from "react-i18next";
 
-import { SidebarItems } from "./SidebarItems";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/shared/ui/sidebar";
+
 import { SidebarProfile } from "./SidebarProfile";
 
-interface SidebarProps {
-  user?: any;
-  mobileOpen?: boolean;
-  setMobileOpen?: (open: boolean) => void;
+import type { UserProfile } from "@/shared/types";
+
+interface AppSidebarProps {
+  user?: UserProfile | null;
+  isLoading?: boolean;
 }
 
-export const Sidebar = ({ user, mobileOpen, setMobileOpen }: SidebarProps) => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+// Menu items with translation keys
+const menuItems = [
+  {
+    titleKey: "navigation.dashboard",
+    url: "/",
+    icon: IconLayoutDashboard,
+  },
+  {
+    titleKey: "navigation.agents",
+    url: "/agents",
+    icon: IconRobot,
+  },
+  {
+    titleKey: "navigation.settings",
+    url: "/settings",
+    icon: IconSettings,
+  },
+];
+
+export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
+  const { t } = useTranslation();
+  const pathname = usePathname();
 
   return (
-    <>
-      <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-        <SheetContent side="left" className="w-64 p-0">
-          <div className="flex h-16 items-center border-b px-4">
-            <h1 className="text-xl font-bold">AI Agent</h1>
-          </div>
-          <div className="flex-1 overflow-y-auto mt-4">
-            <SidebarItems />
-          </div>
-          <div className="border-t">
-            <SidebarProfile user={user} />
-          </div>
-        </SheetContent>
-      </Sheet>
+    <Sidebar collapsible="icon" className="border-r border-border bg-sidebar">
+      <SidebarHeader className="border-b border-border">
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <Link href="/">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <IconRobot className="size-4" />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold text-foreground">
+                    {t("sidebar.app_name")}
+                  </span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    {t("sidebar.app_tagline")}
+                  </span>
+                </div>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
 
-      {/* Desktop Sidebar */}
-      <aside
-        className={cn(
-          "hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col lg:border-r lg:bg-background lg:transition-all lg:duration-300",
-          isCollapsed ? "lg:w-16" : "lg:w-64"
-        )}
-      >
-        {/* Logo */}
-        <div className="flex h-16 items-center border-b px-4">
-          {!isCollapsed && <h1 className="text-xl font-bold">AI Agent</h1>}
-        </div>
+      <SidebarContent className="bg-sidebar">
+        <SidebarGroup>
+          <SidebarGroupLabel className="text-muted-foreground">
+            {t("entities.navigation")}
+          </SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {menuItems.map((item) => {
+                const isActive = pathname === item.url;
+                return (
+                  <SidebarMenuItem key={item.titleKey}>
+                    <SidebarMenuButton
+                      asChild
+                      tooltip={t(item.titleKey)}
+                      isActive={isActive}
+                      className={
+                        isActive
+                          ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
+                          : "text-foreground hover:bg-accent hover:text-accent-foreground"
+                      }
+                    >
+                      <Link href={item.url}>
+                        <item.icon className="size-4" />
+                        <span>{t(item.titleKey)}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
 
-        {/* Scrollable Menu Area */}
-        <div className="flex-1 overflow-y-auto">
-          <div className="mt-4">
-            <SidebarItems />
-          </div>
-        </div>
-
-        {/* Bottom Profile Section */}
-        <div className="border-t">
-          <SidebarProfile user={user} isCollapsed={isCollapsed} />
-        </div>
-      </aside>
-    </>
+      <SidebarFooter className="border-t border-border">
+        <SidebarProfile user={user} isLoading={isLoading} />
+      </SidebarFooter>
+    </Sidebar>
   );
-};
-
-export const useSidebarToggle = () => {
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
-  return { isMobileOpen, toggleSidebar: () => setIsMobileOpen((prev) => !prev) };
 };

@@ -1,15 +1,15 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { IconLanguage } from "@tabler/icons-react";
 
-import { changeLanguage } from "@/utils/i18n";
+import { IconCheck } from "@tabler/icons-react";
+
+import { Button } from "@/shared/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/shared/ui/dropdown-menu";
-import { Button } from "@/shared/ui/button";
+import { changeLanguage } from "@/utils/i18n";
 
 const languages = [
   { code: "en", name: "English", flag: "🇬🇧" },
@@ -31,8 +31,13 @@ export const LanguageSwitcher = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="relative h-9 w-9">
-          <IconLanguage className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100" />
+        <Button
+          variant="ghost"
+          size="sm"
+          className="flex h-9 items-center gap-2 px-2 text-muted-foreground hover:text-foreground"
+        >
+          <span className="text-lg">{currentLang.flag}</span>
+          <span className="hidden text-sm font-medium sm:inline">{currentLang.name}</span>
           <span className="sr-only">Change language</span>
         </Button>
       </DropdownMenuTrigger>
@@ -44,7 +49,8 @@ export const LanguageSwitcher = () => {
             className="cursor-pointer"
           >
             <span className="mr-2 text-xl">{lang.flag}</span>
-            <span>{lang.name}</span>
+            <span className="flex-1">{lang.name}</span>
+            {lang.code === currentLang.code && <IconCheck className="ml-2 h-4 w-4" />}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

@@ -2,8 +2,8 @@ services:
   web:
     image: caddy:latest
     ports:
-      - '${FORWARD_NEXTJS_PORT:-3000}:3000'
-      - '${FORWARD_API_PORT:-8000}:8000'
+      - "${FORWARD_NEXTJS_PORT:-3000}:3000"
+      - "${FORWARD_API_PORT:-8000}:8000"
     volumes:
       - ../caddy/Caddyfile.local:/etc/caddy/Caddyfile
       - static_data:/var/www/staticfiles
@@ -44,7 +44,7 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U ${DB_USER} -d ${DB_NAME}']
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
       interval: 10s
       retries: 5
       start_period: 30s
@@ -65,7 +65,7 @@ services:
       - pgadmin_data:/var/lib/pgadmin
       - ../pgadmin/servers.json:/pgadmin4/servers.json
     ports:
-      - '${FORWARD_PGADMIN_PORT:-5050}:80'
+      - "${FORWARD_PGADMIN_PORT:-5050}:80"
     depends_on:
       - postgres
     networks:
@@ -75,7 +75,7 @@ services:
   redis:
     image: redis:alpine
     healthcheck:
-      test: ['CMD', 'redis-cli', 'ping']
+      test: ["CMD", "redis-cli", "ping"]
       interval: 10s
       retries: 5
       start_period: 30s
@@ -87,9 +87,9 @@ services:
     restart: unless-stopped
 
   mailpit:
-    image: 'axllent/mailpit:latest'
+    image: "axllent/mailpit:latest"
     ports:
-      - '${FORWARD_MAILPIT_PORT:-8025}:8025'
+      - "${FORWARD_MAILPIT_PORT:-8025}:8025"
     networks:
       - devxhub
     restart: unless-stopped

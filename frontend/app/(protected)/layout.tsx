@@ -1,43 +1,29 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
+import { useUserProfile } from "@/shared/api/userProfile";
 import { Header } from "@/shared/base-layout/Header";
-import { Sidebar } from "@/shared/base-layout/Sidebar";
-
-// Mock user data - replace with actual user data from your auth system
-const mockUser = {
-  firstName: "John",
-  lastName: "Doe",
-  email: "john.doe@example.com",
-  profile: {
-    designation: "Software Developer",
-  },
-};
+import { AppSidebar } from "@/shared/base-layout/Sidebar";
+import { SidebarInset, SidebarProvider } from "@/shared/ui/sidebar";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  // Prefetch user profile immediately to avoid delay on navigation
+  const { data: user, isLoading } = useUserProfile();
 
   return (
-    <div className="flex min-h-screen">
-      {/* Sidebar */}
-      <Sidebar
-        user={mockUser}
-        mobileOpen={isMobileSidebarOpen}
-        setMobileOpen={setIsMobileSidebarOpen}
-      />
-
-      {/* Main Content Area */}
-      <div className="flex flex-1 flex-col lg:pl-64">
+    <SidebarProvider>
+      <AppSidebar user={user} isLoading={isLoading} />
+      <SidebarInset className="bg-background">
         {/* Header */}
-        <Header onMenuClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)} user={mockUser} />
+        <Header user={user} isLoading={isLoading} />
 
         {/* Page Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 bg-background p-6">
           <div className="mx-auto max-w-7xl">{children}</div>
         </main>
-      </div>
-    </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 };
 

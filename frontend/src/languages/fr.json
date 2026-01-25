@@ -79,7 +79,18 @@
     "upgrade_subscriptions": "Améliorer les abonnements",
     "upgrade_subscription": "Améliorer l'abonnement",
     "payment": "Paiement",
-    "services": "Services"
+    "services": "Services",
+    "agents": "Agents"
+  },
+  "sidebar": {
+    "app_name": "AI Agent",
+    "app_tagline": "Plateforme"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bienvenue sur votre tableau de bord",
+    "content_title": "Contenu du tableau de bord",
+    "content_description": "Ceci est votre tableau de bord. Plus de contenu sera ajouté bientôt."
   },
   "fields": {
     "select": "Sélectionner",
