@@ -87,7 +87,7 @@ export const Footer = () => {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm text-slate-600 hover:text-emerald-600 transition-colors"
+                        className="text-sm text-slate-600 hover:text-primary transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -104,7 +104,7 @@ export const Footer = () => {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm text-slate-600 hover:text-emerald-600 transition-colors"
+                        className="text-sm text-slate-600 hover:text-primary transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -121,7 +121,7 @@ export const Footer = () => {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm text-slate-600 hover:text-emerald-600 transition-colors"
+                        className="text-sm text-slate-600 hover:text-primary transition-colors"
                       >
                         {link.label}
                       </Link>
@@ -138,7 +138,7 @@ export const Footer = () => {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="text-sm text-slate-600 hover:text-emerald-600 transition-colors"
+                        className="text-sm text-slate-600 hover:text-primary transition-colors"
                       >
                         {link.label}
                       </Link>

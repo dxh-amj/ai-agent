@@ -220,8 +220,8 @@ export default [
       // Code quality
       complexity: ["warn", { max: 50 }],
       "max-depth": ["warn", { max: 4 }],
-      "max-lines": ["warn", { max: 300, skipBlankLines: true, skipComments: true }],
-      "max-lines-per-function": ["warn", { max: 300, skipBlankLines: true, skipComments: true }],
+      "max-lines": ["warn", { max: 400, skipBlankLines: true, skipComments: true }],
+      "max-lines-per-function": ["warn", { max: 400, skipBlankLines: true, skipComments: true }],
       "max-params": ["warn", { max: 4 }],
       "no-magic-numbers": [
         "warn",

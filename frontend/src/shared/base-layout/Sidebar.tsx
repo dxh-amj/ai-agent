@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 
 import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
 
+import { AgentKitLogo } from "@/shared/ui";
 import {
   Sidebar,
   SidebarContent,
@@ -64,17 +65,7 @@ export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
               className="h-16 px-4 hover:bg-transparent active:bg-transparent"
             >
               <Link href="/dashboard" className="flex items-center gap-3">
-                <div className="flex aspect-square size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
-                  <IconRobot className="size-5" />
-                </div>
-                <div className="grid flex-1 text-left text-sm leading-tight group-data-[collapsible=icon]:hidden">
-                  <span className="truncate font-bold text-foreground">
-                    {t("sidebar.app_name")}
-                  </span>
-                  <span className="truncate text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
-                    {t("sidebar.app_tagline")}
-                  </span>
-                </div>
+                <AgentKitLogo variant="dark" />
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>

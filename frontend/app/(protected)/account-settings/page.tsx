@@ -1,7 +1,21 @@
 "use client";
 
-import { UserAccount } from "@/modules/account-settings";
+import { useTranslation } from "react-i18next";
 
-export default function AccountSettingsPage() {
-  return <UserAccount />;
-}
+import { UserAccount } from "@/modules/account-settings";
+import { PageContainer } from "@/shared/components";
+
+const AccountSettingsPage = () => {
+  const { t } = useTranslation();
+
+  return (
+    <PageContainer
+      title={t("navigation.account_settings")}
+      description={t("pages.account_settings.manage_your_account_settings")}
+    >
+      <UserAccount />
+    </PageContainer>
+  );
+};
+
+export default AccountSettingsPage;
