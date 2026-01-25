@@ -11,11 +11,13 @@ export default function middleware(request: NextRequest) {
   const isOAuthPath = pathname.startsWith("/oauth");
   const isOnboardingPath = pathname.startsWith("/onboarding");
 
+  const isAgentsPath = pathname.startsWith("/agents");
+
   if (pathname === "/" && !token) {
     return NextResponse.redirect(new URL("/onboarding", request.url));
   }
 
-  if (!token && !isAuthPath && !isOAuthPath && !isOnboardingPath) {
+  if (!token && !isAuthPath && !isOAuthPath && !isOnboardingPath && !isAgentsPath) {
     return NextResponse.redirect(new URL("/auth/login", request.url));
   }
 

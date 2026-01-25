@@ -78,7 +78,18 @@
     "manage_subscription_plans": "إدارة خطط الاشتراك",
     "upgrade_subscription": "ترقية الاشتراك",
     "payment": "الدفع",
-    "services": "الخدمات"
+    "services": "الخدمات",
+    "agents": "الوكلاء"
+  },
+  "sidebar": {
+    "app_name": "AI Agent",
+    "app_tagline": "المنصة"
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "welcome": "مرحباً بك في لوحة التحكم",
+    "content_title": "محتوى لوحة التحكم",
+    "content_description": "هذه هي لوحة التحكم الخاصة بك. سيتم إضافة المزيد من المحتوى قريباً."
   },
   "fields": {
     "select": "تحديد",

@@ -2,11 +2,6 @@ import { initReactI18next } from "react-i18next";
 
 import i18n from "i18next";
 
-
-
-
-
-
 // Lazy load language files
 const loadLanguage = async (lang: string) => {
   switch (lang) {

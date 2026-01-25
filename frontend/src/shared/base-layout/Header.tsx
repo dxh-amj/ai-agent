@@ -2,51 +2,36 @@
 
 import { useState } from "react";
 
-import { IconMenu2, IconMoon, IconSun } from "@tabler/icons-react";
+import { IconMoon, IconSun } from "@tabler/icons-react";
 
 import { Button } from "@/shared/ui/button";
+import { Separator } from "@/shared/ui/separator";
+import { SidebarTrigger } from "@/shared/ui/sidebar";
 
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ProfileDropdown } from "./ProfileDropdown";
 
+import type { UserProfile } from "@/shared/types";
+
 interface HeaderProps {
-  onMenuClick?: () => void;
-  user?: any;
+  user?: UserProfile | null;
+  isLoading?: boolean;
 }
 
-export const Header = ({ onMenuClick, user }: HeaderProps) => {
+export const Header = ({ user, isLoading }: HeaderProps) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleTheme = () => {
     setIsDarkMode(!isDarkMode);
-    // TODO: Implement actual theme toggle with your theme system
     document.documentElement.classList.toggle("dark");
   };
 
   return (
-    <header className="sticky top-0 z-30 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <div className="flex h-16 items-center gap-4 px-4">
-        {/* Mobile Menu Button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onMenuClick}
-          className="lg:hidden"
-          aria-label="Toggle menu"
-        >
-          <IconMenu2 size={20} />
-        </Button>
-
-        {/* Desktop Sidebar Toggle */}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={onMenuClick}
-          className="hidden lg:flex"
-          aria-label="Toggle sidebar"
-        >
-          <IconMenu2 size={20} />
-        </Button>
+    <header className="sticky top-0 z-30 border-b border-border bg-background">
+      <div className="flex h-16 items-center gap-2 px-4">
+        {/* Sidebar Toggle */}
+        <SidebarTrigger className="-ml-1 text-foreground hover:bg-accent hover:text-accent-foreground" />
+        <Separator orientation="vertical" className="mr-2 h-4 bg-border" />
 
         {/* Spacer */}
         <div className="flex-1" />
@@ -61,14 +46,14 @@ export const Header = ({ onMenuClick, user }: HeaderProps) => {
             variant="ghost"
             size="icon"
             onClick={toggleTheme}
-            className="text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:bg-accent hover:text-foreground"
             title="Toggle theme"
           >
             {isDarkMode ? <IconSun size={20} /> : <IconMoon size={20} />}
           </Button>
 
           {/* Profile Dropdown */}
-          <ProfileDropdown user={user} />
+          <ProfileDropdown user={user} isLoading={isLoading} />
         </div>
       </div>
     </header>

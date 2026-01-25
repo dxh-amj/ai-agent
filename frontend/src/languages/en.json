@@ -79,7 +79,18 @@
     "upgrade_subscriptions": "Upgrade Subscriptions",
     "upgrade_subscription": "Upgrade Subscription",
     "payment": "Payment",
-    "services": "Services"
+    "services": "Services",
+    "agents": "Agents"
+  },
+  "sidebar": {
+    "app_name": "AI Agent",
+    "app_tagline": "Platform"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome to your dashboard",
+    "content_title": "Dashboard Content",
+    "content_description": "This is your dashboard. More content will be added here soon."
   },
   "fields": {
     "select": "Select",

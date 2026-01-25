@@ -1,10 +1,9 @@
 "use client";
 
+import { deleteCookie, setCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { useRouter } from "next/navigation";
-
-import { deleteCookie, setCookie } from "cookies-next";
 import { toast } from "sonner";
 
 import { useLogin } from "@/utils/auth";

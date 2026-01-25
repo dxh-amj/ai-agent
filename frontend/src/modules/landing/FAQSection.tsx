@@ -1,4 +1,4 @@
-import { type FAQItem,FAQSection as CommonFAQSection } from "@/shared/components";
+import { type FAQItem, FAQSection as CommonFAQSection } from "@/shared/components";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 
 const faqData: FAQItem[] = [
