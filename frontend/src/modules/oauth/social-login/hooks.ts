@@ -30,7 +30,7 @@ const useSocialLoginProcess = () => {
   const { mutate } = useSocialLogin({
     config: {
       onSuccess: () => {
-        router.push("/");
+        router.push("/dashboard");
         toast.success("Welcome! You're now logged in.");
       },
       onError: () => {

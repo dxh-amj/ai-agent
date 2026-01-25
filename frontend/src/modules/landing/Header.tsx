@@ -1,10 +1,17 @@
+"use client";
+
 import Link from "next/link";
+
+import { getCookie } from "cookies-next";
 
 import { AgentKitLogo } from "@/shared/ui/agentkit-logo";
 import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
+import { ASSESS_TOKEN } from "@/utils/constants";
 
 export const Header = () => {
+  const token = getCookie(ASSESS_TOKEN);
+
   return (
     <header className="fixed top-0 z-50 w-full bg-white border-b border-slate-200">
       <div className="flex h-16 w-full">
@@ -27,18 +34,29 @@ export const Header = () => {
             </nav>
 
             <div className="flex items-center gap-3">
-              <Link
-                href="/auth/login"
-                className="text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors"
-              >
-                Sign in
-              </Link>
-              <Button
-                asChild
-                className="bg-primary hover:bg-primary/90 text-white font-medium rounded-lg px-5"
-              >
-                <Link href="/auth/register">Get Started</Link>
-              </Button>
+              {token ? (
+                <Button
+                  asChild
+                  className="bg-primary hover:bg-primary/90 text-white font-medium rounded-lg px-5"
+                >
+                  <Link href="/dashboard">Dashboard</Link>
+                </Button>
+              ) : (
+                <>
+                  <Link
+                    href="/auth/login"
+                    className="text-slate-600 hover:text-slate-900 font-medium text-sm transition-colors"
+                  >
+                    Sign in
+                  </Link>
+                  <Button
+                    asChild
+                    className="bg-primary hover:bg-primary/90 text-white font-medium rounded-lg px-5"
+                  >
+                    <Link href="/auth/register">Get Started</Link>
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </div>

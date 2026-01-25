@@ -13,16 +13,21 @@ export default function middleware(request: NextRequest) {
 
   const isAgentsPath = pathname.startsWith("/agents");
 
-  if (pathname === "/" && !token) {
-    return NextResponse.redirect(new URL("/onboarding", request.url));
+  if (token && (isAuthPath || isOnboardingPath || isOAuthPath)) {
+    return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
-  if (!token && !isAuthPath && !isOAuthPath && !isOnboardingPath && !isAgentsPath) {
+  // Define public paths that don't require token
+  const isPublicPath =
+    pathname === "/" ||
+    isAuthPath ||
+    isOAuthPath ||
+    isOnboardingPath ||
+    isAgentsPath ||
+    pathname.startsWith("/pricing");
+
+  if (!token && !isPublicPath) {
     return NextResponse.redirect(new URL("/auth/login", request.url));
-  }
-
-  if (token && (isAuthPath || isOnboardingPath)) {
-    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();

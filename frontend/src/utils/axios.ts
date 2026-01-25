@@ -11,7 +11,7 @@ import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axio
 
 const handleLogout = () => {
   clearStorage();
-  window.location.replace("/auth/login");
+  window.location.replace("/");
 };
 
 const authRequestInterceptor = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
