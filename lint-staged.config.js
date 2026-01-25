@@ -7,9 +7,13 @@
 
 module.exports = {
   // TypeScript and JavaScript files - Run ESLint and Prettier
+  // TypeScript and JavaScript files - Run ESLint and Prettier
   "**/*.{ts,tsx,js,jsx}": (filenames) => [
     `yarn eslint --fix ${filenames.map((f) => `"${f}"`).join(" ")}`,
     `yarn prettier --write ${filenames.map((f) => `"${f}"`).join(" ")}`,
+    // Run type checking on the whole project via tsc (noEmit) to catch type errors
+    // We run this once regardless of file count, hence ignoring the filenames arg for this command
+    `bash -c "cd frontend && npx tsc --noEmit"`,
   ],
 
   // JSON files - Format with Prettier
