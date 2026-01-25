@@ -4,7 +4,8 @@ import { useSearchParams } from "next/navigation";
 
 import { Form, Formik } from "formik";
 
-import { Button, PasswordInput } from "@/shared/ui";
+import { CustomPasswordInput } from "@/shared/form-elements";
+import { Button, Label } from "@/shared/ui";
 
 import { useNewPassword } from "./hooks";
 import { newPasswordSchema } from "./schema";
@@ -37,27 +38,37 @@ const NewPasswordForm = () => {
       >
         {(formik) => (
           <Form className="flex flex-col gap-4">
-            <PasswordInput
-              label="New Password"
-              id="password"
-              name="password"
-              placeholder="••••••••"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              error={formik.submitCount > 0 && Boolean(formik.errors.password)}
-              helperText={formik.submitCount > 0 ? formik.errors.password : undefined}
-            />
+            <div>
+              <Label htmlFor="password" className="mb-1.5 block">
+                New Password
+              </Label>
+              <CustomPasswordInput
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                error={formik.submitCount > 0 && Boolean(formik.errors.password)}
+                helperText={formik.submitCount > 0 ? (formik.errors.password as string) : undefined}
+              />
+            </div>
 
-            <PasswordInput
-              label="Confirm New Password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="••••••••"
-              value={formik.values.confirmPassword}
-              onChange={formik.handleChange}
-              error={formik.submitCount > 0 && Boolean(formik.errors.confirmPassword)}
-              helperText={formik.submitCount > 0 ? formik.errors.confirmPassword : undefined}
-            />
+            <div>
+              <Label htmlFor="confirmPassword" className="mb-1.5 block">
+                Confirm New Password
+              </Label>
+              <CustomPasswordInput
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="••••••••"
+                value={formik.values.confirmPassword}
+                onChange={formik.handleChange}
+                error={formik.submitCount > 0 && Boolean(formik.errors.confirmPassword)}
+                helperText={
+                  formik.submitCount > 0 ? (formik.errors.confirmPassword as string) : undefined
+                }
+              />
+            </div>
 
             <Button type="submit" size="lg" className="w-full mt-2" disabled={isLoading}>
               {isLoading ? "Resetting Password..." : "Reset Password"}

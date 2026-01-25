@@ -5,7 +5,7 @@ import { handleApiError } from "@/utils/handleApiError";
 
 import type { LogoutResponse } from "@/shared/types";
 
-const LOG_OUT_URL = "/api/auth/v1/workspace/logout/";
+const LOG_OUT_URL = "/api/auth/v1/logout/";
 
 const logOut = async (token: string): Promise<LogoutResponse> => {
   try {

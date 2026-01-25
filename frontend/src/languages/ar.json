@@ -91,6 +91,17 @@
     "content_title": "محتوى لوحة التحكم",
     "content_description": "هذه هي لوحة التحكم الخاصة بك. سيتم إضافة المزيد من المحتوى قريباً."
   },
+  "auth": {
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول",
+    "sign_up": "إنشاء حساب",
+    "forgot_password": "نسيت كلمة المرور"
+  },
+  "profile": {
+    "account_settings": "إعدادات الحساب",
+    "my_profile": "ملفي الشخصي",
+    "n/a": "غير متوفر"
+  },
   "fields": {
     "select": "تحديد",
     "name": "الاسم",
@@ -232,7 +243,15 @@
     "choose_a_timezone": "اختر المنطقة الزمنية",
     "choose_a_country": "اختر الدولة",
     "select_entity": "حدد {{entity}}",
-    "enter_limit": "أدخل الحد"
+    "enter_limit": "أدخل الحد",
+    "enter_first_name": "أدخل الاسم الأول",
+    "enter_last_name": "أدخل الاسم الأخير",
+    "enter_phone": "أدخل رقم الهاتف",
+    "enter_designation": "أدخل المسمى الوظيفي",
+    "enter_address": "أدخل عنوانك",
+    "select_gender": "حدد الجنس",
+    "select_timezone": "حدد المنطقة الزمنية",
+    "select_country": "حدد الدولة"
   },
   "pagination": {
     "reload": "إعادة تحميل",
@@ -342,7 +361,16 @@
     "account_settings": {
       "account": "الحساب",
       "change_password": "تغيير كلمة المرور",
+      "change_profile": "تغيير الملف الشخصي",
       "preferences": "التفضيلات",
+      "change_your_profile_picture_from_here": "قم بتغيير صورة ملفك الشخصي من هنا",
+      "personal_details": "التفاصيل الشخصية",
+      "to_change_your_personal_details_edit_and_save_from_here": "لتغيير تفاصيلك الشخصية، قم بالتعديل والحفظ من هنا",
+      "to_change_your_password_please_confirm_here": "لتغيير كلمة المرور الخاصة بك، يرجى التأكيد هنا",
+      "manage_your_account_settings": "إدارة إعدادات حسابك وتفضيلاتك",
+      "email_cannot_be_changed": "لا يمكن تغيير البريد الإلكتروني",
+      "additional_information": "معلومات إضافية",
+      "location_information": "معلومات الموقع",
       "title": "ملفي الشخصي"
     },
     "subscription": {

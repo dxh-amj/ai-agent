@@ -1,8 +1,11 @@
 "use client";
 
+import * as React from "react";
+
 import { Form, Formik } from "formik";
 
-import { Button, FormInput } from "@/shared/ui";
+import { CustomTextField } from "@/shared/form-elements";
+import { Button, Label } from "@/shared/ui";
 
 import { useForgotPassword } from "./hooks";
 import { forgotPasswordSchema } from "./schema";
@@ -38,8 +41,10 @@ const ForgotPassword = ({
           {(formik) => (
             <Form className="flex flex-col gap-4">
               <div className="mt-6">
-                <FormInput
-                  label="Email Address"
+                <Label htmlFor="email" className="mb-1.5 block text-slate-700">
+                  Email Address
+                </Label>
+                <CustomTextField
                   type="email"
                   id="email"
                   name="email"
@@ -47,7 +52,7 @@ const ForgotPassword = ({
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   error={formik.submitCount > 0 && Boolean(formik.errors.email)}
-                  helperText={formik.submitCount > 0 ? formik.errors.email : undefined}
+                  helperText={formik.submitCount > 0 ? (formik.errors.email as string) : undefined}
                 />
               </div>
               <Button type="submit" size="lg" disabled={isLoading} className="w-full mt-2">
