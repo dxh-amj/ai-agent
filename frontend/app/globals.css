@@ -151,6 +151,19 @@
   }
 }
 
+/* Back-and-forth liquid flow for AI robotic theme */
+@keyframes ai-robotic-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 :root {
   --radius: 0.625rem;
   --background: #ffffff;
@@ -308,6 +321,26 @@ body {
 
 .text-glow {
   text-shadow: 0 0 20px rgba(16, 183, 127, 0.3);
+}
+
+/* AI Robotic Gradient Text */
+.ai-robotic-gradient {
+  background: linear-gradient(
+    135deg,
+    #10b77f 0%,
+    #34d399 25%,
+    #22d3ee 50%,
+    #818cf8 75%,
+    #10b77f 100%
+  ) !important;
+  background-size: 300% 300% !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  display: inline-block;
+  animation: ai-robotic-flow 8s ease-in-out infinite !important;
+  filter: drop-shadow(0 0 15px rgba(16, 183, 127, 0.3));
+  font-weight: 800;
 }
 
 /* Grid pattern background */

@@ -1,11 +1,9 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
-
+import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 import {
   Sidebar,
@@ -33,7 +31,7 @@ interface AppSidebarProps {
 const menuItems = [
   {
     titleKey: "navigation.dashboard",
-    url: "/",
+    url: "/dashboard",
     icon: IconLayoutDashboard,
   },
   {
@@ -58,7 +56,7 @@ export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
-              <Link href="/">
+              <Link href="/dashboard">
                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                   <IconRobot className="size-4" />
                 </div>

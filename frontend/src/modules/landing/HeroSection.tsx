@@ -25,7 +25,7 @@ export const HeroSection = () => {
           <div className="mx-auto max-w-7xl flex flex-col items-center text-center">
             {/* Heading */}
             <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-semibold tracking-tight text-slate-900 leading-[1.1] max-w-4xl mb-6">
-              The Complete <span className="text-primary">AI Agent Platform</span>
+              The Complete <span className="ai-robotic-gradient">AI Agent Platform</span>
             </h1>
 
             {/* Subtext */}
@@ -62,7 +62,6 @@ export const HeroSection = () => {
               </Button>
             </div>
 
-            {/* Integration Logos - Integrated into Hero with Marquee Animation */}
             <div className="w-full max-w-5xl overflow-hidden relative">
               <p className="text-sm text-slate-500 mb-8 font-medium">
                 Seamlessly connects with your favorite tools
@@ -75,8 +74,10 @@ export const HeroSection = () => {
 
                 {/* Marquee track */}
                 <div className="flex animate-marquee hover:[animation-play-state:paused]">
-                  {[...integrations.slice(0, 6), ...integrations.slice(0, 6)].map(
-                    (integration, index) => (
+                  {(() => {
+                    const INTEGRATION_SLICE_COUNT = 6;
+                    const items = integrations.slice(0, INTEGRATION_SLICE_COUNT);
+                    return [...items, ...items].map((integration, index) => (
                       <div
                         key={`${integration.name}-${index}`}
                         className="shrink-0 mx-8 lg:mx-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
@@ -90,8 +91,8 @@ export const HeroSection = () => {
                           title={integration.name}
                         />
                       </div>
-                    )
-                  )}
+                    ));
+                  })()}
                 </div>
               </div>
             </div>

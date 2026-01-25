@@ -1,12 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-
-import { useRouter } from "next/navigation";
-
 import { IconChevronUp, IconLogout, IconSettings } from "@tabler/icons-react";
 import { getCookie } from "cookies-next";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
@@ -48,7 +46,7 @@ export const SidebarProfile = ({ user, isLoading }: SidebarProfileProps) => {
       await mutateAsync(token);
       clearStorage();
       toast.success("See you soon! Sign Out successful.");
-      router.push("/auth/login");
+      router.push("/");
     } catch (error) {
       console.error("Logout failed:", error);
       setIsDisabled(false);
