@@ -4,9 +4,9 @@ import { GOOGLE_AUTHORIZE_URL, GOOGLE_CLIENT_ID, GOOGLE_REDIRECT_URI } from "@/c
 import { GoogleLogin } from "@/modules/oauth";
 import { GOOGLE_SCOPE } from "@/utils/constants";
 
-import type { SocialButtonsProps } from "../types";
+import type { SocialButtonProps } from "../types";
 
-export const SocialButtons = ({ title = "Continue with" }: SocialButtonsProps) => {
+export const SocialButtons = ({ title = "Continue with" }: SocialButtonProps) => {
   return (
     <GoogleLogin
       title={title}

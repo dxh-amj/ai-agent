@@ -1,12 +1,11 @@
 "use client";
 
 import * as React from "react";
-import PhoneInput from "react-phone-number-input";
-import flags from "react-phone-number-input/flags";
+
+import { parsePhoneNumber } from "libphonenumber-js";
+import { Phone } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-
-import "react-phone-number-input/style.css";
 
 interface CustomPhoneInputProps {
   value?: string;
@@ -31,36 +30,53 @@ export const CustomPhoneInput = ({
   name,
   disabled,
 }: CustomPhoneInputProps) => {
+  const [inputValue, setInputValue] = React.useState(value || "");
+
+  React.useEffect(() => {
+    setInputValue(value || "");
+  }, [value]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+
+    // Try to format and validate the phone number
+    try {
+      if (newValue.startsWith("+")) {
+        const parsed = parsePhoneNumber(newValue);
+        if (parsed) {
+          onChange?.(parsed.format("E.164"));
+          return;
+        }
+      }
+    } catch {
+      // If parsing fails, just pass the raw value
+    }
+    onChange?.(newValue);
+  };
+
   return (
     <div className={cn("flex flex-col gap-1.5", className)}>
       <div
-        className={cn(
-          "flex h-11 w-full rounded-md border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all",
-          error && "border-destructive focus-within:ring-destructive/20",
-          // Refined styles: ensure only ONE icon (the flag/globe) is visible and styled properly
-          "[&_.PhoneInput]:flex [&_.PhoneInput]:items-center [&_.PhoneInput]:gap-2 [&_.PhoneInput]:w-full",
-          "[&_.PhoneInputInput]:flex-1 [&_.PhoneInputInput]:bg-transparent [&_.PhoneInputInput]:border-none [&_.PhoneInputInput]:outline-none [&_.PhoneInputInput]:text-sm [&_.PhoneInputInput]:text-foreground [&_.PhoneInputInput]:placeholder:text-muted-foreground",
-          "[&_.PhoneInputCountry]:flex [&_.PhoneInputCountry]:items-center [&_.PhoneInputCountry]:gap-1",
-          "[&_.PhoneInputCountrySelect]:cursor-pointer [&_.PhoneInputCountrySelect]:absolute [&_.PhoneInputCountrySelect]:opacity-0 [&_.PhoneInputCountrySelect]:z-10",
-          "[&_.PhoneInputCountryIcon]:flex [&_.PhoneInputCountryIcon]:items-center [&_.PhoneInputCountryIcon]:justify-center [&_.PhoneInputCountryIcon]:h-4 [&_.PhoneInputCountryIcon]:w-6 [&_.PhoneInputCountryIcon]:rounded-sm [&_.PhoneInputCountryIcon]:overflow-hidden [&_.PhoneInputCountryIcon]:bg-muted",
-          "[&_.PhoneInputCountryIconImg]:block [&_.PhoneInputCountryIconImg]:max-w-full [&_.PhoneInputCountryIconImg]:max-h-full",
-          "[&_.material-symbols-outlined]:display-none!",
-          "[&_i]:display-none!",
-          "[&_span:not(.PhoneInputCountryIcon)]:display-none!",
-          "[&_.PhoneInputCountry]:relative [&_.PhoneInputCountry]:z-20"
-        )}
+        className={cn("relative flex items-center", disabled && "cursor-not-allowed opacity-50")}
       >
-        <PhoneInput
-          international
-          flags={flags}
+        <input
           id={id}
           name={name}
+          type="tel"
           disabled={disabled}
           placeholder={placeholder}
-          value={value}
-          onChange={(val) => onChange?.(val || "")}
-          className="w-full"
+          value={inputValue}
+          onChange={handleChange}
+          className={cn(
+            "flex h-11 w-full rounded-md border border-border bg-background px-4 text-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+            error && "border-destructive focus-visible:ring-destructive/20",
+            "pr-12" // Make space for the icon on the right
+          )}
         />
+        <div className="absolute right-0 top-0 bottom-0 w-12 flex items-center justify-center text-muted-foreground pointer-events-none">
+          <Phone className="h-4 w-4" />
+        </div>
       </div>
       {helperText && (
         <p

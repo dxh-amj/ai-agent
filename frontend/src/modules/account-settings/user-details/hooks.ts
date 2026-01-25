@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import dayjs from "dayjs";
 import { toast } from "sonner";
 
 import {
@@ -26,7 +27,7 @@ const useProfile = () => {
     const updatedValues: ProfileUpdatePayload = {
       ...values,
       profilePicture: profilePicture,
-      dateOfBirth: values.birthDate ? values.birthDate.format("YYYY-MM-DD") : null,
+      dateOfBirth: values.birthDate ? dayjs(values.birthDate).format("YYYY-MM-DD") : null,
     };
 
     mutate(updatedValues, {

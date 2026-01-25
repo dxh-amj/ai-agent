@@ -1,19 +1,18 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
+
 import dayjs from "dayjs";
 import { useFormik } from "formik";
-import { useTranslation } from "react-i18next";
 
 import {
   CustomCountrySelect,
-  CustomPhoneInput,
   CustomSelect,
   CustomTextField,
   CustomTimezoneSelect,
 } from "@/shared/form-elements";
 import { Avatar, AvatarFallback, AvatarImage } from "@/shared/ui/avatar";
 import { Button } from "@/shared/ui/button";
-import { Card, CardContent } from "@/shared/ui/card";
 import { Label } from "@/shared/ui/label";
 import { SelectItem } from "@/shared/ui/select";
 
@@ -74,8 +73,8 @@ const UserDetails = () => {
     <div className="grid gap-6">
       <form onSubmit={formik.handleSubmit}>
         {/* Profile Picture Section */}
-        <Card className="mb-6">
-          <CardContent className="pt-6">
+        <div className="mb-8">
+          <div className="pt-6">
             <h5 className="mb-1 text-lg font-semibold">
               {t("pages.account_settings.change_profile")}
             </h5>
@@ -111,7 +110,7 @@ const UserDetails = () => {
                 </Button>
                 <Button
                   variant="outline"
-                  className="text-destructive border-destructive hover:bg-destructive/10"
+                  className="border-destructive text-destructive hover:bg-destructive hover:text-white transition-colors"
                   disabled={!profilePicture}
                   onClick={() => {
                     setProfilePicture(null);
@@ -126,12 +125,12 @@ const UserDetails = () => {
                 {t("validation.allowed_jpg_gif_or_png_max_size_of_800kb")}
               </p>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Personal Details Section */}
-        <Card>
-          <CardContent className="pt-6">
+        <div>
+          <div className="pt-6">
             <h5 className="mb-1 text-lg font-semibold">
               {t("pages.account_settings.personal_details")}
             </h5>
@@ -193,11 +192,11 @@ const UserDetails = () => {
                 <Label htmlFor="phone" className="mb-1.5 block">
                   {t("fields.phone")}
                 </Label>
-                <CustomPhoneInput
+                <CustomTextField
                   id="phone"
                   name="phone"
                   value={formik.values.phone}
-                  onChange={(value) => formik.setFieldValue("phone", value)}
+                  onChange={formik.handleChange}
                   error={formik.touched.phone && Boolean(formik.errors.phone)}
                   helperText={formik.touched.phone ? (formik.errors.phone as string) : undefined}
                 />
@@ -322,16 +321,15 @@ const UserDetails = () => {
               </Button>
               <Button
                 type="button"
-                variant="ghost"
-                className="text-destructive hover:bg-destructive/10 hover:text-destructive"
+                variant="outline"
                 onClick={() => formik.resetForm()}
                 disabled={isPending || !formik.dirty}
               >
                 {t("button.cancel")}
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </form>
     </div>
   );

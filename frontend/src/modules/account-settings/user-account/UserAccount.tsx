@@ -2,9 +2,9 @@
 
 import { useTranslation } from "react-i18next";
 
-import { Lock, Settings, User } from "lucide-react";
+import { Lock, User } from "lucide-react";
 
-import { Card, CardContent } from "@/shared/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 
 import { ChangePassword } from "../change-password/ChangePassword";
@@ -15,34 +15,46 @@ const UserAccount = () => {
 
   return (
     <div className="grid gap-6">
-      <Card>
-        <Tabs defaultValue="account" className="w-full">
-          <TabsList className="w-full justify-start rounded-none border-b bg-transparent p-0">
-            <TabsTrigger
-              value="account"
-              className="data-[state=active]:border-primary gap-2 rounded-none border-b-2 border-transparent px-4 py-3 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
-            >
-              <User className="h-5 w-5" />
-              {t("pages.account_settings.account")}
-            </TabsTrigger>
-            <TabsTrigger
-              value="password"
-              className="data-[state=active]:border-primary gap-2 rounded-none border-b-2 border-transparent px-4 py-3 data-[state=active]:bg-transparent data-[state=active]:shadow-none"
-            >
-              <Lock className="h-5 w-5" />
-              {t("pages.account_settings.change_password")}
-            </TabsTrigger>
-          </TabsList>
-          <CardContent className="p-6">
-            <TabsContent value="account" className="mt-0">
+      <Tabs defaultValue="account" className="w-full">
+        <TabsList className="mb-4">
+          <TabsTrigger value="account" className="gap-2">
+            <User className="h-4 w-4" />
+            {t("pages.account_settings.account")}
+          </TabsTrigger>
+          <TabsTrigger value="password" className="gap-2">
+            <Lock className="h-4 w-4" />
+            {t("pages.account_settings.change_password")}
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="account">
+          <Card>
+            <CardHeader>
+              <CardTitle>{t("pages.account_settings.account")}</CardTitle>
+              <CardDescription>
+                {t(
+                  "pages.account_settings.to_change_your_personal_details_edit_and_save_from_here"
+                )}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
               <UserDetails />
-            </TabsContent>
-            <TabsContent value="password" className="mt-0">
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="password">
+          <Card>
+            <CardHeader>
+              <CardTitle>{t("pages.account_settings.change_password")}</CardTitle>
+              <CardDescription>
+                {t("pages.account_settings.to_change_your_password_please_confirm_here")}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
               <ChangePassword />
-            </TabsContent>
-          </CardContent>
-        </Tabs>
-      </Card>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
