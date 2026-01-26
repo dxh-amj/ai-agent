@@ -1,24 +1,4 @@
-import type { Agent as LandingAgent } from "@/modules/landing/data";
-
-export interface Agent extends LandingAgent {
-  slug: string;
-  role: string;
-  longDescription: string;
-  tags: string[];
-  mockChat: Array<{
-    role: "user" | "assistant";
-    content: string;
-  }>;
-  category: "Sales" | "Support" | "Operations" | "Marketing" | "Analytics";
-  // Visual properties
-  color: string;
-  bgColor: string;
-  borderColor: string;
-  icon: string;
-  // Pricing
-  price: string;
-  billingPeriod: "monthly" | "one-time";
-}
+import type { Agent } from "./types";
 
 export const agents: Agent[] = [
   {
@@ -26,6 +6,7 @@ export const agents: Agent[] = [
     slug: "email-connector",
     name: "Email Agent",
     icon: "mail",
+    imageUrl: "/images/agents/email-agent.png",
     role: "Communication Specialist",
     category: "Marketing",
     color: "from-blue-500 to-indigo-600",
@@ -50,6 +31,7 @@ export const agents: Agent[] = [
     slug: "sales-agent",
     name: "Sales Agent",
     icon: "trending_up",
+    imageUrl: "/images/agents/sales-agent.png",
     role: "Lead Qualification Specialist",
     category: "Sales",
     color: "from-emerald-400 to-teal-500",
@@ -91,6 +73,7 @@ export const agents: Agent[] = [
     slug: "call-agent",
     name: "Call Agent",
     icon: "call",
+    imageUrl: "/images/agents/call-agent.png",
     role: "Voice Support Representative",
     category: "Support",
     color: "from-cyan-400 to-blue-500",
@@ -129,6 +112,7 @@ export const agents: Agent[] = [
     slug: "crm-agent",
     name: "CRM Agent",
     icon: "database",
+    imageUrl: "/images/agents/crm-agent.png",
     role: "Data Integrity Manager",
     category: "Operations",
     color: "from-violet-400 to-purple-500",
@@ -166,6 +150,7 @@ export const agents: Agent[] = [
     slug: "marketing-agent",
     name: "Marketing Agent",
     icon: "campaign",
+    imageUrl: "/images/agents/marketing-agent.png",
     role: "Campaign Manager",
     category: "Marketing",
     color: "from-orange-400 to-amber-500",
@@ -204,6 +189,7 @@ export const agents: Agent[] = [
     slug: "analytics-agent",
     name: "Analytics Agent",
     icon: "insights",
+    imageUrl: "/images/agents/analytics-agent.png",
     role: "Business Intelligence Analyst",
     category: "Analytics",
     color: "from-pink-400 to-rose-500",

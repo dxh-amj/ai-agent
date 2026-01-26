@@ -1,68 +1,69 @@
 "use client";
 
-import { useState } from "react";
-
 import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 
 import { AgentCard } from "./components/AgentCard";
-import { agents } from "./data";
+import { useAgentsData } from "./hooks";
 
-const categories = ["All", "Sales", "Support", "Marketing", "Operations", "Analytics"];
+import type { Category } from "./types";
+
+const categories: Category[] = ["All", "Sales", "Support", "Marketing", "Operations", "Analytics"];
 
 // Simplified static layout
 
 export const DashboardAgentsPage = () => {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+  const {
+    agents: filteredAgents,
+    isLoading,
+    search,
+    setSearch,
+    category,
+    setCategory,
+  } = useAgentsData();
 
-  const filteredAgents = agents.filter((agent) => {
-    const matchesSearch =
-      agent.name.toLowerCase().includes(search.toLowerCase()) ||
-      agent.description.toLowerCase().includes(search.toLowerCase()) ||
-      agent.role.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = category === "All" || agent.category === category;
-    return matchesSearch && matchesCategory;
-  });
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center py-32">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+      </div>
+    );
+  }
 
   return (
-    <div className="space-y-10 max-w-[1600px] mx-auto py-2">
-      {/* Clean Header & Filters */}
-      <div className="space-y-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <h1 className="text-2xl font-semibold tracking-tight text-slate-900">
-              Agent Marketplace
-            </h1>
-            <p className="text-sm text-slate-500 mt-1">
-              Select an agent to configure and deploy to your workforce.
-            </p>
-          </div>
+    <div className="space-y-8 max-w-[1600px] mx-auto py-8 px-4 sm:px-6">
+      {/* Simple Header & Filters */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-100 pb-8">
+        <div className="space-y-1">
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900">Agent Marketplace</h1>
+          <p className="text-sm text-slate-500 font-medium">
+            Discover and deploy specialized AI agents.
+          </p>
+        </div>
 
-          <div className="relative w-full md:w-80">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+          <div className="relative group">
             <Input
               type="text"
               placeholder="Search agents..."
-              className="h-10 pl-10 pr-4 bg-white border-slate-200 shadow-xs focus:ring-slate-100 transition-all rounded-full"
+              className="h-10 pl-10 pr-4 bg-slate-50 border-transparent focus:bg-white focus:ring-slate-200 transition-all duration-300 rounded-lg w-full sm:w-64"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <div className="absolute left-3.5 top-0 bottom-0 flex items-center text-slate-400">
-              <span className="material-symbols-outlined text-[18px]">search</span>
+            <div className="absolute left-3 top-0 bottom-0 flex items-center text-slate-400">
+              <span className="material-symbols-outlined text-[20px]">search</span>
             </div>
           </div>
-        </div>
 
-        <div className="flex overflow-x-auto pb-2 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide">
-          <div className="flex gap-2">
+          <div className="flex items-center gap-1 bg-slate-50 p-1 rounded-lg">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setCategory(cat)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 border ${
+                className={`px-3 py-1.5 rounded-md text-xs font-bold transition-all duration-300 uppercase tracking-widest ${
                   category === cat
-                    ? "bg-slate-900 border-slate-900 text-white shadow-md shadow-slate-200"
-                    : "bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-50"
+                    ? "bg-white text-slate-900 shadow-sm"
+                    : "text-slate-500 hover:text-slate-700"
                 }`}
               >
                 {cat}
@@ -79,7 +80,7 @@ export const DashboardAgentsPage = () => {
         ))}
       </div>
 
-      {/* Empty State style remains... */}
+      {/* Empty State */}
       {filteredAgents.length === 0 && (
         <div className="flex flex-col items-center justify-center py-32 px-4 text-center">
           <div className="inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-slate-50 mb-6 rotate-3">

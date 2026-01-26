@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
+import { AgentOverviewStep } from "./components/AgentOverviewStep";
 import { ConnectAccountStep } from "./components/ConnectAccountStep";
 import { EmailContextStep } from "./components/EmailContextStep";
 import { SendEmailStep } from "./components/SendEmailStep";
@@ -12,13 +13,17 @@ export const EmailAgentPage = () => {
   const [step, setStep] = useState(1);
   const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null);
 
-  const handleAccountSelected = (accountId: string) => {
-    setSelectedAccountId(accountId);
+  const handleOverviewNext = () => {
     setStep(2);
   };
 
-  const handleContextNext = () => {
+  const handleAccountSelected = (accountId: string) => {
+    setSelectedAccountId(accountId);
     setStep(3);
+  };
+
+  const handleContextNext = () => {
+    setStep(4);
   };
 
   const handleBack = () => {
@@ -26,9 +31,10 @@ export const EmailAgentPage = () => {
   };
 
   const steps = [
-    { id: 1, label: "Connect", description: "Link your accounts" },
-    { id: 2, label: "Context", description: "Define agent behavior" },
-    { id: 3, label: "Run", description: "Execute capabilities" },
+    { id: 1, label: "Overview", description: "Learn about agent" },
+    { id: 2, label: "Connect", description: "Link your accounts" },
+    { id: 3, label: "Context", description: "Define agent behavior" },
+    { id: 4, label: "Run", description: "Execute capabilities" },
   ];
 
   return (
@@ -59,7 +65,7 @@ export const EmailAgentPage = () => {
                     step === s.id
                       ? "bg-primary text-white shadow-md shadow-primary/25"
                       : s.id < step
-                      ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-400"
+                      ? "bg-primary text-white shadow-sm"
                       : "bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500"
                   )}
                 >
@@ -82,10 +88,11 @@ export const EmailAgentPage = () => {
       {/* Main Content Area */}
       <div className="flex-1 min-w-0">
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm min-h-[500px] p-1">
-          <div className="h-full p-4 sm:p-6 lg:p-8">
-            {step === 1 && <ConnectAccountStep onNext={handleAccountSelected} />}
-            {step === 2 && <EmailContextStep onNext={handleContextNext} onBack={handleBack} />}
-            {step === 3 && selectedAccountId && (
+          <div className="h-full p-2 sm:p-6">
+            {step === 1 && <AgentOverviewStep onNext={handleOverviewNext} />}
+            {step === 2 && <ConnectAccountStep onNext={handleAccountSelected} />}
+            {step === 3 && <EmailContextStep onNext={handleContextNext} onBack={handleBack} />}
+            {step === 4 && selectedAccountId && (
               <SendEmailStep accountId={selectedAccountId} onBack={handleBack} />
             )}
           </div>

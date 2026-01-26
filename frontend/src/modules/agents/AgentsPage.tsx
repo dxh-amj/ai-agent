@@ -1,7 +1,4 @@
-/* eslint-disable import/order, @typescript-eslint/no-explicit-any */
 "use client";
-
-import { useState } from "react";
 
 import { motion } from "framer-motion";
 
@@ -12,9 +9,11 @@ import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorativ
 import { Input } from "@/shared/ui/input";
 
 import { AgentCard } from "./components/AgentCard";
-import { agents } from "./data";
+import { useAgentsData } from "./hooks";
 
-const categories = ["All", "Sales", "Support", "Marketing", "Operations", "Analytics"];
+import type { Category } from "./types";
+
+const categories: Category[] = ["All", "Sales", "Support", "Marketing", "Operations", "Analytics"];
 
 const container = {
   hidden: { opacity: 0 },
@@ -37,17 +36,22 @@ const MotionH1 = motion.h1 as any;
 const MotionP = motion.p as any;
 
 export const AgentsPage = () => {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("All");
+  const {
+    agents: filteredAgents,
+    isLoading,
+    search,
+    setSearch,
+    category,
+    setCategory,
+  } = useAgentsData();
 
-  const filteredAgents = agents.filter((agent) => {
-    const matchesSearch =
-      agent.name.toLowerCase().includes(search.toLowerCase()) ||
-      agent.description.toLowerCase().includes(search.toLowerCase()) ||
-      agent.role.toLowerCase().includes(search.toLowerCase());
-    const matchesCategory = category === "All" || agent.category === category;
-    return matchesSearch && matchesCategory;
-  });
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-page-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-page-background">
@@ -158,7 +162,7 @@ export const AgentsPage = () => {
           >
             {filteredAgents.map((agent) => (
               <MotionDiv key={agent.id} variants={item}>
-                <AgentCard agent={agent} />
+                <AgentCard agent={agent} isPublic />
               </MotionDiv>
             ))}
           </MotionDiv>

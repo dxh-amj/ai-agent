@@ -6,6 +6,7 @@ import {
   IconSpeakerphone,
   IconTrendingUp,
 } from "@tabler/icons-react";
+import React from "react";
 
 import type { Agent } from "../data";
 
@@ -15,7 +16,7 @@ interface AgentAvatarProps {
   className?: string;
 }
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, React.ElementType> = {
   trending_up: IconTrendingUp,
   call: IconHeadset,
   database: IconDatabase,
@@ -57,9 +58,19 @@ export const AgentAvatar = ({ agent, size = "md", className = "" }: AgentAvatarP
         {/* Inner gradient overlay */}
         <div className="absolute inset-0 bg-linear-to-tr from-black/10 to-transparent pointer-events-none" />
 
-        {/* Icon */}
-        <div className="relative z-10 text-white drop-shadow-md">
-          <IconComponent size={iconSizes[size]} stroke={1.5} />
+        {/* Content: Image or Icon */}
+        <div className="relative z-10 w-full h-full flex items-center justify-center overflow-hidden">
+          {agent.imageUrl ? (
+            <img
+              src={agent.imageUrl}
+              alt={agent.name}
+              className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110"
+            />
+          ) : (
+            <div className="text-white drop-shadow-md">
+              <IconComponent size={iconSizes[size]} stroke={1.5} />
+            </div>
+          )}
         </div>
       </div>
     </div>

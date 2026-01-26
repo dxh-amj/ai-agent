@@ -10,7 +10,7 @@ import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 
 import { AgentCapabilities } from "./components/AgentCapabilities";
-import { AgentChatPreview, AgentHero } from "./components";
+import { AgentChatPreview, AgentHero, AgentOverview } from "./components";
 import { agents } from "./data";
 
 interface AgentDetailPageProps {
@@ -47,6 +47,11 @@ export const AgentDetailPage = ({ slug }: AgentDetailPageProps) => {
 
       {/* Hero Section */}
       <AgentHero agent={agent} />
+
+      {/* Overview Section */}
+      <section className="w-full bg-white border-b border-slate-200 py-20 px-4 sm:px-6 lg:px-8">
+        <AgentOverview agent={agent} />
+      </section>
 
       {/* Live Preview */}
       <AgentChatPreview agent={agent} />
