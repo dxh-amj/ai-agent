@@ -1,6 +1,11 @@
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+
+import { delay } from "@/utils/delay";
+
 import type { Agent } from "./types";
 
-export const agents: Agent[] = [
+// Mock data - will be replaced with API call
+const agentsMockData: Agent[] = [
   {
     id: "email-agent",
     slug: "email-connector",
@@ -224,3 +229,43 @@ export const agents: Agent[] = [
     ],
   },
 ];
+
+const DELAY_MS = 500;
+
+const getAgents = async (): Promise<Agent[]> => {
+  // Simulate API delay - replace with actual API call
+  await delay(DELAY_MS);
+  return [...agentsMockData];
+};
+
+const getAgentBySlug = async (slug: string): Promise<Agent | null> => {
+  await delay(DELAY_MS);
+  const agent = agentsMockData.find((a) => a.slug === slug);
+  return agent || null;
+};
+
+interface UseAgentsOptions {
+  enabled?: boolean;
+}
+
+export const useAgents = ({ enabled = true }: UseAgentsOptions = {}) => {
+  return useQuery<Agent[], Error>({
+    queryKey: ["agents"],
+    queryFn: getAgents,
+    placeholderData: keepPreviousData,
+    enabled,
+  });
+};
+
+interface UseAgentBySlugOptions {
+  slug: string;
+  enabled?: boolean;
+}
+
+export const useAgentBySlug = ({ slug, enabled = true }: UseAgentBySlugOptions) => {
+  return useQuery<Agent | null, Error>({
+    queryKey: ["agent", slug],
+    queryFn: () => getAgentBySlug(slug),
+    enabled: enabled && !!slug,
+  });
+};

@@ -1,13 +1,8 @@
-import type { ConnectedAccount } from "@/services/email-agent";
+import type { ConnectedAccount, SendEmailPayload } from "./services";
 
-export type { ConnectedAccount };
+export type { ConnectedAccount, SendEmailPayload };
 
 export interface EmailContextValues {
-  context: string;
-}
-
-export interface SendEmailPayload {
-  accountId: string;
   context: string;
 }
 

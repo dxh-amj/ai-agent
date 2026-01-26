@@ -5,6 +5,8 @@ import relativeTime from "dayjs/plugin/relativeTime";
 
 import { Button } from "@/shared/ui";
 
+import { RecentActivitySkeleton } from "./RecentActivitySkeleton";
+
 import type { RecentActivity as ActivityType } from "@/services/dashboard";
 
 dayjs.extend(relativeTime);
@@ -14,17 +16,9 @@ interface RecentActivityProps {
   isLoading: boolean;
 }
 
-const SKELETON_COUNT = 3;
-
 export const RecentActivity = ({ activities, isLoading }: RecentActivityProps) => {
   if (isLoading) {
-    return (
-      <div className="p-3 space-y-3">
-        {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
-          <div key={i} className="h-12 rounded-xl bg-slate-50 dark:bg-slate-800 animate-pulse" />
-        ))}
-      </div>
-    );
+    return <RecentActivitySkeleton />;
   }
 
   const getIcon = (type: ActivityType["type"]) => {

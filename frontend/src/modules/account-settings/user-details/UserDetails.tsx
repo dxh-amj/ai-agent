@@ -17,6 +17,7 @@ import { SelectItem } from "@/shared/ui/select";
 
 import { useProfile } from "./hooks";
 import accountSchema from "./schema";
+import { UserDetailsSkeleton } from "./UserDetailsSkeleton";
 
 import type { DropdownOption } from "../types";
 
@@ -61,11 +62,7 @@ const UserDetails = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center p-8">
-        <div className="border-primary h-8 w-8 animate-spin rounded-full border-4 border-t-transparent" />
-      </div>
-    );
+    return <UserDetailsSkeleton />;
   }
 
   return (

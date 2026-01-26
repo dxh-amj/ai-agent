@@ -2,11 +2,13 @@
 
 import dynamic from "next/dynamic";
 
+import { WorkforceChartSkeleton } from "./WorkforceChartSkeleton";
+
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 export const WorkforceChart = ({ isLoading }: { isLoading: boolean }) => {
   if (isLoading) {
-    return <div className="h-64 rounded-3xl bg-slate-100 dark:bg-slate-800 animate-pulse" />;
+    return <WorkforceChartSkeleton />;
   }
 
   const options: any = {
