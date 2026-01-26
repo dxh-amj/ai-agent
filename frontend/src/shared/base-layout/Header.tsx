@@ -1,11 +1,9 @@
 "use client";
 
+import { IconMoon, IconSun } from "@tabler/icons-react";
 import { useState } from "react";
 
-import { IconMoon, IconSun } from "@tabler/icons-react";
-
 import { Button } from "@/shared/ui/button";
-import { Separator } from "@/shared/ui/separator";
 import { SidebarTrigger } from "@/shared/ui/sidebar";
 
 import { LanguageSwitcher } from "./LanguageSwitcher";
@@ -31,7 +29,6 @@ export const Header = ({ user, isLoading }: HeaderProps) => {
       <div className="flex h-16 items-center gap-2 px-4">
         {/* Sidebar Toggle */}
         <SidebarTrigger className="-ml-1 text-foreground hover:bg-accent hover:text-accent-foreground" />
-        <Separator orientation="vertical" className="mr-2 h-4 bg-border" />
 
         {/* Spacer */}
         <div className="flex-1" />

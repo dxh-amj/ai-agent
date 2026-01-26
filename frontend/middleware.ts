@@ -24,7 +24,10 @@ export default function middleware(request: NextRequest) {
     isOAuthPath ||
     isOnboardingPath ||
     isAgentsPath ||
-    pathname.startsWith("/pricing");
+    pathname.startsWith("/pricing") ||
+    pathname.startsWith("/contact") ||
+    pathname.startsWith("/privacy") ||
+    pathname.startsWith("/terms");
 
   if (!token && !isPublicPath) {
     return NextResponse.redirect(new URL("/auth/login", request.url));

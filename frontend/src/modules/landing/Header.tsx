@@ -1,8 +1,7 @@
 "use client";
 
-import Link from "next/link";
-
 import { getCookie } from "cookies-next";
+import Link from "next/link";
 
 import { AgentKitLogo } from "@/shared/ui/agentkit-logo";
 import { Button } from "@/shared/ui/button";
@@ -24,10 +23,18 @@ export const Header = () => {
             </Link>
 
             <nav className="hidden md:flex items-center gap-1">
-              {["Platform", "Agents", "Pricing", "Docs"].map((item) => (
+              {["Agents", "Pricing", "Contact Us"].map((item) => (
                 <Link
                   key={item}
-                  href={item === "Pricing" ? "/pricing" : item === "Agents" ? "/agents" : "/"}
+                  href={
+                    item === "Pricing"
+                      ? "/pricing"
+                      : item === "Agents"
+                      ? "/agents"
+                      : item === "Contact Us"
+                      ? "/contact"
+                      : "/"
+                  }
                   className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors rounded-lg hover:bg-slate-100"
                 >
                   {item}

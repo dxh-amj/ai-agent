@@ -89,12 +89,14 @@ export const FAQSection = ({
                 </button>
 
                 <div
-                  className={`transition-all duration-300 ease-in-out ${
-                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
                   }`}
                 >
-                  <div className="px-6 pb-5 text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
-                    {faq.answer}
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-5 text-slate-600 leading-relaxed border-t border-slate-100 pt-4">
+                      {faq.answer}
+                    </div>
                   </div>
                 </div>
               </div>

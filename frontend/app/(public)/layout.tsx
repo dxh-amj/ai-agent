@@ -1,5 +1,5 @@
 import { Header } from "@/modules/landing/Header";
-import { Footer } from "@/shared/components/layout/Footer";
+import { Footer } from "@/shared/base-layout/Footer";
 
 const PublicLayout = ({ children }: { children: React.ReactNode }) => {
   return (

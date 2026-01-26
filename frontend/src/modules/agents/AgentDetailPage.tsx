@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 
 import { Header } from "@/modules/landing";
 import { integrations } from "@/modules/landing/data";
-import { Footer } from "@/shared/components/layout/Footer";
 import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 
@@ -101,8 +100,6 @@ export const AgentDetailPage = ({ slug }: AgentDetailPageProps) => {
           <DecorativeStripesRight />
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
