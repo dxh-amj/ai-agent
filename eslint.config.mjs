@@ -233,11 +233,7 @@ export default [
         "error",
         {
           groups: [
-            // React first
-            ["^react", "^react-dom"],
-            // Next.js
-            ["^next"],
-            // External packages
+            // External packages (React, Next, etc.) - Alphabetical
             ["^@?\\w"],
             // Internal packages (@ paths)
             ["^@/"],
@@ -257,21 +253,7 @@ export default [
       "import/no-useless-path-segments": "error",
       "import/newline-after-import": "error",
       "import/no-duplicates": "error",
-      "import/order": [
-        "warn",
-        {
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            ["parent", "sibling", "index"],
-            "object",
-            "type",
-          ],
-          "newlines-between": "always",
-          alphabetize: { order: "asc", caseInsensitive: true },
-        },
-      ],
+      "import/order": "off",
 
       // React specific rules
       "react/react-in-jsx-scope": "off", // Not needed in Next.js

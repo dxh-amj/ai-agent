@@ -43,7 +43,9 @@ export const Footer = () => {
               {/* Brand */}
               <div className="max-w-sm">
                 <div className="mb-4">
-                  <AgentKitLogo variant="dark" size="md" />
+                  <Link href="/">
+                    <AgentKitLogo variant="dark" size="md" />
+                  </Link>
                 </div>
                 <p className="text-sm text-slate-600 max-w-xs leading-relaxed">
                   The AI agent platform where multiple agents collaborate to automate your business

@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 interface AgentKitLogoProps {
   size?: "sm" | "md" | "lg";
   variant?: "light" | "dark";
@@ -22,7 +20,7 @@ export const AgentKitLogo = ({
   const iconColor = variant === "light" ? "text-white" : "text-primary";
 
   return (
-    <Link href="/" className={`flex items-center ${sizeClasses[size].gap}`}>
+    <div className={`flex items-center ${sizeClasses[size].gap} cursor-pointer`}>
       {/* Logo Icon - Geometric A with Kit box */}
       <div className={`${sizeClasses[size].icon} relative shrink-0`}>
         {/* Background circle */}
@@ -58,6 +56,6 @@ export const AgentKitLogo = ({
           Agent<span className={variant === "light" ? "text-white/80" : "text-primary"}>Kit</span>
         </span>
       )}
-    </Link>
+    </div>
   );
 };

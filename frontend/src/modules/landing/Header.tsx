@@ -19,7 +19,9 @@ export const Header = () => {
 
         <div className="flex-1 border-x border-slate-200 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto flex h-full max-w-7xl items-center justify-between">
-            <AgentKitLogo size="md" variant="dark" />
+            <Link href="/">
+              <AgentKitLogo size="md" variant="dark" />
+            </Link>
 
             <nav className="hidden md:flex items-center gap-1">
               {["Platform", "Agents", "Pricing", "Docs"].map((item) => (
