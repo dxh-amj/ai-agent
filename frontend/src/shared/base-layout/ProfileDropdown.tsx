@@ -75,7 +75,10 @@ export const ProfileDropdown = ({ user, isLoading }: ProfileDropdownProps) => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-9 w-9 rounded-full">
           <Avatar className="h-9 w-9">
-            <AvatarImage src={user.profilePictureUrl || undefined} alt={name} />
+            <AvatarImage
+              src={user.profilePictureUrl || user.profile?.profilePictureUrl || undefined}
+              alt={name}
+            />
             <AvatarFallback>{initials}</AvatarFallback>
           </Avatar>
         </Button>

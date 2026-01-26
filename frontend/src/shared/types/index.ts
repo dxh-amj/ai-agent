@@ -35,6 +35,14 @@ interface UserProfile {
   lastName: string;
   phone: string | null;
   profilePictureUrl: string | null;
+  profile?: {
+    profilePictureUrl?: string;
+    designation?: string;
+    gender?: { id: string; label: string };
+    dateOfBirth?: string;
+    address?: string;
+    country?: { id: number; name: string };
+  };
   company: Company;
   isActive: boolean;
   isOnline: boolean;

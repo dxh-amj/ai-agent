@@ -3,6 +3,8 @@
 import { useUserProfile } from "@/shared/api/userProfile";
 import { Button } from "@/shared/ui/button";
 
+import { WelcomeCardSkeleton } from "./WelcomeCardSkeleton";
+
 import type { WelcomeData } from "@/services/dashboard";
 
 interface WelcomeCardProps {
@@ -14,7 +16,7 @@ export const WelcomeCard = ({ data, isLoading }: WelcomeCardProps) => {
   const { data: profile, isLoading: isProfileLoading } = useUserProfile();
 
   if (isLoading || isProfileLoading || !data) {
-    return <div className="h-48 rounded-3xl bg-slate-100 dark:bg-slate-800 animate-pulse" />;
+    return <WelcomeCardSkeleton />;
   }
 
   const fullName = profile ? `${profile.firstName} ${profile.lastName}`.trim() : "";

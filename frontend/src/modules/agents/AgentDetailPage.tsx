@@ -10,7 +10,7 @@ import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorativ
 
 import { AgentCapabilities } from "./components/AgentCapabilities";
 import { AgentChatPreview, AgentHero, AgentOverview } from "./components";
-import { agents } from "./data";
+import { useAgentDetail } from "./hooks";
 
 interface AgentDetailPageProps {
   slug: string;
@@ -18,7 +18,15 @@ interface AgentDetailPageProps {
 
 export const AgentDetailPage = ({ slug }: AgentDetailPageProps) => {
   const router = useRouter();
-  const agent = agents.find((a) => a.slug === slug);
+  const { agent, isLoading } = useAgentDetail(slug);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-page-background flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
+      </div>
+    );
+  }
 
   if (!agent) {
     return (

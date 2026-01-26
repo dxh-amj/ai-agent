@@ -1,57 +1,94 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import {
+  useConnectAccount,
+  useConnectedAccounts,
+  useDisconnectAccount,
+  useEmailContext,
+  useSendEmail,
+  useUpdateContext,
+} from "./services";
 
-import { emailAgentService } from "@/services/email-agent";
+import type { ConnectedAccount } from "./services";
 
-export const useConnectedAccounts = () => {
-  return useQuery({
-    queryKey: ["email-agent", "accounts"],
-    queryFn: emailAgentService.getConnectedAccounts,
-  });
+export const useAccountConnection = () => {
+  const { data: accounts = [], isLoading: isLoadingAccounts } = useConnectedAccounts();
+  const { mutate: connectAccount, isPending: isConnecting } = useConnectAccount();
+  const { mutate: disconnectAccount, isPending: isDisconnecting } = useDisconnectAccount();
+
+  const handleConnect = (email: string, onSuccess?: () => void) => {
+    connectAccount(email, {
+      onSuccess: () => {
+        onSuccess?.();
+      },
+    });
+  };
+
+  const handleDisconnect = (accountId: string, onSuccess?: () => void) => {
+    disconnectAccount(accountId, {
+      onSuccess: () => {
+        onSuccess?.();
+      },
+    });
+  };
+
+  return {
+    accounts,
+    isLoadingAccounts,
+    isConnecting,
+    isDisconnecting,
+    handleConnect,
+    handleDisconnect,
+  };
 };
 
-export const useConnectAccount = () => {
-  const queryClient = useQueryClient();
+export const useEmailContextManagement = () => {
+  const { data: context = "", isLoading: isLoadingContext } = useEmailContext();
+  const { mutate: updateContext, isPending: isUpdating } = useUpdateContext();
 
-  return useMutation({
-    mutationFn: (email: string) => emailAgentService.connectAccount(email),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["email-agent", "accounts"] });
-    },
-  });
+  const handleUpdateContext = (newContext: string, onSuccess?: () => void) => {
+    updateContext(newContext, {
+      onSuccess: () => {
+        onSuccess?.();
+      },
+    });
+  };
+
+  return {
+    context,
+    isLoadingContext,
+    isUpdating,
+    handleUpdateContext,
+  };
 };
 
-export const useDisconnectAccount = () => {
-  const queryClient = useQueryClient();
+export const useEmailSending = () => {
+  const { mutate: sendEmail, isPending: isSending, isSuccess, isError } = useSendEmail();
 
-  return useMutation({
-    mutationFn: (accountId: string) => emailAgentService.disconnectAccount(accountId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["email-agent", "accounts"] });
-    },
-  });
+  const handleSendEmail = (
+    accountId: string,
+    context: string,
+    onSuccess?: () => void,
+    onError?: () => void
+  ) => {
+    sendEmail(
+      { accountId, context },
+      {
+        onSuccess: () => {
+          onSuccess?.();
+        },
+        onError: () => {
+          onError?.();
+        },
+      }
+    );
+  };
+
+  return {
+    isSending,
+    isSuccess,
+    isError,
+    handleSendEmail,
+  };
 };
 
-export const useEmailContext = () => {
-  return useQuery({
-    queryKey: ["email-agent", "context"],
-    queryFn: emailAgentService.getContext,
-  });
-};
-
-export const useUpdateContext = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: (context: string) => emailAgentService.updateContext(context),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["email-agent", "context"] });
-    },
-  });
-};
-
-export const useSendEmail = () => {
-  return useMutation({
-    mutationFn: ({ accountId, context }: { accountId: string; context: string }) =>
-      emailAgentService.sendEmail(accountId, context),
-  });
-};
+// Re-export types for convenience
+export type { ConnectedAccount };
