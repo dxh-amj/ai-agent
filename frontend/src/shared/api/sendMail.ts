@@ -44,4 +44,4 @@ const useSendMail = ({ config }: SendMailOptions = {}) => {
   });
 };
 
-export { useSendMail };
+export { sendMail, useSendMail };

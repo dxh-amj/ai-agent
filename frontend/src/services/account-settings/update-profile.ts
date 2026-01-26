@@ -12,7 +12,7 @@ import type { ProfileUpdatePayload } from "@/modules/account-settings/types";
 const PROFILE_UPDATE_URL = `/api/users/v1/users/update-profile/`;
 
 const profileUpdate = async (data: ProfileUpdatePayload): Promise<unknown> => {
-  const payload = toSnakeCase(data);
+  const payload = toSnakeCase(data as unknown as Record<string, unknown>);
   const formData = objectToFormData(payload);
 
   try {

@@ -15,9 +15,36 @@ export interface Agent extends LandingAgent {
   bgColor: string;
   borderColor: string;
   icon: string;
+  // Pricing
+  price: string;
+  billingPeriod: "monthly" | "one-time";
 }
 
 export const agents: Agent[] = [
+  {
+    id: "email-agent",
+    slug: "email-connector",
+    name: "Email Agent",
+    icon: "mail",
+    role: "Communication Specialist",
+    category: "Marketing",
+    color: "from-blue-500 to-indigo-600",
+    bgColor: "bg-blue-500/10",
+    borderColor: "border-blue-500/30",
+    tags: ["Email", "Automation", "Gmail"],
+    price: "$29",
+    billingPeriod: "monthly",
+    capabilities: [
+      "Gmail Integration",
+      "Context-aware composition",
+      "Multi-account management",
+      "Draft & Send",
+    ],
+    description: "Connect your Gmail accounts and let AI handle your email communications.",
+    longDescription:
+      "The Email Agent streamlines your communication by connecting directly to your Gmail accounts. Provide a simple context, and it will draft and send professional emails on your behalf, managing multiple accounts seamlessly.",
+    mockChat: [],
+  },
   {
     id: "sales",
     slug: "sales-agent",
@@ -29,6 +56,8 @@ export const agents: Agent[] = [
     bgColor: "bg-emerald-500/10",
     borderColor: "border-emerald-500/30",
     tags: ["CRM", "Automation", "B2B"],
+    price: "$49",
+    billingPeriod: "monthly",
     capabilities: [
       "Lead qualification",
       "Follow-up automation",
@@ -68,6 +97,8 @@ export const agents: Agent[] = [
     bgColor: "bg-cyan-500/10",
     borderColor: "border-cyan-500/30",
     tags: ["Voice AI", "24/7", "Multilingual"],
+    price: "$99",
+    billingPeriod: "monthly",
     capabilities: [
       "Voice AI calls",
       "Call transcription",
@@ -104,6 +135,8 @@ export const agents: Agent[] = [
     bgColor: "bg-violet-500/10",
     borderColor: "border-violet-500/30",
     tags: ["Data Sync", "Integration", "Real-time"],
+    price: "$39",
+    billingPeriod: "monthly",
     capabilities: [
       "Contact management",
       "Deal tracking",
@@ -139,6 +172,8 @@ export const agents: Agent[] = [
     bgColor: "bg-orange-500/10",
     borderColor: "border-orange-500/30",
     tags: ["Multi-channel", "Content AI", "Analytics"],
+    price: "$59",
+    billingPeriod: "monthly",
     capabilities: [
       "Email campaigns",
       "Social planning",
@@ -175,6 +210,8 @@ export const agents: Agent[] = [
     bgColor: "bg-pink-500/10",
     borderColor: "border-pink-500/30",
     tags: ["BI", "Predictions", "Dashboards"],
+    price: "$69",
+    billingPeriod: "monthly",
     capabilities: [
       "KPI dashboards",
       "Predictions",

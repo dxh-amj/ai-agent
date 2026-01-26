@@ -1,12 +1,10 @@
 "use client";
 
-import * as React from "react";
-import { useTranslation } from "react-i18next";
-
+import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
+import * as React from "react";
+import { useTranslation } from "react-i18next";
 
 import { AgentKitLogo } from "@/shared/ui";
 import {
@@ -40,7 +38,7 @@ const menuItems = [
   },
   {
     titleKey: "navigation.agents",
-    url: "/agents",
+    url: "/dashboard/agents",
     icon: IconRobot,
   },
   {

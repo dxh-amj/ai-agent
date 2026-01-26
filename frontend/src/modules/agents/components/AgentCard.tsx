@@ -1,7 +1,5 @@
 import Link from "next/link";
 
-import { Button } from "@/shared/ui/button";
-
 import { AgentAvatar } from "./AgentAvatar";
 
 import type { Agent } from "../data";
@@ -12,65 +10,59 @@ interface AgentCardProps {
 
 export const AgentCard = ({ agent }: AgentCardProps) => {
   return (
-    <div className="group relative flex flex-col rounded-3xl border border-slate-200 bg-white p-2 transition-all duration-300 hover:border-transparent hover:shadow-2xl hover:shadow-slate-200/50">
-      {/* Gradient border effect on hover */}
+    <Link
+      href={`/dashboard/agents/${agent.slug}`}
+      className="group relative flex flex-col h-full rounded-2xl border border-slate-100 bg-white p-6 transition-all duration-300 hover:border-slate-200 hover:shadow-xl hover:shadow-slate-200/40 hover:-translate-y-1"
+    >
+      {/* Setup for a subtle colorful glow based on agent color */}
       <div
-        className={`absolute inset-0 rounded-3xl bg-linear-to-br ${agent.color} opacity-0 transition-opacity duration-300 group-hover:opacity-10 pointer-events-none`}
+        className={`absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 group-hover:opacity-[0.03] bg-linear-to-br ${agent.color} pointer-events-none`}
       />
 
-      <div className="relative flex flex-col h-full rounded-2xl bg-white p-6 z-10">
-        <div className="flex items-start justify-between mb-6">
-          <AgentAvatar agent={agent} size="md" />
-
-          {/* Status indicator */}
-          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-50 border border-slate-100">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-0 group-hover:opacity-75 transition-opacity duration-500" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-            </span>
-            <span className="text-xs font-medium text-slate-600">Active</span>
+      <div className="relative z-10 flex flex-col h-full">
+        <div className="flex items-start justify-between mb-5">
+          <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 group-hover:bg-white group-hover:scale-110 transition-all duration-300 shadow-sm">
+            <AgentAvatar agent={agent} size="md" />
+          </div>
+          <div
+            className={`px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider border bg-white/50 backdrop-blur-sm ${agent.borderColor.replace(
+              "/30",
+              "/50"
+            )} text-slate-500`}
+          >
+            {agent.category}
           </div>
         </div>
 
-        <div className="mb-3">
-          <h3 className="text-xl font-bold text-slate-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-linear-to-r group-hover:from-slate-900 group-hover:to-slate-700 transition-all">
-            {agent.name}
-          </h3>
-          <p className="text-sm font-medium text-primary mt-1">{agent.role}</p>
+        <div className="flex flex-col mb-4">
+          <span className="text-2xl font-bold text-slate-900">{agent.price}</span>
+          <span className="text-xs font-medium text-slate-500 uppercase tracking-wide">
+            {agent.billingPeriod === "monthly" ? "/ month" : "one-time"}
+          </span>
         </div>
 
-        <p className="mb-6 text-sm leading-relaxed text-slate-600 line-clamp-2">
+        <div className="mb-2">
+          <h3 className="text-lg font-bold text-slate-900 group-hover:text-primary transition-colors">
+            {agent.name}
+          </h3>
+          <p className="text-xs font-medium text-slate-500">{agent.role}</p>
+        </div>
+
+        <p className="text-sm text-slate-600 leading-relaxed mb-5 line-clamp-3">
           {agent.description}
         </p>
 
-        {/* Tags */}
-        {agent.tags && agent.tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-6 mt-auto">
-            {agent.tags.map((tag, i) => (
-              <span
-                key={i}
-                className="px-2.5 py-1 rounded-md bg-slate-50 text-xs font-medium text-slate-600 border border-slate-100 group-hover:border-slate-200 transition-colors"
-              >
-                {tag}
-              </span>
-            ))}
+        <div className="mt-auto pt-4 flex items-center justify-between border-t border-slate-50">
+          <div className="flex -space-x-1.5 overflow-hidden">
+            {/* Mock avatars for "used by" or team feeling (optional visual flair) */}
           </div>
-        )}
 
-        <div className="pt-4 border-t border-slate-50">
-          <Link href={`/agents/${agent.slug}`} className="block">
-            <Button
-              variant="ghost"
-              className="w-full justify-between group/btn hover:bg-slate-50 hover:text-primary"
-            >
-              <span className="font-medium">View Capabilities</span>
-              <span className="material-symbols-outlined text-lg transition-transform duration-300 group-hover/btn:translate-x-1">
-                arrow_forward
-              </span>
-            </Button>
-          </Link>
+          <div className="flex items-center gap-1 text-xs font-semibold text-primary group-hover:translate-x-1 transition-transform">
+            View Plan
+            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
