@@ -1,0 +1,30 @@
+import { useMemo, useState } from "react";
+
+import { useAgents } from "@/services/agents";
+
+import { filterAgents } from "./utils";
+
+import type { Category, FilterType } from "./types";
+
+export const useAgentsData = () => {
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState<Category>("All");
+
+  const { data: agents = [], isLoading, refetch } = useAgents();
+
+  const filters: FilterType = useMemo(() => ({ search, category }), [search, category]);
+
+  const filteredAgents = useMemo(() => {
+    return filterAgents(agents, filters);
+  }, [agents, filters]);
+
+  return {
+    agents: filteredAgents,
+    isLoading,
+    refetch,
+    search,
+    setSearch,
+    category,
+    setCategory,
+  };
+};

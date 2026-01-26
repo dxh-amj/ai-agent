@@ -1,0 +1,85 @@
+"use client";
+
+import type { DashboardStats } from "@/services/dashboard";
+
+interface StatsOverviewProps {
+  data?: DashboardStats;
+  isLoading: boolean;
+}
+
+export const StatsOverview = ({ data, isLoading }: StatsOverviewProps) => {
+  if (isLoading || !data) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[1, 2, 3, 4].map((i) => (
+          <div key={i} className="h-32 rounded-3xl bg-slate-100 dark:bg-slate-800 animate-pulse" />
+        ))}
+      </div>
+    );
+  }
+
+  const stats = [
+    {
+      label: "Active Agents",
+      value: data.activeAgents,
+      icon: "smart_toy",
+      change: "+2 this month",
+      color: "text-blue-500",
+      bgColor: "bg-blue-50",
+    },
+    {
+      label: "Messages Sent",
+      value: data.messagesSent.toLocaleString(),
+      icon: "mail",
+      change: "+12% vs last week",
+      color: "text-indigo-500",
+      bgColor: "bg-indigo-50",
+    },
+    {
+      label: "Time Saved",
+      value: `${data.timeSavedHours}h`,
+      icon: "timer",
+      change: "40h avg. monthly",
+      color: "text-emerald-500",
+      bgColor: "bg-emerald-50",
+    },
+    {
+      label: "Efficiency Gain",
+      value: `${data.efficiencyGain}%`,
+      icon: "trending_up",
+      change: "Improving hourly",
+      color: "text-amber-500",
+      bgColor: "bg-amber-50",
+    },
+  ];
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {stats.map((stat) => (
+        <div
+          key={stat.label}
+          className="p-4 rounded-3xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow group"
+        >
+          <div className="flex items-center justify-between mb-4">
+            <div
+              className={`p-3 rounded-2xl ${stat.bgColor} dark:bg-slate-800 ${stat.color} group-hover:scale-110 transition-transform`}
+            >
+              <span className="material-symbols-outlined">{stat.icon}</span>
+            </div>
+            <div className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+              {stat.change}
+            </div>
+          </div>
+          <div>
+            <div className="text-sm font-bold text-slate-500 dark:text-slate-400 mb-1">
+              {stat.label}
+            </div>
+            <div className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+              {stat.value}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
