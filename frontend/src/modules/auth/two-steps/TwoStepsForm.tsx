@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-
 import { useSearchParams } from "next/navigation";
+import { useRef, useState } from "react";
 
 import { useResendVerifyEmail } from "@/services/auth";
 import { useResendMail } from "@/shared/hooks/useResendMail";

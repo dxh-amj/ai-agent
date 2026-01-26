@@ -1,6 +1,5 @@
-import { Suspense } from "react";
-
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { TwoStepsForm } from "@/modules/auth/two-steps/TwoStepsForm";
 

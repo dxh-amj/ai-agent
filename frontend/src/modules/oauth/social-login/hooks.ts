@@ -1,7 +1,5 @@
-import { useEffect, useRef } from "react";
-
 import { useParams, useRouter, useSearchParams } from "next/navigation";
-
+import { useEffect, useRef } from "react";
 import { toast } from "sonner";
 
 import { FACEBOOK_REDIRECT_URI, GOOGLE_REDIRECT_URI, LINKEDIN_REDIRECT_URI } from "@/config";

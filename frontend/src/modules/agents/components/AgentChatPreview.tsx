@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
 import { IconSend } from "@tabler/icons-react";
+import { useEffect, useRef, useState } from "react";
 
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 

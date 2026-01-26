@@ -1,5 +1,4 @@
 import { Inter } from "next/font/google";
-
 import { Toaster } from "sonner";
 
 import { I18nProvider } from "@/providers/I18nProvider";
