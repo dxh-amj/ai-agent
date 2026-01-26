@@ -3,7 +3,6 @@
 import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import * as React from "react";
 import { useTranslation } from "react-i18next";
 
 import { AgentKitLogo } from "@/shared/ui";
@@ -18,6 +17,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/shared/ui/sidebar";
 
 import { SidebarProfile } from "./SidebarProfile";
@@ -48,6 +48,23 @@ const menuItems = [
   },
 ];
 
+const LogoButton = () => {
+  const { state } = useSidebar();
+  const isCollapsed = state === "collapsed";
+
+  return (
+    <SidebarMenuButton
+      size="lg"
+      asChild
+      className="h-16 w-full px-4 hover:bg-transparent active:bg-transparent group-data-[collapsible=icon]:!h-16 group-data-[collapsible=icon]:!w-full group-data-[collapsible=icon]:!px-4 group-data-[collapsible=icon]:!justify-center"
+    >
+      <Link href="/dashboard" className="flex items-center justify-center gap-3">
+        <AgentKitLogo variant="dark" size={isCollapsed ? "sm" : "md"} showText={!isCollapsed} />
+      </Link>
+    </SidebarMenuButton>
+  );
+};
+
 export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
   const { t } = useTranslation();
   const pathname = usePathname();
@@ -57,22 +74,14 @@ export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
       <SidebarHeader className="border-b border-border p-0">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton
-              size="lg"
-              asChild
-              className="h-16 px-4 hover:bg-transparent active:bg-transparent"
-            >
-              <Link href="/dashboard" className="flex items-center gap-3">
-                <AgentKitLogo variant="dark" />
-              </Link>
-            </SidebarMenuButton>
+            <LogoButton />
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
 
       <SidebarContent className="bg-sidebar">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-muted-foreground font-semibold px-2 mb-2">
+          <SidebarGroupLabel className="text-muted-foreground font-normal px-2 mb-2 text-md">
             {t("entities.navigation")}
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -87,12 +96,12 @@ export const AppSidebar = ({ user, isLoading }: AppSidebarProps) => {
                       isActive={isActive}
                       className={
                         isActive
-                          ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground font-medium"
-                          : "text-foreground/70 hover:bg-accent hover:text-accent-foreground"
+                          ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground font-medium text-base [&>svg]:size-5"
+                          : "text-foreground/70 hover:bg-accent hover:text-accent-foreground text-base [&>svg]:size-5"
                       }
                     >
                       <Link href={item.url} className="flex items-center gap-3">
-                        <item.icon className="size-4" />
+                        <item.icon className="size-5" />
                         <span>{t(item.titleKey)}</span>
                       </Link>
                     </SidebarMenuButton>

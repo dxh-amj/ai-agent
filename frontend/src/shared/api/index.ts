@@ -1,3 +1,4 @@
 export { logOut } from "./logout";
-export { sendMail } from "./sendMail";
+export { sendMail, useSendMail } from "./sendMail";
 export { getUser, useUserProfile } from "./userProfile";
+

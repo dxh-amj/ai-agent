@@ -1,12 +1,10 @@
-/* eslint-disable import/order, @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
+import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { motion } from "framer-motion";
-
 import { Header } from "@/modules/landing";
-import { Footer } from "@/shared/components/layout/Footer";
 import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 import { Input } from "@/shared/ui/input";
@@ -193,8 +191,6 @@ export const AgentsPage = () => {
           )}
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 };
