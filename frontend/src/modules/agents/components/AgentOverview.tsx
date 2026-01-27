@@ -46,9 +46,9 @@ export const AgentOverview = ({ agent }: AgentOverviewProps) => {
           </div>
         </div>
 
-        <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800/50 shadow-sm">
+        <div className="p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="p-2 rounded-lg bg-white dark:bg-slate-800 text-primary shadow-sm border border-slate-100 dark:border-slate-700">
+            <div className="p-2 rounded-lg bg-white dark:bg-slate-800 text-primary shadow-sm">
               <span className="material-symbols-outlined">lightbulb</span>
             </div>
             <div>

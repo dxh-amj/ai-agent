@@ -82,27 +82,23 @@ export const FeaturesGrid = () => {
 
               {/* Mini agent grid */}
               <div className="flex flex-wrap gap-3">
-                {agents.slice(0, 5).map(
-                  (
-                    agent // eslint-disable-line no-magic-numbers
-                  ) => (
+                {agents.slice(0, 5).map((agent) => (
+                  <div
+                    key={agent.id}
+                    className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10"
+                  >
                     <div
-                      key={agent.id}
-                      className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10"
+                      className={`w-8 h-8 rounded-lg ${agent.bgColor} flex items-center justify-center`}
                     >
-                      <div
-                        className={`w-8 h-8 rounded-lg ${agent.bgColor} flex items-center justify-center`}
+                      <span
+                        className={`material-symbols-outlined text-sm bg-gradient-to-r ${agent.color} bg-clip-text text-transparent`}
                       >
-                        <span
-                          className={`material-symbols-outlined text-sm bg-gradient-to-r ${agent.color} bg-clip-text text-transparent`}
-                        >
-                          {agent.icon}
-                        </span>
-                      </div>
-                      <span className="text-sm text-white font-medium">{agent.name}</span>
+                        {agent.icon}
+                      </span>
                     </div>
-                  )
-                )}
+                    <span className="text-sm text-white font-medium">{agent.name}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

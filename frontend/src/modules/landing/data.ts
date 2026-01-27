@@ -3,52 +3,115 @@ export const agents = [
   {
     id: "sales",
     name: "Sales Agent",
+    category: "Sales",
+    role: "Sales Development Representative",
     icon: "trending_up",
     color: "from-emerald-400 to-teal-500",
     bgColor: "bg-emerald-500/10",
     borderColor: "border-emerald-500/30",
     capabilities: ["Lead qualification", "Follow-up automation", "Sales insights"],
     description: "Qualify leads, automate follow-ups, and get AI-driven sales recommendations.",
+    longDescription:
+      "Your autonomous sales partner that works 24/7 to qualify leads, schedule meetings, and follow up with prospects. It integrates seamlessly with your CRM to keep your pipeline moving.",
+    mockChat: [
+      { role: "user", content: "Can you help me qualify this new lead from Acme Corp?" },
+      {
+        role: "agent",
+        content:
+          "I've analyzed Acme Corp. They have 500+ employees and recently raised Series B. This matches your ICP.",
+      },
+      { role: "user", content: "Great! Draft an outreach email." },
+      { role: "agent", content: "Drafting email now utilizing their recent news..." },
+    ],
   },
   {
     id: "support",
     name: "Call Agent",
+    category: "Support",
+    role: "Voice Support Specialist",
     icon: "call",
     color: "from-cyan-400 to-blue-500",
     bgColor: "bg-cyan-500/10",
     borderColor: "border-cyan-500/30",
     capabilities: ["Voice AI calls", "Call transcription", "Intent detection"],
     description: "Handle inbound & outbound calls with AI voice, transcription, and smart routing.",
+    longDescription:
+      "An intelligent voice agent capable of handling complex customer service calls with human-like empathy and understanding. It handles triage, resolution, and escalation automatically.",
+    mockChat: [
+      { role: "user", content: "Incoming call from customer #1234." },
+      {
+        role: "agent",
+        content: "Answering... Detected intent: 'billing inquiry'. Routing to finance flow.",
+      },
+      { role: "user", content: "What was the resolution?" },
+      {
+        role: "agent",
+        content: "Issue resolved. Customer updated payment method. Transcript saved.",
+      },
+    ],
   },
   {
     id: "crm",
     name: "CRM Agent",
+    category: "Operations",
+    role: "CRM Operations Manager",
     icon: "database",
     color: "from-violet-400 to-purple-500",
     bgColor: "bg-violet-500/10",
     borderColor: "border-violet-500/30",
     capabilities: ["Contact management", "Deal tracking", "Data sync"],
     description: "Central customer data hub that syncs across all your agents automatically.",
+    longDescription:
+      "Keeps your CRM perfectly synchronized and organized, ensuring no customer data ever falls through the cracks. It monitors data quality and updates records in real-time.",
+    mockChat: [
+      { role: "user", content: "Update deal status for 'Project X' to 'Negotiation'." },
+      {
+        role: "agent",
+        content: "Updated. Probability increased to 75%. Triggered 'Contract Review' task.",
+      },
+    ],
   },
   {
     id: "marketing",
     name: "Marketing Agent",
+    category: "Marketing",
+    role: "Digital Marketing Strategist",
     icon: "campaign",
     color: "from-orange-400 to-amber-500",
     bgColor: "bg-orange-500/10",
     borderColor: "border-orange-500/30",
     capabilities: ["Email campaigns", "Social planning", "Content AI"],
     description: "Plan and execute multi-channel marketing campaigns with AI assistance.",
+    longDescription:
+      "Plans, executes, and optimizes multi-channel marketing campaigns to maximize your reach and engagement. It learns from campaign performance to improve future strategies.",
+    mockChat: [
+      { role: "user", content: "Generate 5 tweet ideas for our new feature launch." },
+      {
+        role: "agent",
+        content: "Here are 5 variations focusing on 'speed', 'ease of use', and 'ROI'...",
+      },
+    ],
   },
   {
     id: "analytics",
     name: "Analytics Agent",
+    category: "Analytics",
+    role: "Business Intelligence Analyst",
     icon: "insights",
     color: "from-pink-400 to-rose-500",
     bgColor: "bg-pink-500/10",
     borderColor: "border-pink-500/30",
     capabilities: ["KPI dashboards", "Predictions", "Performance tracking"],
     description: "Get AI-driven insights, predictions, and real-time performance metrics.",
+    longDescription:
+      "Monitors your business performance in real-time, providing actionable insights and predictive analytics to drive growth. It identifies trends before they become obvious.",
+    mockChat: [
+      { role: "user", content: "How did the Q1 campaign perform?" },
+      {
+        role: "agent",
+        content: "Q1 Campaign exceeded targets by 15%. ROI was 3.5x. Detailed report generated.",
+      },
+    ],
   },
 ];
 
