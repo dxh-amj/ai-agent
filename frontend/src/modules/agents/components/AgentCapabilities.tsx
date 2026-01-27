@@ -1,6 +1,6 @@
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentCapabilitiesProps {
   agent: Agent;

@@ -8,7 +8,7 @@ import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorativ
 
 import { AgentAvatar } from "./AgentAvatar";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentChatPreviewProps {
   agent: Agent;

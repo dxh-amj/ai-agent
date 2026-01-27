@@ -1,6 +1,6 @@
 "use client";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentOverviewProps {
   agent: Agent;

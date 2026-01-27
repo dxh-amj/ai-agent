@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentHeroProps {
   agent: Agent;
