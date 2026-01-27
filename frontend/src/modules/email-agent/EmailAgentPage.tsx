@@ -4,31 +4,43 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
+import { AgentOverviewStep } from "./components/AgentOverviewStep";
 import { ConnectAccountStep } from "./components/ConnectAccountStep";
 import { EmailContextStep } from "./components/EmailContextStep";
 import { SendEmailStep } from "./components/SendEmailStep";
 
+const INITIAL_STEP = 1;
+const OVERVIEW_STEP = 1;
+const CONNECT_STEP = 2;
+const CONTEXT_STEP = 3;
+const RUN_STEP = 4;
+
 export const EmailAgentPage = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(INITIAL_STEP);
   const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null);
+
+  const handleOverviewNext = () => {
+    setStep(CONNECT_STEP);
+  };
 
   const handleAccountSelected = (accountId: string) => {
     setSelectedAccountId(accountId);
-    setStep(2);
+    setStep(CONTEXT_STEP);
   };
 
   const handleContextNext = () => {
-    setStep(3);
+    setStep(RUN_STEP);
   };
 
   const handleBack = () => {
-    setStep((prev) => Math.max(1, prev - 1));
+    setStep((prev) => Math.max(INITIAL_STEP, prev - 1));
   };
 
   const steps = [
-    { id: 1, label: "Connect Accounts", description: "Link your email" },
-    { id: 2, label: "Configuration", description: "Define behavior" },
-    { id: 3, label: "Test & Activate", description: "Verify and launch" },
+    { id: OVERVIEW_STEP, label: "Overview", description: "Learn about agent" },
+    { id: CONNECT_STEP, label: "Connect", description: "Link your accounts" },
+    { id: CONTEXT_STEP, label: "Context", description: "Define agent behavior" },
+    { id: RUN_STEP, label: "Run", description: "Execute capabilities" },
   ];
 
   return (
@@ -39,7 +51,7 @@ export const EmailAgentPage = () => {
           <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 dark:bg-slate-800 -z-10 -translate-y-1/2 rounded-full" />
           <div
             className="absolute top-1/2 left-0 h-0.5 bg-primary -z-10 -translate-y-1/2 rounded-full transition-all duration-500 ease-in-out"
-            style={{ width: `${((step - 1) / (steps.length - 1)) * 100}%` }}
+            style={{ width: `${((step - 1) / (steps.length - 1)) * 100}%` }} // eslint-disable-line no-magic-numbers
           />
 
           {steps.map((s) => (
@@ -85,10 +97,13 @@ export const EmailAgentPage = () => {
       {/* Main Content Area */}
       <div className="flex-1 w-full max-w-4xl mx-auto">
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm min-h-[500px] p-1">
-          <div className="h-full p-2 sm:p-8">
-            {step === 1 && <ConnectAccountStep onNext={handleAccountSelected} />}
-            {step === 2 && <EmailContextStep onNext={handleContextNext} onBack={handleBack} />}
-            {step === 3 && selectedAccountId && (
+          <div className="h-full p-2 sm:p-6">
+            {step === OVERVIEW_STEP && <AgentOverviewStep onNext={handleOverviewNext} />}
+            {step === CONNECT_STEP && <ConnectAccountStep onNext={handleAccountSelected} />}
+            {step === CONTEXT_STEP && (
+              <EmailContextStep onNext={handleContextNext} onBack={handleBack} />
+            )}
+            {step === RUN_STEP && selectedAccountId && (
               <SendEmailStep accountId={selectedAccountId} onBack={handleBack} />
             )}
           </div>

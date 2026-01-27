@@ -93,9 +93,14 @@ export const AgentChatPreview = ({ agent }: AgentChatPreviewProps) => {
                   if (index >= visibleMessages) return null;
 
                   const isUser = msg.role === "user";
+                  const CONTENT_PREVIEW_LENGTH = 20;
+                  const messageKey = `${agent.id}-${msg.role}-${index}-${msg.content.slice(
+                    0,
+                    CONTENT_PREVIEW_LENGTH
+                  )}`;
                   return (
                     <div
-                      key={`${agent.id}-${index}`} // Composite key is stable here as list doesn't reorder
+                      key={messageKey}
                       className={`flex ${
                         isUser ? "justify-end" : "justify-start"
                       } animate-fade-in-up`}

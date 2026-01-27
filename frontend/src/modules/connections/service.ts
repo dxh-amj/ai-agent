@@ -45,20 +45,29 @@ export const AVAILABLE_PLATFORMS: Array<{
 // Mock Data - Initially empty
 let MOCK_ACTIVE_CONNECTIONS: Connection[] = [];
 
+const FETCH_DELAY_MS = 800;
+const ADD_CONNECTION_DELAY_MS = 1000;
+const RADIX_36 = 36;
+const ACCOUNT_ID_LENGTH = 5;
+const ACCOUNT_ID_START_INDEX = 2;
+
 // Mock API Calls
 const fetchConnections = async (): Promise<Connection[]> => {
-  await new Promise((resolve) => setTimeout(resolve, 800));
+  await new Promise((resolve) => setTimeout(resolve, FETCH_DELAY_MS));
   return MOCK_ACTIVE_CONNECTIONS;
 };
 
 const addConnectionApi = async (provider: Provider): Promise<Connection> => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, ADD_CONNECTION_DELAY_MS));
 
   const platform = AVAILABLE_PLATFORMS.find((p) => p.provider === provider);
   if (!platform) throw new Error("Invalid provider");
 
   // Generate random mock account
-  const accountId = Math.random().toString(36).substr(2, 5).toUpperCase();
+  const accountId = Math.random()
+    .toString(RADIX_36)
+    .substr(ACCOUNT_ID_START_INDEX, ACCOUNT_ID_LENGTH)
+    .toUpperCase();
   const accountNames = [
     "Business Page",
     "Support Bot",
@@ -84,7 +93,7 @@ const addConnectionApi = async (provider: Provider): Promise<Connection> => {
 };
 
 const deleteConnectionApi = async (id: string): Promise<void> => {
-  await new Promise((resolve) => setTimeout(resolve, 800));
+  await new Promise((resolve) => setTimeout(resolve, FETCH_DELAY_MS));
   MOCK_ACTIVE_CONNECTIONS = MOCK_ACTIVE_CONNECTIONS.filter((c) => c.id !== id);
 };
 

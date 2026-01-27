@@ -27,6 +27,7 @@ async function logoutFn(data: unknown) {
   return response;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const authConfig: any = {
   userFn,
   loginFn,

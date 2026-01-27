@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
 import { useRouter } from "next/navigation";
-
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { useVerifyEmail } from "@/services/auth";

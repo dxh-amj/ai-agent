@@ -1,8 +1,7 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-
 import { Form, Formik } from "formik";
+import { useSearchParams } from "next/navigation";
 
 import { CustomPasswordInput } from "@/shared/form-elements";
 import { Button, Label } from "@/shared/ui";

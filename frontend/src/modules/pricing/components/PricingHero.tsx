@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 
 // Workaround for framer-motion v10 type compatibility with React 19
-const MotionDiv = motion.div as any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionDiv = motion.div as React.ComponentType<any>;
 
 import { Button } from "@/shared/ui";
 

@@ -31,7 +31,10 @@
     "frontend/src/**/*.tsx",
     "frontend/app/**/*.ts",
     "frontend/app/**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "libs/**/*.ts",
+    "libs/**/*.tsx",
+    "vitest.config.ts"
   ],
   "exclude": [
     "node_modules",

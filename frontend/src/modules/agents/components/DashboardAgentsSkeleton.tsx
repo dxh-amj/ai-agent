@@ -16,15 +16,15 @@ export const DashboardAgentsSkeleton = () => {
       {/* Tabs Skeleton */}
       <div>
         <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <Skeleton key={`tab-${i}`} className="h-9 w-24 rounded-md shrink-0" />
+          {Array.from({ length: 6 }, (_, i) => `tab-skeleton-${i}`).map((id) => (
+            <Skeleton key={id} className="h-9 w-24 rounded-md shrink-0" />
           ))}
         </div>
 
         {/* Grid Skeleton */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-          {Array.from({ length: 10 }).map((_, i) => (
-            <AgentCardSkeleton key={`skeleton-${i}`} />
+          {Array.from({ length: 10 }, (_, i) => `agent-card-skeleton-${i}`).map((id) => (
+            <AgentCardSkeleton key={id} />
           ))}
         </div>
       </div>

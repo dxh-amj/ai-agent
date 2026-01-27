@@ -7,7 +7,7 @@ export const FeaturesGrid = () => {
     {
       title: "Multi-Agent Orchestration",
       description:
-        "5 AI agents work together in real-time, communicating and collaborating like a unified team.",
+        "Multiple AI agents work together in real-time, communicating and collaborating like a unified team.",
       icon: "hub",
       gradient: "from-emerald-500 to-teal-500",
     },
@@ -117,9 +117,9 @@ export const FeaturesGrid = () => {
               <div className="mt-6 pt-6 border-t border-white/20">
                 <div className="flex items-center gap-3">
                   <div className="flex -space-x-2">
-                    {["SC", "MR", "JM"].map((initials, i) => (
+                    {["SC", "MR", "JM"].map((initials) => (
                       <div
-                        key={i}
+                        key={initials}
                         className="w-8 h-8 rounded-full bg-white/20 border-2 border-white/30 flex items-center justify-center text-xs text-white font-medium"
                       >
                         {initials}

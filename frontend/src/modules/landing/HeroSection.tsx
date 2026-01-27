@@ -79,7 +79,7 @@ export const HeroSection = () => {
                     const items = integrations.slice(0, INTEGRATION_SLICE_COUNT);
                     return [...items, ...items].map((integration, index) => (
                       <div
-                        key={`${integration.name}-${index}`}
+                        key={`${integration.name}-marquee-${index}`} // eslint-disable-line react/no-array-index-key
                         className="shrink-0 mx-8 lg:mx-12 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                       >
                         <Image

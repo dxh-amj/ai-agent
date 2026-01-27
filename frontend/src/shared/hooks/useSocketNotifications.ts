@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-
 import { getCookie } from "cookies-next";
+import { useEffect, useState } from "react";
 
 import { useSocket } from "@/shared/hooks/useSocket";
 import { buildWebSocketUrl } from "@/utils";

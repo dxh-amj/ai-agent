@@ -1,7 +1,13 @@
 import axios from "axios";
 import { toast } from "sonner";
 
-const handleApiError = (error: any, customMessage?: string) => {
+const HTTP_STATUS_BAD_REQUEST = 400;
+const HTTP_STATUS_UNAUTHORIZED = 401;
+const HTTP_STATUS_FORBIDDEN = 403;
+const HTTP_STATUS_NOT_FOUND = 404;
+const HTTP_STATUS_INTERNAL_SERVER_ERROR = 500;
+
+const handleApiError = (error: unknown, customMessage?: string) => {
   if (customMessage) {
     toast.error(customMessage);
     return;
@@ -15,15 +21,15 @@ const handleApiError = (error: any, customMessage?: string) => {
         axiosError.response.data?.message ??
         (() => {
           switch (status) {
-            case 400:
+            case HTTP_STATUS_BAD_REQUEST:
               return "Please check your inputs.";
-            case 401:
+            case HTTP_STATUS_UNAUTHORIZED:
               return "Unauthorized! Please log in.";
-            case 403:
+            case HTTP_STATUS_FORBIDDEN:
               return "You don't have permission to access this resource.";
-            case 404:
+            case HTTP_STATUS_NOT_FOUND:
               return "The requested resource could not be found.";
-            case 500:
+            case HTTP_STATUS_INTERNAL_SERVER_ERROR:
               return "Something went wrong! Please try again later.";
             default:
               return `Error: ${status} - An error occurred.`;

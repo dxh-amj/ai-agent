@@ -47,10 +47,11 @@ export const FAQSection = ({
         <div className="space-y-3">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
+            const faqKey = `${faq.question}-${index}`;
 
             return (
               <div
-                key={index}
+                key={faqKey}
                 className={`group rounded-xl border transition-all duration-300 overflow-hidden ${
                   isOpen
                     ? "bg-white border-primary shadow-lg shadow-primary/5"

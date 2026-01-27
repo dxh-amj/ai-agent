@@ -8,11 +8,17 @@ interface StatsOverviewProps {
 }
 
 export const StatsOverview = ({ data, isLoading }: StatsOverviewProps) => {
+  const SKELETON_COUNT = 4;
+  const SKELETON_HEIGHT = 32;
+
   if (isLoading || !data) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-32 rounded-3xl bg-slate-100 dark:bg-slate-800 animate-pulse" />
+        {Array.from({ length: SKELETON_COUNT }, (_, i) => `skeleton-${i}`).map((id) => (
+          <div
+            key={id}
+            className={`h-${SKELETON_HEIGHT} rounded-3xl bg-slate-100 dark:bg-slate-800 animate-pulse`}
+          />
         ))}
       </div>
     );
