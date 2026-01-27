@@ -1,5 +1,24 @@
 // Data for landing page components
-export const agents = [
+interface AgentData {
+  id: string;
+  name: string;
+  category: "Sales" | "Support" | "Operations" | "Marketing" | "Analytics";
+  role: string;
+  icon: string;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+  capabilities: string[];
+  description: string;
+  longDescription: string;
+  mockChat: Array<{ role: "user" | "assistant" | "agent"; content: string }>;
+  slug: string;
+  tags: string[];
+  price: string;
+  billingPeriod: "monthly" | "one-time";
+}
+
+export const agents: AgentData[] = [
   {
     id: "sales",
     name: "Sales Agent",
@@ -23,6 +42,10 @@ export const agents = [
       { role: "user", content: "Great! Draft an outreach email." },
       { role: "agent", content: "Drafting email now utilizing their recent news..." },
     ],
+    slug: "sales-agent",
+    tags: ["New", "Hot"],
+    price: "$49",
+    billingPeriod: "monthly",
   },
   {
     id: "support",
@@ -49,6 +72,10 @@ export const agents = [
         content: "Issue resolved. Customer updated payment method. Transcript saved.",
       },
     ],
+    slug: "call-agent",
+    tags: ["Popular"],
+    price: "$99",
+    billingPeriod: "monthly",
   },
   {
     id: "crm",
@@ -70,6 +97,10 @@ export const agents = [
         content: "Updated. Probability increased to 75%. Triggered 'Contract Review' task.",
       },
     ],
+    slug: "crm-agent",
+    tags: ["Essential"],
+    price: "$29",
+    billingPeriod: "monthly",
   },
   {
     id: "marketing",
@@ -91,6 +122,10 @@ export const agents = [
         content: "Here are 5 variations focusing on 'speed', 'ease of use', and 'ROI'...",
       },
     ],
+    slug: "marketing-agent",
+    tags: ["Growth"],
+    price: "$59",
+    billingPeriod: "monthly",
   },
   {
     id: "analytics",
@@ -112,6 +147,10 @@ export const agents = [
         content: "Q1 Campaign exceeded targets by 15%. ROI was 3.5x. Detailed report generated.",
       },
     ],
+    slug: "analytics-agent",
+    tags: ["Advanced"],
+    price: "$79",
+    billingPeriod: "monthly",
   },
 ];
 

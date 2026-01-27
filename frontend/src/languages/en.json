@@ -80,6 +80,7 @@
     "upgrade_subscription": "Upgrade Subscription",
     "payment": "Payment",
     "services": "Services",
+    "connections": "Connections",
     "agents": "Agents"
   },
   "sidebar": {

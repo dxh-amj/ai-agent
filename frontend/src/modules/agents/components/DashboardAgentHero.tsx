@@ -4,7 +4,7 @@ import { Button } from "@/shared/ui/button";
 
 import { AgentAvatar } from "./AgentAvatar";
 
-import type { Agent } from "@/modules/landing/data";
+import type { Agent } from "@/modules/agents/types";
 
 interface DashboardAgentHeroProps {
   agent: Agent;
@@ -49,15 +49,6 @@ export const DashboardAgentHero = ({ agent, slug }: DashboardAgentHeroProps) => 
 
           {/* CTA Buttons - Dashboard Specific */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up [animation-delay:400ms]">
-            <Button
-              size="lg"
-              className="px-8 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 rounded-full hover:scale-[1.02] active:scale-[0.98] transition-all font-bold gap-2"
-              onClick={() => router.push("#buy-license")} // Placeholder action
-            >
-              <span className="material-symbols-outlined text-xl">shopping_cart</span>
-              Buy License
-            </Button>
-
             <Button
               size="lg"
               variant="outline"
