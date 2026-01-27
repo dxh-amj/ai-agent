@@ -1,7 +1,8 @@
 "use client";
 
 import { IconMoon, IconSun } from "@tabler/icons-react";
-import { useState } from "react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/shared/ui/button";
 import { SidebarTrigger } from "@/shared/ui/sidebar";
@@ -17,12 +18,31 @@ interface HeaderProps {
 }
 
 export const Header = ({ user, isLoading }: HeaderProps) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle("dark");
+    setTheme(theme === "dark" ? "light" : "dark");
   };
+
+  if (!mounted) {
+    return (
+      <header className="sticky top-0 z-30 border-b border-border bg-background">
+        <div className="flex h-16 items-center gap-2 px-4">
+          <SidebarTrigger className="-ml-1 text-foreground hover:bg-accent hover:text-accent-foreground" />
+          <div className="flex-1" />
+          <div className="flex items-center gap-1">
+            {/* Render nothing or skeleton for theme toggle to avoid mismatch */}
+            <div className="w-9 h-9" />
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background">
@@ -46,7 +66,7 @@ export const Header = ({ user, isLoading }: HeaderProps) => {
             className="text-muted-foreground hover:bg-accent hover:text-foreground"
             title="Toggle theme"
           >
-            {isDarkMode ? <IconSun size={20} /> : <IconMoon size={20} />}
+            {theme === "dark" ? <IconSun size={20} /> : <IconMoon size={20} />}
           </Button>
 
           {/* Profile Dropdown */}

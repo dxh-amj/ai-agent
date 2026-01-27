@@ -4,6 +4,7 @@ import { Input } from "@/shared/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 
 import { AgentCard } from "./components/AgentCard";
+import { DashboardAgentsSkeleton } from "./components/DashboardAgentsSkeleton";
 import { useAgentsData } from "./hooks";
 
 import type { Category } from "./types";
@@ -21,11 +22,7 @@ export const DashboardAgentsPage = () => {
   } = useAgentsData();
 
   if (isLoading) {
-    return (
-      <div className="flex items-center justify-center py-32">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
-      </div>
-    );
+    return <DashboardAgentsSkeleton />;
   }
 
   return (
