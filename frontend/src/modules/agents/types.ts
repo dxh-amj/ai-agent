@@ -6,7 +6,7 @@ export interface Agent extends LandingAgent {
   longDescription: string;
   tags: string[];
   mockChat: Array<{
-    role: "user" | "assistant";
+    role: "user" | "assistant" | "agent";
     content: string;
   }>;
   category: "Sales" | "Support" | "Operations" | "Marketing" | "Analytics";
