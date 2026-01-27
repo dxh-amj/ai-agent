@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { AgentAvatar } from "./AgentAvatar";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentCardProps {
   agent: Agent;

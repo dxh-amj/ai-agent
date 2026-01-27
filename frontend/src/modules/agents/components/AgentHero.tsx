@@ -4,7 +4,7 @@ import { Button } from "@/shared/ui/button";
 
 import { AgentAvatar } from "./AgentAvatar";
 
-import type { Agent } from "@/modules/landing/data";
+import type { Agent } from "../types";
 
 interface AgentHeroProps {
   agent: Agent;

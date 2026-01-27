@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { AgentAvatar } from "./AgentAvatar";
 
-import type { Agent } from "@/modules/landing/data";
+import type { Agent } from "../types";
 
 interface AgentChatPreviewProps {
   agent: Agent;

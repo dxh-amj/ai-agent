@@ -1,6 +1,6 @@
 "use client";
 
-import type { Agent } from "@/modules/landing/data";
+import type { Agent } from "../types";
 
 interface AgentOverviewProps {
   agent: Agent;
