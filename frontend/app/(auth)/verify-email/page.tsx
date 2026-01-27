@@ -1,6 +1,5 @@
-import { Suspense } from "react";
-
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { VerifyEmail } from "@/modules/auth/verify-email/VerifyEmail";
 import { Spinner } from "@/shared/ui";

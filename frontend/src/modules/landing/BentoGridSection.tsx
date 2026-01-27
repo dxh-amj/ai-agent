@@ -207,13 +207,33 @@ const MetricsVisual = () => {
 
           {/* Mini chart */}
           <div className="flex items-end gap-1 h-[30px]">
-            {[40, 65, 45, 80, 55, 90, 70, 85].map((h, i) => (
-              <div
-                key={i}
-                className="flex-1 bg-linear-to-t from-emerald-500 to-teal-400 rounded-t"
-                style={{ height: `${h}%` }}
-              />
-            ))}
+            {(() => {
+              const CHART_HEIGHT_1 = 40;
+              const CHART_HEIGHT_2 = 65;
+              const CHART_HEIGHT_3 = 45;
+              const CHART_HEIGHT_4 = 80;
+              const CHART_HEIGHT_5 = 55;
+              const CHART_HEIGHT_6 = 90;
+              const CHART_HEIGHT_7 = 70;
+              const CHART_HEIGHT_8 = 85;
+              const CHART_HEIGHTS = [
+                CHART_HEIGHT_1,
+                CHART_HEIGHT_2,
+                CHART_HEIGHT_3,
+                CHART_HEIGHT_4,
+                CHART_HEIGHT_5,
+                CHART_HEIGHT_6,
+                CHART_HEIGHT_7,
+                CHART_HEIGHT_8,
+              ] as const;
+              return CHART_HEIGHTS.map((h) => (
+                <div
+                  key={`chart-bar-${h}`}
+                  className="flex-1 bg-linear-to-t from-emerald-500 to-teal-400 rounded-t"
+                  style={{ height: `${h}%` }}
+                />
+              ));
+            })()}
           </div>
         </div>
       </div>

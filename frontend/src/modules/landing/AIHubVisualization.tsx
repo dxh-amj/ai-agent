@@ -5,6 +5,11 @@ import { useEffect, useState } from "react";
 import { agents } from "./data";
 
 // AI Hub Visualization Component
+const PULSE_COUNT = 5;
+const PULSE_INTERVAL_MS = 2000;
+const AGENT_RADIUS = 140;
+const HOVER_SCALE = 1.15;
+
 export const AIHubVisualization = () => {
   const [activeAgent, setActiveAgent] = useState<number | null>(null);
   const [pulseIndex, setPulseIndex] = useState(0);
@@ -12,15 +17,15 @@ export const AIHubVisualization = () => {
   // Animate connection pulses
   useEffect(() => {
     const interval = setInterval(() => {
-      setPulseIndex((prev) => (prev + 1) % 5);
-    }, 2000);
+      setPulseIndex((prev) => (prev + 1) % PULSE_COUNT);
+    }, PULSE_INTERVAL_MS);
     return () => clearInterval(interval);
   }, []);
 
   // Calculate positions for agents in a circle
   const getAgentPosition = (index: number, total: number) => {
     const angle = (index * 2 * Math.PI) / total - Math.PI / 2; // Start from top
-    const radius = 140; // Distance from center
+    const radius = AGENT_RADIUS; // Distance from center
     return {
       x: Math.cos(angle) * radius,
       y: Math.sin(angle) * radius,
@@ -52,10 +57,10 @@ export const AIHubVisualization = () => {
       >
         {/* Gradient definitions */}
         <defs>
-          {agents.map((_, i) => (
+          {agents.map((agent) => (
             <linearGradient
-              key={`gradient-${i}`}
-              id={`line-gradient-${i}`}
+              key={`gradient-${agent.id}`}
+              id={`line-gradient-${agent.id}`}
               x1="0%"
               y1="0%"
               x2="100%"
@@ -81,18 +86,18 @@ export const AIHubVisualization = () => {
         </defs>
 
         {/* Connection lines from center to each agent */}
-        {agents.map((_, i) => {
+        {agents.map((agent, i) => {
           const pos = getAgentPosition(i, agents.length);
           const isActive = pulseIndex === i;
           return (
-            <g key={`connection-${i}`}>
+            <g key={`connection-${agent.id}`}>
               {/* Base line */}
               <line
                 x1="0"
                 y1="0"
                 x2={pos.x}
                 y2={pos.y}
-                stroke={`url(#line-gradient-${i})`}
+                stroke={`url(#line-gradient-${agent.id})`}
                 strokeWidth="2"
                 strokeDasharray="4 4"
                 className="opacity-40"
@@ -114,13 +119,14 @@ export const AIHubVisualization = () => {
         })}
 
         {/* Inter-agent connection lines (showing collaboration) */}
-        {agents.map((_, i) => {
+        {agents.map((agent, i) => {
           const nextIndex = (i + 1) % agents.length;
+          const nextAgent = agents[nextIndex];
           const pos1 = getAgentPosition(i, agents.length);
           const pos2 = getAgentPosition(nextIndex, agents.length);
           return (
             <line
-              key={`inter-${i}`}
+              key={`inter-${agent.id}-${nextAgent.id}`}
               x1={pos1.x}
               y1={pos1.y}
               x2={pos2.x}
@@ -165,7 +171,7 @@ export const AIHubVisualization = () => {
             type="button"
             className="absolute z-10 transition-all duration-300 cursor-pointer bg-transparent border-none p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 rounded-xl"
             style={{
-              transform: `translate(${pos.x}px, ${pos.y}px) scale(${isHovered ? 1.15 : 1})`,
+              transform: `translate(${pos.x}px, ${pos.y}px) scale(${isHovered ? HOVER_SCALE : 1})`,
             }}
             onMouseEnter={() => handleAgentFocus(i)}
             onMouseLeave={handleAgentBlur}

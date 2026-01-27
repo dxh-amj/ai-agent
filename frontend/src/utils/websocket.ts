@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 export const buildWebSocketUrl = (endpoint: string, token?: string): string => {
   if (typeof window === "undefined") return "";
 

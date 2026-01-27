@@ -61,9 +61,9 @@ const ConnectionsPageSkeleton = () => {
       </div>
 
       <div className="space-y-4">
-        {Array.from({ length: 5 }).map((_, i) => (
+        {Array.from({ length: 5 }, (_, i) => `skeleton-item-${i}`).map((id) => (
           <div
-            key={`skeleton-${i}`}
+            key={id}
             className="rounded-3xl border border-slate-200/60 dark:border-slate-800/60 bg-white dark:bg-slate-900 overflow-hidden shadow-sm"
           >
             <div className="p-6 flex items-center justify-between border-b border-slate-100 dark:border-slate-800">

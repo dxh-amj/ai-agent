@@ -11,7 +11,7 @@ import React from "react";
 import type { Agent } from "../types";
 
 interface AgentAvatarProps {
-  agent: Agent;
+  agent: Pick<Agent, "icon" | "color" | "name"> & { imageUrl?: string };
   size?: "sm" | "md" | "lg" | "xl";
   className?: string;
 }

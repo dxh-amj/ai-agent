@@ -1,9 +1,8 @@
 "use client";
 
-import React from "react";
-
 import Checkbox from "@mui/material/Checkbox";
 import { styled } from "@mui/material/styles";
+import React from "react";
 
 import type { CheckboxProps } from "@mui/material/Checkbox";
 

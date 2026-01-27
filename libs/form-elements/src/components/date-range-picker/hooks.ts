@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-
 import dayjs, { type Dayjs } from "dayjs";
+import { useEffect, useState } from "react";
 
 import type { DateRangePreset, UseDateRangePickerLogicProps } from "./types";
 
@@ -50,9 +49,10 @@ export const useDateRangePickerLogic = ({
       onPresetSelect?.(preset.label);
       onStartDateChange(range.startDate);
       onEndDateChange(range.endDate);
+      const CLOSE_DELAY_MS = 150;
       setTimeout(() => {
         onClose?.();
-      }, 150);
+      }, CLOSE_DELAY_MS);
     }
   };
 
@@ -61,6 +61,7 @@ export const useDateRangePickerLogic = ({
       onStartDateChange(date);
       onEndDateChange(null);
       setInternalSelectedPreset(null);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       onPresetSelect?.(null as any);
     } else if (startDate && !endDate) {
       if (date.isBefore(startDate)) {

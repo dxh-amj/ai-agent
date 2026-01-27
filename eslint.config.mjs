@@ -50,9 +50,11 @@ export default [
       "commitlint.config.js",
       "lint-staged.config.js",
       ".prettierrc.js",
+      "frontend/next.config.js",
       "frontend/*/next.config.js",
     ],
     languageOptions: {
+      parser: undefined, // Use default JavaScript parser, not TypeScript
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
@@ -69,7 +71,33 @@ export default [
     },
   },
 
-  // TypeScript and JavaScript files configuration (excluding config files)
+  // Libs files configuration (must come before general TypeScript config)
+  {
+    files: ["libs/**/*.ts", "libs/**/*.tsx"],
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+        // Disable type-aware linting to avoid tsconfig resolution issues
+        // TypeScript compiler will still check types during build
+        project: false,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      // Allow any types in libs since we're not using type-aware linting
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+    },
+  },
+
+  // TypeScript and JavaScript files configuration (excluding config files and libs)
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
     ignores: [
@@ -83,6 +111,7 @@ export default [
       "commitlint.config.js",
       "lint-staged.config.js",
       ".prettierrc.js",
+      "frontend/next.config.js",
       "frontend/*/next.config.js",
     ],
     languageOptions: {
@@ -93,9 +122,14 @@ export default [
         ecmaFeatures: {
           jsx: true,
         },
-        project: ["./tsconfig.json", "./frontend/tsconfig.json", "./frontend/*/tsconfig.json"],
+        project: [
+          "./tsconfig.json",
+          "./frontend/tsconfig.json",
+          "./frontend/*/tsconfig.json",
+        ],
         tsconfigRootDir: import.meta.dirname,
         noWarnOnMultipleProjects: true,
+        createDefaultProgram: true,
       },
     },
     plugins: {
@@ -394,9 +428,9 @@ export default [
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
-        project: ["./tsconfig.json", "./frontend/*/tsconfig.json"],
+        // Disable type-aware linting for config files - they don't need it
+        project: false,
         tsconfigRootDir: import.meta.dirname,
-        noWarnOnMultipleProjects: true,
       },
     },
     rules: {
@@ -406,6 +440,12 @@ export default [
       "@typescript-eslint/no-explicit-any": "off",
       "no-useless-escape": "off",
       "no-case-declarations": "off",
+      // Disable type-aware rules for config files
+      "@typescript-eslint/prefer-optional-chain": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
+      "@typescript-eslint/prefer-readonly": "off",
+      "@typescript-eslint/prefer-string-starts-ends-with": "off",
+      "@typescript-eslint/unified-signatures": "off",
     },
   },
 

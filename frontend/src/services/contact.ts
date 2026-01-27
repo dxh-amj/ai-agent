@@ -13,12 +13,14 @@ export interface ContactResponse {
   message: string;
 }
 
-const CONTACT_URL = "/api/v1/contact/"; // Symmetric to /api/auth/v1/login/
+// const CONTACT_URL = "/api/v1/contact/";
 
-export const sendContactMessage = async (data: ContactDTO): Promise<ContactResponse> => {
+const SIMULATED_API_DELAY_MS = 1500;
+
+export const sendContactMessage = async (_data: ContactDTO): Promise<ContactResponse> => {
   try {
     // Simulating API call with delay for now
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise((resolve) => setTimeout(resolve, SIMULATED_API_DELAY_MS));
 
     // Fake successful response
     const fakeResponse = {

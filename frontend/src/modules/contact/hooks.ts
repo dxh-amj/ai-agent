@@ -3,7 +3,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-import { sendContactMessage, type ContactDTO } from "@/services/contact";
+import { type ContactDTO, sendContactMessage } from "@/services/contact";
 
 export const useContact = () => {
   const { mutate, isPending } = useMutation({
@@ -11,9 +11,10 @@ export const useContact = () => {
     onSuccess: (data) => {
       toast.success(data.message || "Your message has been received!");
     },
-    onError: (error: any) => {
+    onError: (error: unknown) => {
       const errorMessage =
-        error?.response?.data?.message || "Something went wrong. Please try again.";
+        (error as { response?: { data?: { message?: string } } })?.response?.data?.message ||
+        "Something went wrong. Please try again.";
       toast.error(errorMessage);
     },
   });

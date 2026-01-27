@@ -8,27 +8,34 @@ import { ConnectAccountStep } from "./components/ConnectAccountStep";
 import { EmailContextStep } from "./components/EmailContextStep";
 import { SendEmailStep } from "./components/SendEmailStep";
 
+const INITIAL_STEP = 1;
+const OVERVIEW_STEP = 1;
+const CONNECT_STEP = 2;
+const CONTEXT_STEP = 3;
+const RUN_STEP = 4;
+
 export const EmailAgentPage = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(INITIAL_STEP);
   const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null);
 
   const handleAccountSelected = (accountId: string) => {
     setSelectedAccountId(accountId);
-    setStep(2);
+    setStep(CONTEXT_STEP);
   };
 
   const handleContextNext = () => {
-    setStep(3);
+    setStep(RUN_STEP);
   };
 
   const handleBack = () => {
-    setStep((prev) => Math.max(1, prev - 1));
+    setStep((prev) => Math.max(INITIAL_STEP, prev - 1));
   };
 
   const steps = [
-    { id: 1, label: "Connect Accounts", description: "Link your email" },
-    { id: 2, label: "Configuration", description: "Define behavior" },
-    { id: 3, label: "Test & Activate", description: "Verify and launch" },
+    { id: OVERVIEW_STEP, label: "Overview", description: "Learn about agent" },
+    { id: CONNECT_STEP, label: "Connect", description: "Link your accounts" },
+    { id: CONTEXT_STEP, label: "Context", description: "Define agent behavior" },
+    { id: RUN_STEP, label: "Run", description: "Execute capabilities" },
   ];
 
   return (

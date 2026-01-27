@@ -4,10 +4,10 @@ import { Button } from "@/shared/ui/button";
 
 import { AgentAvatar } from "./AgentAvatar";
 
-import type { Agent } from "@/modules/agents/types";
+import type { Agent as LandingAgent } from "@/modules/landing/data";
 
 interface DashboardAgentHeroProps {
-  agent: Agent;
+  agent: LandingAgent;
   slug: string;
 }
 
@@ -20,7 +20,16 @@ export const DashboardAgentHero = ({ agent, slug }: DashboardAgentHeroProps) => 
         <div className="flex flex-col items-center text-center">
           {/* Icon with animated gradient background */}
           <div className="mb-6">
-            <AgentAvatar agent={agent} size="lg" className="animate-fade-in-up" />
+            <AgentAvatar
+              agent={{
+                icon: agent.icon,
+                color: agent.color,
+                imageUrl: (agent as { imageUrl?: string }).imageUrl,
+                name: agent.name,
+              }}
+              size="lg"
+              className="animate-fade-in-up"
+            />
           </div>
 
           {/* Category Badge */}

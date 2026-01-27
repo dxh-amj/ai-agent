@@ -2,6 +2,7 @@
 import { OutlinedInput } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CustomOutlinedInput = styled((props: any) => <OutlinedInput {...props} />)(({ theme }) => ({
   "& .MuiOutlinedInput-input::-webkit-input-placeholder": {
     color: theme.palette.text.secondary,

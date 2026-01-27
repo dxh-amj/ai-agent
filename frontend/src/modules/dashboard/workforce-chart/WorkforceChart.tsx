@@ -6,12 +6,22 @@ import { WorkforceChartSkeleton } from "./WorkforceChartSkeleton";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type ApexChartOptions = any;
+
+const GRADIENT_STOP_0 = 0;
+const GRADIENT_STOP_100 = 100;
+const STROKE_WIDTH = 3;
+const GRID_STROKE_DASH_ARRAY = 4;
+const FONT_SIZE_SMALL = 10;
+const FONT_SIZE_MEDIUM = 12;
+
 export const WorkforceChart = ({ isLoading }: { isLoading: boolean }) => {
   if (isLoading) {
     return <WorkforceChartSkeleton />;
   }
 
-  const options: any = {
+  const options: ApexChartOptions = {
     chart: {
       type: "area",
       toolbar: { show: false },
@@ -21,7 +31,7 @@ export const WorkforceChart = ({ isLoading }: { isLoading: boolean }) => {
     },
     stroke: {
       curve: "smooth",
-      width: 3,
+      width: STROKE_WIDTH,
       colors: ["#6366f1"],
     },
     fill: {
@@ -30,15 +40,15 @@ export const WorkforceChart = ({ isLoading }: { isLoading: boolean }) => {
         shadeIntensity: 1,
         opacityFrom: 0.45,
         opacityTo: 0.05,
-        stops: [0, 100],
+        stops: [GRADIENT_STOP_0, GRADIENT_STOP_100],
         colorStops: [
           {
-            offset: 0,
+            offset: GRADIENT_STOP_0,
             color: "#6366f1",
             opacity: 0.4,
           },
           {
-            offset: 100,
+            offset: GRADIENT_STOP_100,
             color: "#6366f1",
             opacity: 0,
           },
@@ -50,7 +60,7 @@ export const WorkforceChart = ({ isLoading }: { isLoading: boolean }) => {
       labels: {
         style: {
           colors: "#94a3b8",
-          fontSize: "12px",
+          fontSize: `${FONT_SIZE_MEDIUM}px`,
           fontWeight: 600,
         },
       },
@@ -61,14 +71,14 @@ export const WorkforceChart = ({ isLoading }: { isLoading: boolean }) => {
       labels: {
         style: {
           colors: "#94a3b8",
-          fontSize: "10px",
+          fontSize: `${FONT_SIZE_SMALL}px`,
           fontWeight: 600,
         },
       },
     },
     grid: {
       borderColor: "#f1f5f9",
-      strokeDashArray: 4,
+      strokeDashArray: GRID_STROKE_DASH_ARRAY,
       padding: { left: 0, right: 0, top: 0, bottom: 0 },
     },
     tooltip: {
@@ -78,10 +88,26 @@ export const WorkforceChart = ({ isLoading }: { isLoading: boolean }) => {
     dataLabels: { enabled: false },
   };
 
+  const MOCK_DATA_MON = 45;
+  const MOCK_DATA_TUE = 52;
+  const MOCK_DATA_WED = 38;
+  const MOCK_DATA_THU = 65;
+  const MOCK_DATA_FRI = 48;
+  const MOCK_DATA_SAT = 24;
+  const MOCK_DATA_SUN = 30;
+
   const series = [
     {
       name: "Tasks Processed",
-      data: [45, 52, 38, 65, 48, 24, 30],
+      data: [
+        MOCK_DATA_MON,
+        MOCK_DATA_TUE,
+        MOCK_DATA_WED,
+        MOCK_DATA_THU,
+        MOCK_DATA_FRI,
+        MOCK_DATA_SAT,
+        MOCK_DATA_SUN,
+      ],
     },
   ];
 

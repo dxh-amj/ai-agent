@@ -1,6 +1,5 @@
-import { Suspense } from "react";
-
 import Link from "next/link";
+import { Suspense } from "react";
 
 import { NewPasswordForm } from "@/modules/auth";
 import { Spinner } from "@/shared/ui";

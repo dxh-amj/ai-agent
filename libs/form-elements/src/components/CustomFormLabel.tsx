@@ -2,6 +2,7 @@
 import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const CustomFormLabel = styled((props: any) => (
   <Typography
     variant="subtitle1"

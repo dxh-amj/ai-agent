@@ -63,9 +63,9 @@ export const TestimonialsSection = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-300 border border-slate-300 rounded-xl overflow-hidden bg-white">
-              {testimonials.map((testimonial, index) => (
+              {testimonials.map((testimonial) => (
                 <div
-                  key={index}
+                  key={`${testimonial.name}-${testimonial.company}`}
                   className="flex flex-col items-center p-12 lg:p-16 text-center transition-all duration-300 hover:bg-slate-50/50 group"
                 >
                   {/* Company Logo */}

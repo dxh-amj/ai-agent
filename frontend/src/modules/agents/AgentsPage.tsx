@@ -30,9 +30,12 @@ const item = {
 };
 
 // Workaround for React 19 types compatibility with framer-motion v10
-const MotionDiv = motion.div as any;
-const MotionH1 = motion.h1 as any;
-const MotionP = motion.p as any;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionDiv = motion.div as React.ComponentType<any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionH1 = motion.h1 as React.ComponentType<any>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const MotionP = motion.p as React.ComponentType<any>;
 
 export const AgentsPage = () => {
   const {

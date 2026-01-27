@@ -1,10 +1,9 @@
 "use client";
-
-import * as React from "react";
-
+/* eslint-disable max-lines */
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { PanelLeftIcon } from "lucide-react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/shared/hooks/use-mobile";
@@ -16,7 +15,12 @@ import { Skeleton } from "@/shared/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/shared/ui/tooltip";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
-const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
+const SECONDS_PER_MINUTE = 60;
+const MINUTES_PER_HOUR = 60;
+const HOURS_PER_DAY = 24;
+const DAYS_PER_WEEK = 7;
+const SIDEBAR_COOKIE_MAX_AGE =
+  SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_WEEK;
 const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
@@ -578,8 +582,11 @@ const SidebarMenuSkeleton = ({
   showIcon?: boolean;
 }) => {
   // Random width between 50 to 90%.
+  const MIN_WIDTH_PERCENT = 50;
+  const MAX_WIDTH_PERCENT = 90;
   const width = React.useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`;
+    const WIDTH_RANGE = MAX_WIDTH_PERCENT - MIN_WIDTH_PERCENT;
+    return `${Math.floor(Math.random() * WIDTH_RANGE) + MIN_WIDTH_PERCENT}%`;
   }, []);
 
   return (
