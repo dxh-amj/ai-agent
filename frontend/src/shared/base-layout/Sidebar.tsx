@@ -1,6 +1,6 @@
 "use client";
 
-import { IconLayoutDashboard, IconRobot, IconSettings } from "@tabler/icons-react";
+import { IconLayoutDashboard, IconRobot, IconSettings, IconShare2 } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
@@ -40,6 +40,11 @@ const menuItems = [
     titleKey: "navigation.agents",
     url: "/dashboard/agents",
     icon: IconRobot,
+  },
+  {
+    titleKey: "navigation.connections",
+    url: "/dashboard/connections",
+    icon: IconShare2,
   },
   {
     titleKey: "navigation.settings",
