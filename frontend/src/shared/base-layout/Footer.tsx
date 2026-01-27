@@ -13,19 +13,19 @@ export const Footer = () => {
       <div className="flex">
         <DecorativeStripes />
 
-        <div className="flex-1 border-x border-slate-200 px-6 sm:px-10 lg:px-16 pt-12 pb-12 relative">
+        <div className="flex-1 border-x border-slate-200 px-6 sm:px-10 lg:px-16 pt-16 pb-12 relative">
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.15] pointer-events-none" />
 
           <div className="mx-auto max-w-7xl relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-12">
-              <div className="lg:col-span-5 flex flex-col items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-16">
+              <div className="lg:col-span-5 flex flex-col items-start pr-8">
                 <Link
                   href="/"
-                  className="mb-8 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] active:scale-95"
+                  className="mb-6 hover:opacity-90 transition-all duration-300 hover:scale-[1.02] active:scale-95"
                 >
                   <AgentKitLogo variant="dark" size="lg" />
                 </Link>
-                <p className="text-lg text-slate-600 max-w-md leading-relaxed mb-10 font-medium">
+                <p className="text-base text-slate-500 max-w-md leading-relaxed mb-8 font-medium">
                   The mission-critical AI agent orchestration platform. Connect, deploy, and scale
                   multi-agent systems to automate complex business workflows with precision and
                   reliability.
@@ -40,7 +40,7 @@ export const Footer = () => {
 
               <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-10 lg:gap-4">
                 <div className="flex flex-col">
-                  <h4 className="text-sm font-bold text-slate-900 uppercase tracking-[0.2em] mb-6 mt-3">
+                  <h4 className="text-sm font-bold text-slate-900 uppercase tracking-[0.15em] mb-6">
                     Product
                   </h4>
                   <ul className="space-y-3">
@@ -50,7 +50,7 @@ export const Footer = () => {
                 </div>
 
                 <div className="flex flex-col">
-                  <h4 className="text-sm font-bold text-slate-900 uppercase tracking-[0.2em] mb-6 mt-3">
+                  <h4 className="text-sm font-bold text-slate-900 uppercase tracking-[0.15em] mb-6">
                     Support
                   </h4>
                   <ul className="space-y-3">
@@ -59,7 +59,7 @@ export const Footer = () => {
                 </div>
 
                 <div className="flex flex-col col-span-2 md:col-span-1">
-                  <h4 className="text-sm font-bold text-slate-900 uppercase tracking-[0.2em] mb-6 mt-3">
+                  <h4 className="text-sm font-bold text-slate-900 uppercase tracking-[0.15em] mb-6">
                     Legal
                   </h4>
                   <ul className="space-y-3">
@@ -70,21 +70,21 @@ export const Footer = () => {
               </div>
             </div>
 
-            <div className="border-t border-slate-100 pt-12 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="border-t border-slate-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
               <div className="flex flex-col items-center md:items-start gap-2">
-                <p className="text-sm text-slate-500 font-medium italic">
+                <p className="text-sm text-slate-400 font-medium">
                   © {new Date().getFullYear()} AgentKit. Built for the future of decentralized
                   intelligence.
                 </p>
               </div>
 
               <div className="flex items-center gap-8">
-                <div className="flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-50 border border-slate-200 shadow-sm">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200">
                   <div className="relative flex size-2">
                     <div className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                     <div className="relative inline-flex size-2 rounded-full bg-emerald-500" />
                   </div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.15em]">
+                  <span className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.05em]">
                     All Systems Operational
                   </span>
                 </div>
@@ -103,7 +103,7 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
   <li>
     <Link
       href={href}
-      className="text-slate-500 text-md hover:text-primary transition-all duration-300 text-base font-semibold border-b-2 border-transparent hover:border-primary/20 pb-1 inline-block"
+      className="text-slate-500 hover:text-primary transition-colors duration-200 text-sm font-medium block w-fit"
     >
       {children}
     </Link>
@@ -127,9 +127,9 @@ const SocialIcon = ({ href, icon }: SocialIconProps) => {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-11 h-11 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-white hover:bg-primary hover:border-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-500 group active:scale-95"
+      className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-white hover:bg-primary hover:border-primary transition-all duration-300 group active:scale-95"
     >
-      <IconComponent className="w-5 h-5 transition-transform duration-500 group-hover:scale-110" />
+      <IconComponent className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" />
     </Link>
   );
 };
