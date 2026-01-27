@@ -1,0 +1,53 @@
+yarn run v1.22.22
+$ '/home/asif/Downloads/ai-agent-main (1)/ai-agent-main/node_modules/.bin/tsc' --noEmit
+libs/form-elements/src/components/CustomAutoComplete.tsx(3,21): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomAutoComplete.tsx(4,26): error TS2307: Cannot find module '@mui/material/Autocomplete' or its corresponding type declarations.
+libs/form-elements/src/components/CustomAutoComplete.tsx(47,24): error TS7006: Parameter 'option' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomAutoComplete.tsx(48,30): error TS7006: Parameter 'option' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomAutoComplete.tsx(48,38): error TS7006: Parameter 'value' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomAutoComplete.tsx(51,18): error TS7006: Parameter '_' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomAutoComplete.tsx(51,21): error TS7006: Parameter 'newValue' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomAutoComplete.tsx(54,22): error TS7006: Parameter 'props' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomAutoComplete.tsx(54,29): error TS7006: Parameter 'option' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomAutoComplete.tsx(67,21): error TS7006: Parameter 'params' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomCheckbox.tsx(3,22): error TS2307: Cannot find module '@mui/material/Checkbox' or its corresponding type declarations.
+libs/form-elements/src/components/CustomCheckbox.tsx(4,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomCheckbox.tsx(7,36): error TS2307: Cannot find module '@mui/material/Checkbox' or its corresponding type declarations.
+libs/form-elements/src/components/CustomCheckbox.tsx(9,34): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomDateRangePicker.tsx(3,27): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomDisabledButton.tsx(2,24): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomDisabledButton.tsx(3,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomDisabledButton.tsx(5,48): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomFormLabel.tsx(2,28): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomFormLabel.tsx(3,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomOutlinedButton.tsx(2,24): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomOutlinedButton.tsx(3,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomOutlinedButton.tsx(5,48): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomOutlinedInput.tsx(2,31): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomOutlinedInput.tsx(3,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomOutlinedInput.tsx(6,85): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomRadio.tsx(3,19): error TS2307: Cannot find module '@mui/material/Radio' or its corresponding type declarations.
+libs/form-elements/src/components/CustomRadio.tsx(4,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomRadio.tsx(6,33): error TS2307: Cannot find module '@mui/material/Radio' or its corresponding type declarations.
+libs/form-elements/src/components/CustomRadio.tsx(8,34): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomRadio.tsx(33,41): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomRangeSlider.tsx(2,24): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomRangeSlider.tsx(3,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomRangeSlider.tsx(5,45): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomSelect.tsx(2,53): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomSelect.tsx(3,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomSlider.tsx(2,24): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomSlider.tsx(3,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomSlider.tsx(5,40): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomSocialButton.tsx(2,24): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomSocialButton.tsx(3,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomSocialButton.tsx(8,7): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/CustomSwitch.tsx(3,24): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomTextField.tsx(2,27): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/CustomTextField.tsx(3,24): error TS2307: Cannot find module '@mui/material/styles' or its corresponding type declarations.
+libs/form-elements/src/components/CustomTextField.tsx(6,77): error TS7031: Binding element 'theme' implicitly has an 'any' type.
+libs/form-elements/src/components/date-range-picker/DateRangePicker.tsx(13,8): error TS2307: Cannot find module '@mui/material' or its corresponding type declarations.
+libs/form-elements/src/components/date-range-picker/DateRangePicker.tsx(14,52): error TS2307: Cannot find module '@mui/x-date-pickers' or its corresponding type declarations.
+libs/form-elements/src/components/date-range-picker/DateRangePicker.tsx(15,30): error TS2307: Cannot find module '@mui/x-date-pickers/AdapterDayjs' or its corresponding type declarations.
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.

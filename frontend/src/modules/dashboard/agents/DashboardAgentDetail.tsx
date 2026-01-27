@@ -1,9 +1,11 @@
-import { AgentChatPreview } from "./components/AgentChatPreview";
-import { AgentIntegrations } from "./components/AgentIntegrations";
-import { AgentOverview } from "./components/AgentOverview";
-import { DashboardAgentDetailSkeleton } from "./components/DashboardAgentDetailSkeleton";
-import { DashboardAgentHero } from "./components/DashboardAgentHero";
-import { useAgentDetail } from "./hooks";
+import {
+  AgentChatPreview,
+  AgentIntegrations,
+  AgentOverview,
+  DashboardAgentDetailSkeleton,
+  DashboardAgentHero,
+  useAgentDetail,
+} from "@/modules/agents";
 
 interface DashboardAgentDetailProps {
   slug: string;

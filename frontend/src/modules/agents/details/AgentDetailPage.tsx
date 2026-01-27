@@ -5,9 +5,8 @@ import { useRouter } from "next/navigation";
 import { Header } from "@/modules/landing";
 import { Button } from "@/shared/ui/button";
 
-import { AgentIntegrations } from "./components/AgentIntegrations";
-import { AgentChatPreview, AgentHero, AgentOverview } from "./components";
-import { useAgentDetail } from "./hooks";
+import { AgentChatPreview, AgentHero, AgentIntegrations, AgentOverview } from "../components";
+import { useAgentDetail } from "../hooks";
 
 interface AgentDetailPageProps {
   slug: string;
