@@ -4,7 +4,6 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-import { AgentOverviewStep } from "./components/AgentOverviewStep";
 import { ConnectAccountStep } from "./components/ConnectAccountStep";
 import { EmailContextStep } from "./components/EmailContextStep";
 import { SendEmailStep } from "./components/SendEmailStep";
@@ -13,17 +12,13 @@ export const EmailAgentPage = () => {
   const [step, setStep] = useState(1);
   const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null);
 
-  const handleOverviewNext = () => {
+  const handleAccountSelected = (accountId: string) => {
+    setSelectedAccountId(accountId);
     setStep(2);
   };
 
-  const handleAccountSelected = (accountId: string) => {
-    setSelectedAccountId(accountId);
-    setStep(3);
-  };
-
   const handleContextNext = () => {
-    setStep(4);
+    setStep(3);
   };
 
   const handleBack = () => {
@@ -31,68 +26,69 @@ export const EmailAgentPage = () => {
   };
 
   const steps = [
-    { id: 1, label: "Overview", description: "Learn about agent" },
-    { id: 2, label: "Connect", description: "Link your accounts" },
-    { id: 3, label: "Context", description: "Define agent behavior" },
-    { id: 4, label: "Run", description: "Execute capabilities" },
+    { id: 1, label: "Connect Accounts", description: "Link your email" },
+    { id: 2, label: "Configuration", description: "Define behavior" },
+    { id: 3, label: "Test & Activate", description: "Verify and launch" },
   ];
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 min-h-[600px] dark:text-slate-200">
-      {/* Side Control Panel */}
-      <div className="w-full lg:w-64 flex-shrink-0">
-        <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-100 dark:border-slate-800 p-2 shadow-sm sticky top-6">
-          <nav className="space-y-1">
-            {steps.map((s) => (
-              <button
-                key={s.id}
-                onClick={() => {
-                  if (s.id < step) setStep(s.id);
-                }}
-                disabled={s.id > step}
+    <div className="flex flex-col gap-8 min-h-[600px] dark:text-slate-200">
+      {/* Horizontal Stepper */}
+      <div className="w-full max-w-3xl mx-auto mb-8">
+        <div className="relative flex justify-between">
+          <div className="absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 dark:bg-slate-800 -z-10 -translate-y-1/2 rounded-full" />
+          <div
+            className="absolute top-1/2 left-0 h-0.5 bg-primary -z-10 -translate-y-1/2 rounded-full transition-all duration-500 ease-in-out"
+            style={{ width: `${((step - 1) / (steps.length - 1)) * 100}%` }}
+          />
+
+          {steps.map((s) => (
+            <div key={s.id} className="flex flex-col items-center gap-2 bg-page-background px-2">
+              <div
                 className={cn(
-                  "w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all duration-200",
+                  "flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition-all duration-300 border-2",
                   step === s.id
-                    ? "bg-primary/5 dark:bg-primary/10 text-primary ring-1 ring-primary/10 dark:ring-primary/20"
+                    ? "border-primary bg-primary text-white shadow-lg shadow-primary/25 scale-110"
                     : s.id < step
-                    ? "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
-                    : "text-slate-400 dark:text-slate-600 cursor-not-allowed"
+                    ? "border-primary bg-primary text-white"
+                    : "border-slate-200 bg-white text-slate-400 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-500"
                 )}
               >
+                {s.id < step ? (
+                  <span className="material-symbols-outlined text-lg font-bold">check</span>
+                ) : (
+                  s.id
+                )}
+              </div>
+              <div className="text-center">
                 <div
                   className={cn(
-                    "flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold transition-colors",
+                    "text-sm font-semibold transition-colors duration-300",
                     step === s.id
-                      ? "bg-primary text-white shadow-md shadow-primary/25"
+                      ? "text-primary"
                       : s.id < step
-                      ? "bg-primary text-white shadow-sm"
-                      : "bg-slate-100 text-slate-400 dark:bg-slate-800 dark:text-slate-500"
+                      ? "text-slate-900 dark:text-slate-200"
+                      : "text-slate-400 dark:text-slate-600"
                   )}
                 >
-                  {s.id < step ? (
-                    <span className="material-symbols-outlined text-sm font-bold">check</span>
-                  ) : (
-                    s.id
-                  )}
+                  {s.label}
                 </div>
-                <div>
-                  <div className="text-sm font-semibold">{s.label}</div>
-                  <div className="text-[10px] opacity-80 font-medium">{s.description}</div>
+                <div className="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">
+                  {s.description}
                 </div>
-              </button>
-            ))}
-          </nav>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 w-full max-w-4xl mx-auto">
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm min-h-[500px] p-1">
-          <div className="h-full p-2 sm:p-6">
-            {step === 1 && <AgentOverviewStep onNext={handleOverviewNext} />}
-            {step === 2 && <ConnectAccountStep onNext={handleAccountSelected} />}
-            {step === 3 && <EmailContextStep onNext={handleContextNext} onBack={handleBack} />}
-            {step === 4 && selectedAccountId && (
+          <div className="h-full p-2 sm:p-8">
+            {step === 1 && <ConnectAccountStep onNext={handleAccountSelected} />}
+            {step === 2 && <EmailContextStep onNext={handleContextNext} onBack={handleBack} />}
+            {step === 3 && selectedAccountId && (
               <SendEmailStep accountId={selectedAccountId} onBack={handleBack} />
             )}
           </div>

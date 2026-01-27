@@ -1,11 +1,9 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
-
+import { IconLayoutDashboard, IconRobot, IconShare2 } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import { IconLayoutDashboard } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 import { cn } from "@/lib/utils";
 
@@ -28,6 +26,18 @@ export const SidebarItems = () => {
       icon: <IconLayoutDashboard size={20} />,
       href: "/dashboard",
     },
+    {
+      id: "connections",
+      title: "Connections", // Hardcoded for now until translations are updated
+      icon: <IconShare2 size={20} />,
+      href: "/dashboard/connections",
+    },
+    {
+      id: "agents",
+      title: t("navigation.agents"),
+      icon: <IconRobot size={20} />,
+      href: "/dashboard/agents",
+    },
   ];
 
   return (
@@ -47,7 +57,7 @@ export const SidebarItems = () => {
                   : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"
               )}
             >
-              <span className="flex-shrink-0">{item.icon}</span>
+              <span className="shrink-0">{item.icon}</span>
               <span>{item.title}</span>
             </Link>
           );
