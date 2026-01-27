@@ -1,8 +1,7 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
-
 import { Lock, User } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";

@@ -66,6 +66,8 @@
     "@tiptap/extension-table": "^2.9.1",
     "@tiptap/react": "^2.9.1",
     "@tiptap/starter-kit": "^2.9.1",
+    "@mui/material": "^5.15.0",
+    "@mui/icons-material": "^5.15.0",
     "apexcharts": "3.48.0",
     "axios": "^1.6.8",
     "axios-mock-adapter": "^1.22.0",

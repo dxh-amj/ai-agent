@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-
 import { TextField } from "@mui/material";
 import { IconCalendar } from "@tabler/icons-react";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import { DateRangePicker } from "./date-range-picker/DateRangePicker";
 
@@ -23,8 +22,10 @@ interface CustomDateRangePickerProps {
   helperText?: string | false;
   fullWidth?: boolean;
   disabled?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onBlur?: (event: any) => void;
   size?: "small" | "medium";
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sx?: any;
 }
 

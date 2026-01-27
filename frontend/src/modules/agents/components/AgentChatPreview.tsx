@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-
 import { IconSend } from "@tabler/icons-react";
+import { useEffect, useRef, useState } from "react";
 
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 
 import { AgentAvatar } from "./AgentAvatar";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentChatPreviewProps {
   agent: Agent;
@@ -90,29 +89,36 @@ export const AgentChatPreview = ({ agent }: AgentChatPreviewProps) => {
                   ref={scrollRef}
                   className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth bg-linear-to-b from-slate-50/50 to-white [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]"
                 >
-                  {agent.mockChat.map((msg, index) => {
-                    if (index >= visibleMessages) return null;
+                  {agent.mockChat.map(
+                    (msg: { role: "user" | "assistant"; content: string }, index: number) => {
+                      if (index >= visibleMessages) return null;
 
-                    const isUser = msg.role === "user";
-                    return (
-                      <div
-                        key={`${agent.id}-${index}`}
-                        className={`flex ${
-                          isUser ? "justify-end" : "justify-start"
-                        } animate-fade-in-up`}
-                      >
+                      const isUser = msg.role === "user";
+                      const CONTENT_PREVIEW_LENGTH = 20;
+                      const messageKey = `${agent.id}-${msg.role}-${index}-${msg.content.slice(
+                        0,
+                        CONTENT_PREVIEW_LENGTH
+                      )}`;
+                      return (
                         <div
-                          className={`max-w-[80%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm ${
-                            isUser
-                              ? "bg-primary text-primary-foreground rounded-tr-sm"
-                              : "bg-white border border-slate-200 text-slate-800 rounded-tl-sm"
-                          }`}
+                          key={messageKey}
+                          className={`flex ${
+                            isUser ? "justify-end" : "justify-start"
+                          } animate-fade-in-up`}
                         >
-                          {msg.content}
+                          <div
+                            className={`max-w-[80%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-sm ${
+                              isUser
+                                ? "bg-primary text-primary-foreground rounded-tr-sm"
+                                : "bg-white border border-slate-200 text-slate-800 rounded-tl-sm"
+                            }`}
+                          >
+                            {msg.content}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    }
+                  )}
                   {visibleMessages < agent.mockChat.length && visibleMessages % 2 !== 0 && (
                     <div className="flex justify-start animate-fade-in-up">
                       <div className="bg-white border border-slate-200 rounded-2xl px-4 py-3 rounded-tl-sm flex gap-1 items-center shadow-sm">

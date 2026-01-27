@@ -1,9 +1,8 @@
 "use client";
 
-import Link from "next/link";
-
 import { getCookie } from "cookies-next";
 import { useFormik } from "formik";
+import Link from "next/link";
 
 import { CustomPasswordInput, CustomTextField } from "@/shared/form-elements";
 import { Button, Label } from "@/shared/ui";

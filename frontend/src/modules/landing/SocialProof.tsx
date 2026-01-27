@@ -56,25 +56,33 @@ export const SocialProof = () => {
 
             {/* Company logos grid */}
             <div className="grid grid-cols-2 sm:grid-cols-4 border border-slate-200 rounded-2xl overflow-hidden">
-              {companies.map((company, index) => (
-                <div
-                  key={company.name}
-                  className={`flex items-center justify-center gap-3 p-6 lg:p-8 ${
-                    index % 4 !== 3 ? "border-r border-slate-200" : ""
-                  } ${index < 4 ? "border-b border-slate-200" : ""} ${
-                    index % 2 === 0 && index < 4
-                      ? "sm:border-r"
-                      : index % 2 === 1 && index < 4
-                      ? "border-r-0 sm:border-r"
-                      : ""
-                  } hover:bg-slate-50 transition-colors`}
-                >
-                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-slate-200 to-slate-100 flex items-center justify-center shadow-sm">
-                    <span className="text-sm font-bold text-slate-600">{company.initials}</span>
+              {companies.map((company, index) => {
+                const BORDER_RIGHT_COL = 4;
+                const FIRST_ROW_COUNT = 4;
+                const isNotLastInRow = index % BORDER_RIGHT_COL !== BORDER_RIGHT_COL - 1;
+                const isInFirstRow = index < FIRST_ROW_COUNT;
+                const isEvenInFirstRow = index % 2 === 0 && isInFirstRow;
+                const isOddInFirstRow = index % 2 === 1 && isInFirstRow;
+                return (
+                  <div
+                    key={company.name}
+                    className={`flex items-center justify-center gap-3 p-6 lg:p-8 ${
+                      isNotLastInRow ? "border-r border-slate-200" : ""
+                    } ${isInFirstRow ? "border-b border-slate-200" : ""} ${
+                      isEvenInFirstRow
+                        ? "sm:border-r"
+                        : isOddInFirstRow
+                        ? "border-r-0 sm:border-r"
+                        : ""
+                    } hover:bg-slate-50 transition-colors`}
+                  >
+                    <div className="w-10 h-10 rounded-full bg-linear-to-br from-slate-200 to-slate-100 flex items-center justify-center shadow-sm">
+                      <span className="text-sm font-bold text-slate-600">{company.initials}</span>
+                    </div>
+                    <span className="text-lg font-medium text-slate-700">{company.name}</span>
                   </div>
-                  <span className="text-lg font-medium text-slate-700">{company.name}</span>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

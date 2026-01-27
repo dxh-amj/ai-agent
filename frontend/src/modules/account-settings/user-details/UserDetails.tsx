@@ -2,6 +2,7 @@
 
 import dayjs from "dayjs";
 import { useFormik } from "formik";
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -21,6 +22,54 @@ import { UserDetailsSkeleton } from "./UserDetailsSkeleton";
 
 import type { DropdownOption } from "../types";
 
+// Helper component for form field wrapper
+const FormField = ({
+  id,
+  label,
+  children,
+}: {
+  id: string;
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <div>
+    <Label htmlFor={id} className="mb-1.5 block">
+      {label}
+    </Label>
+    {children}
+  </div>
+);
+
+// Helper component for text field with error handling
+const TextFieldWithError = ({
+  id,
+  name,
+  value,
+  onChange,
+  formik,
+  ...props
+}: {
+  id: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  formik: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}) => (
+  <CustomTextField
+    id={id}
+    name={name}
+    value={value}
+    onChange={onChange}
+    error={formik.touched[name] && Boolean(formik.errors[name])}
+    helperText={formik.touched[name] ? (formik.errors[name] as string) : undefined}
+    {...props}
+  />
+);
+
+// eslint-disable-next-line complexity
 const UserDetails = () => {
   const {
     user,
@@ -135,45 +184,27 @@ const UserDetails = () => {
             </p>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {/* First Name */}
-              <div>
-                <Label htmlFor="firstName" className="mb-1.5 block">
-                  {t("fields.first_name")}
-                </Label>
-                <CustomTextField
+              <FormField id="firstName" label={t("fields.first_name")}>
+                <TextFieldWithError
                   id="firstName"
                   name="firstName"
                   value={formik.values.firstName}
                   onChange={formik.handleChange}
-                  error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-                  helperText={
-                    formik.touched.firstName ? (formik.errors.firstName as string) : undefined
-                  }
+                  formik={formik}
                 />
-              </div>
+              </FormField>
 
-              {/* Last Name */}
-              <div>
-                <Label htmlFor="lastName" className="mb-1.5 block">
-                  {t("fields.last_name")}
-                </Label>
-                <CustomTextField
+              <FormField id="lastName" label={t("fields.last_name")}>
+                <TextFieldWithError
                   id="lastName"
                   name="lastName"
                   value={formik.values.lastName}
                   onChange={formik.handleChange}
-                  error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-                  helperText={
-                    formik.touched.lastName ? (formik.errors.lastName as string) : undefined
-                  }
+                  formik={formik}
                 />
-              </div>
+              </FormField>
 
-              {/* Email */}
-              <div>
-                <Label htmlFor="email" className="mb-1.5 block">
-                  Email
-                </Label>
+              <FormField id="email" label="Email">
                 <CustomTextField
                   id="email"
                   name="email"
@@ -181,28 +212,19 @@ const UserDetails = () => {
                   readOnly
                   className="cursor-not-allowed bg-muted/50"
                 />
-              </div>
+              </FormField>
 
-              {/* Phone */}
-              <div>
-                <Label htmlFor="phone" className="mb-1.5 block">
-                  {t("fields.phone")}
-                </Label>
-                <CustomTextField
+              <FormField id="phone" label={t("fields.phone")}>
+                <TextFieldWithError
                   id="phone"
                   name="phone"
                   value={formik.values.phone}
                   onChange={formik.handleChange}
-                  error={formik.touched.phone && Boolean(formik.errors.phone)}
-                  helperText={formik.touched.phone ? (formik.errors.phone as string) : undefined}
+                  formik={formik}
                 />
-              </div>
+              </FormField>
 
-              {/* Date of Birth */}
-              <div>
-                <Label htmlFor="birthDate" className="mb-1.5 block">
-                  {t("fields.date_of_birth")}
-                </Label>
+              <FormField id="birthDate" label={t("fields.date_of_birth")}>
                 <CustomTextField
                   id="birthDate"
                   name="birthDate"
@@ -217,13 +239,9 @@ const UserDetails = () => {
                     formik.touched.birthDate ? (formik.errors.birthDate as string) : undefined
                   }
                 />
-              </div>
+              </FormField>
 
-              {/* Gender */}
-              <div>
-                <Label htmlFor="gender" className="mb-1.5 block">
-                  {t("fields.gender")}
-                </Label>
+              <FormField id="gender" label={t("fields.gender")}>
                 <CustomSelect
                   id="gender"
                   value={formik.values.gender}
@@ -238,47 +256,29 @@ const UserDetails = () => {
                     </SelectItem>
                   ))}
                 </CustomSelect>
-              </div>
+              </FormField>
 
-              {/* Designation */}
-              <div>
-                <Label htmlFor="designation" className="mb-1.5 block">
-                  {t("fields.designation")}
-                </Label>
-                <CustomTextField
+              <FormField id="designation" label={t("fields.designation")}>
+                <TextFieldWithError
                   id="designation"
                   name="designation"
                   value={formik.values.designation}
                   onChange={formik.handleChange}
-                  error={formik.touched.designation && Boolean(formik.errors.designation)}
-                  helperText={
-                    formik.touched.designation ? (formik.errors.designation as string) : undefined
-                  }
+                  formik={formik}
                 />
-              </div>
+              </FormField>
 
-              {/* Address */}
-              <div>
-                <Label htmlFor="address" className="mb-1.5 block">
-                  {t("fields.address")}
-                </Label>
-                <CustomTextField
+              <FormField id="address" label={t("fields.address")}>
+                <TextFieldWithError
                   id="address"
                   name="address"
                   value={formik.values.address}
                   onChange={formik.handleChange}
-                  error={formik.touched.address && Boolean(formik.errors.address)}
-                  helperText={
-                    formik.touched.address ? (formik.errors.address as string) : undefined
-                  }
+                  formik={formik}
                 />
-              </div>
+              </FormField>
 
-              {/* Country */}
-              <div>
-                <Label htmlFor="country" className="mb-1.5 block">
-                  {t("fields.country")}
-                </Label>
+              <FormField id="country" label={t("fields.country")}>
                 <CustomCountrySelect
                   id="country"
                   value={formik.values.country}
@@ -290,13 +290,9 @@ const UserDetails = () => {
                     formik.touched.country ? (formik.errors.country as string) : undefined
                   }
                 />
-              </div>
+              </FormField>
 
-              {/* Timezone */}
-              <div>
-                <Label htmlFor="timezone" className="mb-1.5 block">
-                  {t("fields.timezone")}
-                </Label>
+              <FormField id="timezone" label={t("fields.timezone")}>
                 <CustomTimezoneSelect
                   id="timezone"
                   value={formik.values.timezone}
@@ -308,7 +304,7 @@ const UserDetails = () => {
                     formik.touched.timezone ? (formik.errors.timezone as string) : undefined
                   }
                 />
-              </div>
+              </FormField>
             </div>
 
             <div className="mt-6 flex justify-end gap-2">

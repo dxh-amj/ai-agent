@@ -16,7 +16,8 @@ export const ConnectAccountStep = ({ onNext }: { onNext: (accountId: string) => 
 
   const handleConnect = () => {
     // Determine a fake email based on disconnected accounts or random
-    const mockEmail = `user.${Math.floor(Math.random() * 1000)}@gmail.com`;
+    const RANDOM_EMAIL_RANGE = 1000;
+    const mockEmail = `user.${Math.floor(Math.random() * RANDOM_EMAIL_RANGE)}@gmail.com`;
     connect(mockEmail, {
       onSuccess: () => {
         toast.success("Account connected successfully");

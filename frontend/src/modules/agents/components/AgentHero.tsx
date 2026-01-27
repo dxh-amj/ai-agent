@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentHeroProps {
   agent: Agent;
@@ -57,9 +57,9 @@ export const AgentHero = ({ agent }: AgentHeroProps) => {
               {/* Tags */}
               {agent.tags && agent.tags.length > 0 && (
                 <div className="flex flex-wrap gap-3 mb-12 justify-center animate-fade-in-up [animation-delay:350ms]">
-                  {agent.tags.map((tag, i) => (
+                  {agent.tags.map((tag: string) => (
                     <span
-                      key={i}
+                      key={tag}
                       className="px-4 py-2 rounded-full bg-white text-sm font-medium text-slate-700 border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all"
                     >
                       {tag}

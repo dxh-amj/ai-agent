@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const objectToFormData = (data: Record<string, any>): FormData => {
   const formData = new FormData();
 

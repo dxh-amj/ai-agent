@@ -8,7 +8,7 @@ import {
 } from "@tabler/icons-react";
 import React from "react";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentAvatarProps {
   agent: Agent;

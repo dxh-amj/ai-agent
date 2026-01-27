@@ -1,6 +1,6 @@
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentCapabilitiesProps {
   agent: Agent;
@@ -29,9 +29,9 @@ export const AgentCapabilities = ({ agent }: AgentCapabilitiesProps) => {
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {agent.capabilities.map((capability, index) => (
+              {agent.capabilities.map((capability: string) => (
                 <div
-                  key={index}
+                  key={capability}
                   className="group flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-xl hover:border-slate-300 transition-all duration-300"
                 >
                   <div

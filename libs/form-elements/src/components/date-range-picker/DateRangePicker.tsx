@@ -1,8 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
-
 import {
   Box,
   Button,
@@ -17,6 +14,8 @@ import {
 import { DateCalendar, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
 
 import { getDefaultPresets } from "./constants";
 import { useDateRangePickerLogic } from "./hooks";
@@ -106,7 +105,7 @@ export const DateRangePicker = ({
         sx={{
           display: "flex",
           flexDirection: { xs: "column", md: "row" },
-          minWidth: { xs: "100%", md: showCalendar ? 700 : 200 },
+          minWidth: { xs: "100%", md: showCalendar ? 700 : 200 }, // eslint-disable-line no-magic-numbers
           maxWidth: { xs: "100vw", md: "none" },
           gap: 0,
         }}
@@ -114,7 +113,7 @@ export const DateRangePicker = ({
         {showPresets && (
           <Box
             sx={{
-              width: { xs: "100%", md: showCalendar ? 200 : "100%" },
+              width: { xs: "100%", md: showCalendar ? 200 : "100%" }, // eslint-disable-line no-magic-numbers
               borderBottom: { xs: showCalendar ? 1 : 0, md: 0 },
               borderColor: "divider",
               bgcolor: "grey.50",
@@ -165,7 +164,7 @@ export const DateRangePicker = ({
                     <Typography variant="subtitle1" fontWeight={600}>
                       {currentMonth.format("MMM YYYY")}
                     </Typography>
-                    <Box sx={{ width: 32 }} />
+                    <Box sx={{ width: 32 }} /> {/* Spacer for alignment */}
                   </Stack>
                   <DateCalendar
                     value={startDate}
@@ -182,7 +181,7 @@ export const DateRangePicker = ({
 
                 <Box>
                   <Stack direction="row" alignItems="center" justifyContent="space-between" mb={1}>
-                    <Box sx={{ width: 32 }} />
+                    <Box sx={{ width: 32 }} /> {/* Spacer for alignment */}
                     <Typography variant="subtitle1" fontWeight={600}>
                       {currentMonth.add(1, "month").format("MMM YYYY")}
                     </Typography>

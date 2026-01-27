@@ -1,6 +1,6 @@
 "use client";
 
-import type { Agent } from "../data";
+import type { Agent } from "../types";
 
 interface AgentOverviewProps {
   agent: Agent;
@@ -28,7 +28,7 @@ export const AgentOverview = ({ agent }: AgentOverviewProps) => {
             Key Capabilities
           </h3>
           <div className="grid sm:grid-cols-2 gap-4">
-            {agent.capabilities.map((cap) => (
+            {agent.capabilities.map((cap: string) => (
               <div
                 key={cap}
                 className="flex gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800/50"

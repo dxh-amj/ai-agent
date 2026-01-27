@@ -1,11 +1,9 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
-
+import { IconLayoutDashboard } from "@tabler/icons-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import { IconLayoutDashboard } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 
 import { cn } from "@/lib/utils";
 

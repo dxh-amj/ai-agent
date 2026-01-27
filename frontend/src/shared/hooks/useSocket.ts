@@ -17,8 +17,10 @@ export const useSocket = (config: WebSocketConfig): UseSocketReturn => {
   const wsRef = useRef<WebSocket | null>(null);
   const reconnectTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const reconnectAttemptsRef = useRef(0);
-  const maxReconnectAttempts = config.reconnectAttempts || 3;
-  const reconnectInterval = config.reconnectInterval || 3000;
+  const DEFAULT_MAX_RECONNECT_ATTEMPTS = 3;
+  const DEFAULT_RECONNECT_INTERVAL_MS = 3000;
+  const maxReconnectAttempts = config.reconnectAttempts || DEFAULT_MAX_RECONNECT_ATTEMPTS;
+  const reconnectInterval = config.reconnectInterval || DEFAULT_RECONNECT_INTERVAL_MS;
 
   const cleanup = useCallback(() => {
     if (reconnectTimeoutRef.current) {
@@ -50,7 +52,6 @@ export const useSocket = (config: WebSocketConfig): UseSocketReturn => {
       wsRef.current = ws;
 
       ws.onopen = () => {
-        console.log("WebSocket connected");
         setIsConnected(true);
         setIsConnecting(false);
         reconnectAttemptsRef.current = 0;
@@ -69,8 +70,7 @@ export const useSocket = (config: WebSocketConfig): UseSocketReturn => {
         }
       };
 
-      ws.onclose = (event) => {
-        console.log("WebSocket disconnected");
+      ws.onclose = (event: CloseEvent) => {
         setIsConnected(false);
         setIsConnecting(false);
         config.onClose?.();

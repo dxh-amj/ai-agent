@@ -1,8 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-
 import { useSearchParams } from "next/navigation";
+import { useRef, useState } from "react";
 
 import { useResendVerifyEmail } from "@/services/auth";
 import { useResendMail } from "@/shared/hooks/useResendMail";
@@ -104,7 +103,7 @@ const TwoStepsForm = () => {
         <div className="flex space-x-2 justify-center" onPaste={handlePaste}>
           {otpValues.map((value, index) => (
             <input
-              key={`otp-slot-${index}`}
+              key={`otp-input-${index}-${value || "empty"}`} // eslint-disable-line react/no-array-index-key
               id={`otp-${index}`}
               ref={(el) => {
                 inputRefs.current[index] = el;

@@ -9,32 +9,38 @@ import { ConnectAccountStep } from "./components/ConnectAccountStep";
 import { EmailContextStep } from "./components/EmailContextStep";
 import { SendEmailStep } from "./components/SendEmailStep";
 
+const INITIAL_STEP = 1;
+const OVERVIEW_STEP = 1;
+const CONNECT_STEP = 2;
+const CONTEXT_STEP = 3;
+const RUN_STEP = 4;
+
 export const EmailAgentPage = () => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(INITIAL_STEP);
   const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null);
 
   const handleOverviewNext = () => {
-    setStep(2);
+    setStep(CONNECT_STEP);
   };
 
   const handleAccountSelected = (accountId: string) => {
     setSelectedAccountId(accountId);
-    setStep(3);
+    setStep(CONTEXT_STEP);
   };
 
   const handleContextNext = () => {
-    setStep(4);
+    setStep(RUN_STEP);
   };
 
   const handleBack = () => {
-    setStep((prev) => Math.max(1, prev - 1));
+    setStep((prev) => Math.max(INITIAL_STEP, prev - 1));
   };
 
   const steps = [
-    { id: 1, label: "Overview", description: "Learn about agent" },
-    { id: 2, label: "Connect", description: "Link your accounts" },
-    { id: 3, label: "Context", description: "Define agent behavior" },
-    { id: 4, label: "Run", description: "Execute capabilities" },
+    { id: OVERVIEW_STEP, label: "Overview", description: "Learn about agent" },
+    { id: CONNECT_STEP, label: "Connect", description: "Link your accounts" },
+    { id: CONTEXT_STEP, label: "Context", description: "Define agent behavior" },
+    { id: RUN_STEP, label: "Run", description: "Execute capabilities" },
   ];
 
   return (
@@ -89,10 +95,12 @@ export const EmailAgentPage = () => {
       <div className="flex-1 min-w-0">
         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm min-h-[500px] p-1">
           <div className="h-full p-2 sm:p-6">
-            {step === 1 && <AgentOverviewStep onNext={handleOverviewNext} />}
-            {step === 2 && <ConnectAccountStep onNext={handleAccountSelected} />}
-            {step === 3 && <EmailContextStep onNext={handleContextNext} onBack={handleBack} />}
-            {step === 4 && selectedAccountId && (
+            {step === OVERVIEW_STEP && <AgentOverviewStep onNext={handleOverviewNext} />}
+            {step === CONNECT_STEP && <ConnectAccountStep onNext={handleAccountSelected} />}
+            {step === CONTEXT_STEP && (
+              <EmailContextStep onNext={handleContextNext} onBack={handleBack} />
+            )}
+            {step === RUN_STEP && selectedAccountId && (
               <SendEmailStep accountId={selectedAccountId} onBack={handleBack} />
             )}
           </div>

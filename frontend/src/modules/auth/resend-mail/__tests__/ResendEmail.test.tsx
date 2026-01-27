@@ -35,6 +35,8 @@ vi.mock("next/link", () => ({
 
 describe("ResendEmail", () => {
   const mockMutate = vi.fn();
+  const SECONDS_PER_MINUTE = 60;
+  const COOLDOWN_SECONDS = 120;
 
   beforeEach(() => {
     mockUseSendMail.mockReturnValue({
@@ -47,8 +49,8 @@ describe("ResendEmail", () => {
       isLoading: false,
       isCoolDownActive: false,
       formatTime: vi.fn((seconds: number) => {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
+        const mins = Math.floor(seconds / SECONDS_PER_MINUTE);
+        const secs = seconds % SECONDS_PER_MINUTE;
         return `${mins}:${secs.toString().padStart(2, "0")}`;
       }),
     });
@@ -236,7 +238,7 @@ describe("ResendEmail", () => {
 
     render(<ResendEmail />);
 
-    expect(mockFormatTime).toHaveBeenCalledWith(120);
+    expect(mockFormatTime).toHaveBeenCalledWith(COOLDOWN_SECONDS);
   });
 
   it("handles different email formats correctly", () => {
