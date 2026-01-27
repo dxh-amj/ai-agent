@@ -1,13 +1,10 @@
 "use client";
 
+import { AgentCard, DashboardAgentsSkeleton, useAgentsData } from "@/modules/agents";
 import { Input } from "@/shared/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/shared/ui/tabs";
 
-import { AgentCard } from "./components/AgentCard";
-import { DashboardAgentsSkeleton } from "./components/DashboardAgentsSkeleton";
-import { useAgentsData } from "./hooks";
-
-import type { Category } from "./types";
+import type { Category } from "@/modules/agents";
 
 const categories: Category[] = ["All", "Sales", "Support", "Marketing", "Operations", "Analytics"];
 

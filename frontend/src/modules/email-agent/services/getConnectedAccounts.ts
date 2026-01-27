@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { delay } from "@/utils/delay";
 
 import type { ConnectedAccount } from "./types";
+import type { QueryConfig } from "@/utils/reactQuery";
 
 const DELAY_MEDIUM = 500;
 
@@ -28,12 +29,17 @@ const getConnectedAccounts = async (): Promise<ConnectedAccount[]> => {
 
 interface UseConnectedAccountsOptions {
   enabled?: boolean;
+  config?: QueryConfig<() => Promise<ConnectedAccount[]>>;
 }
 
-export const useConnectedAccounts = ({ enabled = true }: UseConnectedAccountsOptions = {}) => {
+export const useConnectedAccounts = ({
+  enabled = true,
+  config,
+}: UseConnectedAccountsOptions = {}) => {
   return useQuery<ConnectedAccount[], Error>({
     queryKey: ["email-agent", "accounts"],
     queryFn: getConnectedAccounts,
     enabled,
+    ...config,
   });
 };

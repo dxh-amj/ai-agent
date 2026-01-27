@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 
-import { useAgentBySlug, useAgents } from "./service";
+import { useAgentBySlug } from "./services/getAgentBySlug";
+import { useAgents } from "./services/getAgents";
 import { filterAgents } from "./utils";
 
 import type { Category, FilterType } from "./types";

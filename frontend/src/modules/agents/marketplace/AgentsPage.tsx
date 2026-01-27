@@ -7,10 +7,10 @@ import { Button } from "@/shared/ui/button";
 import { DecorativeStripes, DecorativeStripesRight } from "@/shared/ui/decorative-stripes";
 import { Input } from "@/shared/ui/input";
 
-import { AgentCard } from "./components/AgentCard";
-import { useAgentsData } from "./hooks";
+import { AgentCard } from "../components";
+import { useAgentsData } from "../hooks";
 
-import type { Category } from "./types";
+import type { Category } from "../types";
 
 const categories: Category[] = ["All", "Sales", "Support", "Marketing", "Operations", "Analytics"];
 

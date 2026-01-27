@@ -1,11 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { use } from "react";
 
-import { DashboardAgentDetail } from "@/modules/agents";
 import { PageContainer } from "@/shared/components";
 import { Button } from "@/shared/ui/button";
+
+const DashboardAgentDetail = dynamic(
+  () => import("@/modules/dashboard").then((mod) => mod.DashboardAgentDetail),
+  {
+    loading: () => <div className="animate-pulse bg-slate-100 dark:bg-slate-800 h-96 rounded-xl" />,
+  }
+);
 
 interface PageProps {
   params: Promise<{ slug: string }>;

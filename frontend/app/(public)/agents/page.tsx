@@ -1,9 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useTranslation } from "react-i18next";
 
-import { AgentsPage } from "@/modules/agents/AgentsPage";
 import { PageContainer } from "@/shared/components";
+
+const AgentsPage = dynamic(() => import("@/modules/agents").then((mod) => mod.AgentsPage), {
+  loading: () => <div className="animate-pulse bg-slate-100 dark:bg-slate-800 h-96 rounded-xl" />,
+});
 
 const Page = () => {
   const { t } = useTranslation();

@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 
 import { delay } from "@/utils/delay";
 
+import type { QueryConfig } from "@/utils/reactQuery";
+
 const DELAY_FAST = 300;
 
 // Mock database - will be replaced with API calls
@@ -19,12 +21,14 @@ const getContext = async (): Promise<string> => {
 
 interface UseEmailContextOptions {
   enabled?: boolean;
+  config?: QueryConfig<() => Promise<string>>;
 }
 
-export const useEmailContext = ({ enabled = true }: UseEmailContextOptions = {}) => {
+export const useEmailContext = ({ enabled = true, config }: UseEmailContextOptions = {}) => {
   return useQuery<string, Error>({
     queryKey: ["email-agent", "context"],
     queryFn: getContext,
     enabled,
+    ...config,
   });
 };
